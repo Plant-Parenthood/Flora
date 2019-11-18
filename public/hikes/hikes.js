@@ -2,7 +2,7 @@
 // TO-DO STILL: MODIFY FOR PLANT APP! DELETE THIS LINE ONCE DONE!
 // !!!
 
-import CharactersApp from './CharactersApp.js';
+import HikesApp from './HikesApp.js';
 
-const app = new CharactersApp();
+const app = new HikesApp();
 document.body.prepend(app.renderDOM());

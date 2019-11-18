@@ -1,5 +1,5 @@
 
-.character-item {
+.hike-item {
     height: 200px;
     border: 1px solid #aaa;
     background-color: white;
@@ -9,14 +9,14 @@
 }
 
 
-.character-item h2 {
+.hike-item h2 {
     display: flex;
     justify-content: flex-start;
     align-items: center;
     font-size: 1.3em;
 }
 
-.character-item character {
+.hike-item hike {
     margin-top: 10px;   
     padding: 3px;
     display: flex;
@@ -25,11 +25,11 @@
     font-size: 0.9em;
 }
 
-.character-item h2 .character-name {
+.hike-item h2 .hike-name {
     flex-grow: 1;
 }
 
-.character-item h2 .favorite-star {
+.hike-item h2 .favorite-star {
     cursor: pointer;
     user-select: none;
     border: 0;
@@ -39,11 +39,11 @@
     color: #ccc;
 }
 
-.character-item h2 .favorite-star.is-favorite {
+.hike-item h2 .favorite-star.is-favorite {
     color: gold;
 }
 
-.character-item img {
+.hike-item img {
     height: 50px;
     width: 50px;
     object-fit: contain;

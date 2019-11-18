@@ -14,7 +14,7 @@ class Header extends Component {
     }
 
     renderHTML() {
-        const title = this.props.title || 'PLANTS PLANTS PLANTS';
+        const title = this.props.title || 'HIKES HIKES HIKES';
 
         // !!!
         // TO-DO STILL: MAKE THIS CUSTOMIZED FOR THE PLANTS APP! DELETE THIS LINE ONCE DONE!
@@ -26,7 +26,7 @@ class Header extends Component {
                 <h1>${title}</h1>
                 <nav>
                     <a href="./">Home</a>
-                    <a href="./characters.html">Characters</a>
+                    <a href="./hikes.html">Hikes</a>
                     <a href="./favorites.html">Favorites</a>
                 </nav>
                 <button class="log-out hidden">Log Out</button>

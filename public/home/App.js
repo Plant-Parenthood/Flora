@@ -24,7 +24,7 @@ class App extends Component {
                             alt="Planet Express Ship from Futurama">
                     </p>
                     <p>
-                        <a href="characters.html">Explore Characters...</a>
+                        <a href="charachikesters.html">Explore Hikes...</a>
                     </p>
                 </main>
             </div>

@@ -36,9 +36,9 @@ async function fetchWithError(url, options) {
     }
 }
 
-export function getCharacters() {
+export function getHikes() {
     const hashQuery = window.location.hash.slice(1);
-    const url = `${BASE_URL}/character?${hashQuery}`;
+    const url = `${BASE_URL}/hike?${hashQuery}`;
     return fetchWithError(url);
 }
 
@@ -47,19 +47,19 @@ export function getFavorites() {
     return fetchWithError(url);
 }
 
-export function makeFavorite(character) {
+export function makeFavorite(hike) {
     const url = `${BASE_URL}/me/favorites`;
     return fetchWithError(url, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify(character)
+        body: JSON.stringify(hike)
     });
 }
 
-export function unFavorite(characterId) {
-    const url = `${BASE_URL}/me/favorites/${characterId}`;
+export function unFavorite(hikeId) {
+    const url = `${BASE_URL}/me/favorites/${hikeId}`;
     return fetchWithError(url, {
         method: 'DELETE',
     });

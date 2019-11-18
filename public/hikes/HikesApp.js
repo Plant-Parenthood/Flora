@@ -1,15 +1,15 @@
 import Component from '../Component.js';
 import Header from '../common/Header.js';
-import CharacterList from './CharacterList.js';
+import HikesList from './HikeItem.js';
 import Search from './Search.js';
 import Paging from './Paging.js';
-import { getCharacters } from '../services/character-api.js';
+import { getHikes } from '../services/hikes-api.js';
 
 // !!!
 // TO-DO STILL: MAKE THIS FOR THE PLANT APP! DELETE THIS LINE ONCE DONE!
 // !!!
 
-class CharactersApp extends Component {
+class HikesApp extends Component {
 
     onRender(dom) {
         const header = new Header();
@@ -24,14 +24,14 @@ class CharactersApp extends Component {
         const listSection = dom.querySelector('.list-section');
 
 
-        const characterList = new CharacterList({ characters: [] });
-        listSection.appendChild(characterList.renderDOM());
+        const hikesList = new HikesList({ hikes: [] });
+        listSection.appendChild(hikesList.renderDOM());
 
-        const loadCharacters = async () => {
+        const loadHikes = async () => {
             try {
-                const characters = await getCharacters();
+                const hikes = await getHikes();
 
-                characterList.update({ characters: characters });
+                hikesList.update({ hikes: hikes });
 
                 paging.update({
                     // This API does not give total results :(
@@ -43,9 +43,9 @@ class CharactersApp extends Component {
             }
         };
 
-        loadCharacters();
+        loadHikes();
         window.addEventListener('hashchange', () => {
-            loadCharacters();
+            loadHikes();
         });
     }
 
@@ -60,7 +60,7 @@ class CharactersApp extends Component {
                         
                     <section class="list-section">
                         <!-- paging goes here -->
-                        <!-- character list goes here -->        
+                        <!-- hikes list goes here -->        
                     </section>
                 </main>
             </div>
@@ -68,4 +68,4 @@ class CharactersApp extends Component {
     }
 }
 
-export default CharactersApp;
+export default HikesApp;

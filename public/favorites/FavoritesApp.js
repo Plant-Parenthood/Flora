@@ -4,10 +4,10 @@
 
 import Component from '../Component.js';
 import Header from '../common/Header.js';
-import CharacterList from '../characters/CharacterList.js';
-import { getFavorites } from '../services/character-api.js';
+import HikesList from '../hikes/HikeList.js';
+import { getFavorites } from '../services/hike-api.js';
 
-class FindCharactersApp extends Component {
+class FindHikesApp extends Component {
 
     onRender(dom) {
         const header = new Header();
@@ -15,12 +15,12 @@ class FindCharactersApp extends Component {
 
         const listSection = dom.querySelector('.list-section');
 
-        const characterList = new CharacterList({ characters: [], removeUnFavorites: true });
-        listSection.appendChild(characterList.renderDOM());
+        const hikesList = new HikesList({ hikes: [], removeUnFavorites: true });
+        listSection.appendChild(hikesList.renderDOM());
 
         getFavorites()
-            .then(characters => {
-                characterList.update({ characters: characters });
+            .then(hikes => {
+                hikesList.update({ hikes: hikes });
             });
     }
 
@@ -32,7 +32,7 @@ class FindCharactersApp extends Component {
                 <main> 
                     <section class="list-section">
                         <!-- paging goes here -->
-                        <!-- character list goes here -->        
+                        <!-- hikes list goes here -->        
                     </section>
                 </main>
             </div>
@@ -40,4 +40,4 @@ class FindCharactersApp extends Component {
     }
 }
 
-export default FindCharactersApp;
+export default FindHikesApp;

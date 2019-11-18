@@ -1,24 +1,24 @@
 import Component from '../Component.js';
-import { makeFavorite, unFavorite } from '../services/character-api.js';
+import { makeFavorite, unFavorite } from '../services/hikes-api.js';
 
 
 // !!!
 // TO DO STILL: MAKE THIS FOR THE PLANT APP! DELETE THIS LINE ONCE DONE!
 // !!!
 
-class CharacterItem extends Component {
+class HikeItem extends Component {
 
     onRender(li) {
-        const character = this.props.character;
+        const hike = this.props.hike;
         const removeUnFavorites = this.props.removeUnFavorites;
         const favoriteButton = li.querySelector('.favorite-star');
         favoriteButton.addEventListener('click', () => {
-            character.isFavorite = !character.isFavorite;
-            if (character.isFavorite) {
-                makeFavorite(character);
+            hike.isFavorite = !hike.isFavorite;
+            if (hike.isFavorite) {
+                makeFavorite(hike);
             }
             else {
-                unFavorite(character.id);
+                unFavorite(hike.id);
                 setTimeout(() => {
                     if (removeUnFavorites) {
                         li.classList.add('fade');
@@ -31,20 +31,20 @@ class CharacterItem extends Component {
     }
 
     renderHTML() {
-        const character = this.props.character;
-        const starClass = character.isFavorite ? 'is-favorite' : '';
+        const hike = this.props.hike;
+        const starClass = hike.isFavorite ? 'is-favorite' : '';
 
         return /*html*/`
-            <li class="character-item">
+            <li class="hike-item">
                 <h2>
-                    <img src="${character.image}">
-                    <span class="character-name">${character.name}</span>
+                    <img src="${hike.image}">
+                    <span class="hike-name">${hike.name}</span>
                     <button class="favorite-star ${starClass}">★</button>
                 </h2>
                 
                 <p>
-                    ORIGIN: ${character.origin.name}<br>
-                    SPECIES: ${character.species}
+                    ORIGIN: ${hike.origin.name}<br>
+                    SPECIES: ${hike.species}
                 </p>
 
             </li>
@@ -52,4 +52,4 @@ class CharacterItem extends Component {
     }
 }
 
-export default CharacterItem;
+export default HikeItem;

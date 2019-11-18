@@ -8,7 +8,7 @@ const morgan = require('morgan');
 // Database Client
 const client = require('./lib/client');
 // Services
-const plantApi = require('./public/services/plant-api.js');
+const hikesApi = require('./public/services/hikes-api.js');
 
 // Auth
 const ensureAuth = require('./lib/auth/ensure-auth');

@@ -8,11 +8,13 @@ const morgan = require('morgan');
 // Database Client
 const client = require('./lib/client');
 // Services
-const hikesApi = require('./public/services/hikes-api.js');
+const hikesApi = require('./lib/rei-hike-api-call.js');
+console.log(hikesApi);
 
 // Auth
 const ensureAuth = require('./lib/auth/ensure-auth');
 const createAuthRoutes = require('./lib/auth/create-auth-routes');
+
 const authRoutes = createAuthRoutes({
     async selectUser(email) {
         const result = await client.query(`
@@ -48,3 +50,74 @@ app.use('/api/auth', authRoutes);
 app.use('/api', ensureAuth);
 
 // *** API Routes ***
+app.get('/api/hikes', async (req, res) => {
+
+//check if any of these are faves, make an array of ids
+    const ids = 
+})
+
+//
+//we might have to add this back in - TRUE as "isFavorite"
+
+app.get('/api/favorites', async(req, res) => {
+    try {
+        const result = await client.query(`
+            SELECT  id, 
+                    user_id as "userId",
+                    hike_id as "hikeId",
+            FROM favorites
+            WHERE user_id = $1;
+        `, [req.userId]);
+    }
+
+    catch(err) {
+        console.log(err);
+        res.status(500).json({
+            error: err.message || err
+        });
+    }
+});
+
+//add a hike to your faves
+app.post('/api/favorites', async(req, res) => {
+    try {
+        const hike = req.body;
+
+        const result = await client.query(`
+            INSERT INTO favorites (hike_id, user_id)
+            VALUES ($1, $2)
+            RETURNING hike as hike_id, user_id as "userId";
+        `, [hikes.id, req.userId]);
+
+        res.json(result.rows[0]);
+    }
+
+    catch(err) {
+        console.log(err);
+        res.status(500).json({
+            error: err.message || err
+        });
+    }
+});
+
+app.delete('api/favorites/:id', (req, res) => {
+    try {
+        client.query(`
+            DELETE FROM favorites
+            WHERE id = $1
+            AND user_id = $2;
+        `, [req.params.id, req.userId]);
+    }
+
+    catch(err) {
+        console.log(err);
+        res.status(500).json({
+            error: err.message || err
+        });
+    }
+});
+
+//Start up server
+app.listen(PORT, () => {
+    console.log('serving running on PORT', PORT);
+});

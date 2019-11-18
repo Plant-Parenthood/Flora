@@ -14,6 +14,7 @@ async function run() {
             DROP TABLE IF EXISTS favorites;
             DROP TABLE IF EXISTS hikes;
             DROP TABLE IF EXISTS users;
+            DROP TABLE IF EXISTS campgrounds;
         `);
 
         console.log('drop tables complete');

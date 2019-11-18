@@ -12,10 +12,10 @@ if (json) {
 }
 
 // redirect if not on home page
-if (!token && location.pathname !== '/auth.html') {
+if (!token && location.pathname !== '/index.html') {
     const searchParams = new URLSearchParams();
     searchParams.set('redirect', location.pathname);
-    location = `/auth.html?${searchParams.toString()}`;
+    location = `/index.html?${searchParams.toString()}`;
 }
 
 async function fetchWithError(url, options) {
@@ -36,19 +36,13 @@ async function fetchWithError(url, options) {
     }
 }
 
-export function getHikes() {
-    const hashQuery = window.location.hash.slice(1);
-    const url = `${BASE_URL}/hike?${hashQuery}`;
-    return fetchWithError(url);
-}
-
 export function getFavorites() {
-    const url = `${BASE_URL}/me/favorites`;
+    const url = `${BASE_URL}/favorites`;
     return fetchWithError(url);
 }
 
 export function makeFavorite(hike) {
-    const url = `${BASE_URL}/me/favorites`;
+    const url = `${BASE_URL}/favorites`;
     return fetchWithError(url, {
         method: 'POST',
         headers: {
@@ -59,7 +53,7 @@ export function makeFavorite(hike) {
 }
 
 export function unFavorite(hikeId) {
-    const url = `${BASE_URL}/me/favorites/${hikeId}`;
+    const url = `${BASE_URL}/favorites/${hikeId}`;
     return fetchWithError(url, {
         method: 'DELETE',
     });

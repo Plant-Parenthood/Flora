@@ -18,14 +18,18 @@ async function run() {
                 display_name VARCHAR(256) NOT NULL
             );
         
+            CREATE TABLE hikes (
+                id SERIAL PRIMARY KEY,
+                json_string VARCHAR(4000) NOT NULL
+            )
+            
             CREATE TABLE favorites (
-                id VARCHAR(64) PRIMARY KEY,
-                name VARCHAR(256) NOT NULL,
-                user_id INTEGER NOT NULL REFERENCES users(id), 
-                image VARCHAR(265) NOT NULL,
-                species VARCHAR(256) NOT NULL, 
-                origin VARCHAR(256) NOT NULL
+                id SERIAL PRIMARY KEY,
+                user_id INTEGER NOT NULL REFERENCES users(id),
+                hike_id INTEGER NOT NULL REFERENCES hikes(id)
             );
+
+            
         `);
 
         console.log('create tables complete');

@@ -2,12 +2,7 @@ const client = require('../lib/client');
 
 run();
 
-async function run() {
-
-    // !!!
-    // STILL TO DO: DROP TABLES SPECIFIC FOR THE PLANT APP! DELETE THIS LINE ONCE PLANT APP SPECIFIC DROP TABLES HAVE BEEN MADE!!!
-    // !!!
-    
+async function run() {   
     try {
         // run a query to create tables
         await client.query(`

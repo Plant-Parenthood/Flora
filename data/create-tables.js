@@ -20,7 +20,13 @@ async function run() {
         
             CREATE TABLE hikes (
                 id SERIAL PRIMARY KEY,
-                json_string VARCHAR(4000) NOT NULL
+                hike_obj VARCHAR(4000) NOT NULL,
+                campgrounds_arr VARCHAR(255)
+            )
+
+            CREATE TABLE campgrounds (
+                id SERIAL PRIMARY KEY,
+                campground_obj VARCHAR(4000) NOT NULL
             )
             
             CREATE TABLE favorites (

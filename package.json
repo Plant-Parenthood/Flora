@@ -1,0 +1,30 @@
+{
+  "name": "flora",
+  "version": "1.0.0",
+  "description": "MVP: A responsive app that enables a user to search a database of plants and create a collection of plants to refer back to later for various purposes determined by the user:\r     1. Login Page\r     2. Plants List Page\r     3. User Favorites Page\r     4. Details Page\r     5. About Us Page",
+  "main": "server.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Plant-Parenthood/flora.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Plant-Parenthood/flora/issues"
+  },
+  "homepage": "https://github.com/Plant-Parenthood/flora#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "morgan": "^1.9.1"
+  }
+}

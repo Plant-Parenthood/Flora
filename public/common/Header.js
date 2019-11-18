@@ -22,7 +22,7 @@ class Header extends Component {
 
         return /*html*/`
             <header>
-                <img class="logo" src="assets/alchemy-logo.png" alt="Alchemy Code Lab Logo">
+                <img class="logo" src="./assets/hike-icon.jpg" alt="Hike Logo">
                 <h1>${title}</h1>
             </header>
         `;

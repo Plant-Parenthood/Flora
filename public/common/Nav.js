@@ -1,6 +1,6 @@
 import Component from '../Component.js';
 
-class Header extends Component {
+class Nav extends Component {
     onRender(dom) {
         if (localStorage.getItem('USER')) {
             const button = dom.querySelector('.log-out');
@@ -14,19 +14,19 @@ class Header extends Component {
     }
 
     renderHTML() {
-        const title = this.props.title || 'HIKES HIKES HIKES';
-
         // !!!
-        // TO-DO STILL: MAKE THIS CUSTOMIZED FOR THE PLANTS APP! DELETE THIS LINE ONCE DONE!
+        // TO-DO STILL: MAKE THIS CUSTOMIZED FOR THE hikes APP! DELETE THIS LINE ONCE DONE!
         // !!!
 
         return /*html*/`
-            <header>
-                <img class="logo" src="assets/alchemy-logo.png" alt="Alchemy Code Lab Logo">
-                <h1>${title}</h1>
-            </header>
+        <nav>
+            <a href="./">Home</a>
+            <a href="./hikes.html">Hikes</a>
+            <a href="./favorites.html">Favorites</a>
+            <button class="log-out hidden">Log Out</button>
+        </nav>
         `;
     }
 }
 
-export default Header;
+export default Nav;

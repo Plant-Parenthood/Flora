@@ -1,5 +1,8 @@
 import Component from '../Component.js';
 
+
+//NEED TO UPDATE FOR OUR API!!!! 
+
 class Paging extends Component {
 
     onRender(dom) {

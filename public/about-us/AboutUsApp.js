@@ -13,7 +13,7 @@ class AboutUsApp extends Component {
         dom.prepend(header.renderDOM());
 
         const footer = new Footer();
-        dom.append(footer.renderDOM());
+        dom.appendChild(footer.renderDOM());
     }
 
     renderHTML() {

@@ -2,14 +2,12 @@ import Component from '../Component.js';
 import { makeFavorite, unFavorite } from '../services/hikes-api.js';
 
 
-// !!!
-// TO DO STILL: MAKE THIS FOR THE PLANT APP! DELETE THIS LINE ONCE DONE!
-// !!!
-
 class HikeItem extends Component {
 
     onRender(li) {
-        const hike = this.props.hike;
+        const { hike } = this.props;
+
+        //Favorite functionality same as source- SHOULD WE CHANGE? 
         const removeUnFavorites = this.props.removeUnFavorites;
         const favoriteButton = li.querySelector('.favorite-star');
         favoriteButton.addEventListener('click', () => {
@@ -31,20 +29,22 @@ class HikeItem extends Component {
     }
 
     renderHTML() {
-        const hike = this.props.hike;
+        //what props do we need for showing user info?? 
+        const { hike } = this.props;
+        
         const starClass = hike.isFavorite ? 'is-favorite' : '';
 
         return /*html*/`
             <li class="hike-item">
                 <h2>
-                    <img src="${hike.image}">
-                    <span class="hike-name">${hike.name}</span>
+                    <img src="${hike.imgSmall}">
+                    <a href="${hike.url}" class="hike-name">${hike.name}</a>
                     <button class="favorite-star ${starClass}">★</button>
                 </h2>
                 
                 <p>
-                    ORIGIN: ${hike.origin.name}<br>
-                    SPECIES: ${hike.species}
+                    Length (miles): ${hike.length}<br>
+                    Summary: ${hike.summary}
                 </p>
 
             </li>

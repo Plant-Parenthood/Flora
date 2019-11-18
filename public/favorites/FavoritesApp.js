@@ -4,6 +4,7 @@
 
 import Component from '../Component.js';
 import Header from '../common/Header.js';
+import Footer from '../common/Footer.js';
 import HikesList from '../hikes/HikeList.js';
 import { getFavorites } from '../services/hike-api.js';
 
@@ -22,6 +23,9 @@ class FindHikesApp extends Component {
             .then(hikes => {
                 hikesList.update({ hikes: hikes });
             });
+        
+        const footer = new Footer();
+        dom.appendChild(footer.renderDOM());
     }
 
     renderHTML() {
@@ -31,10 +35,11 @@ class FindHikesApp extends Component {
                 
                 <main> 
                     <section class="list-section">
-                        <!-- paging goes here -->
-                        <!-- hikes list goes here -->        
+                        <!-- hikes list goes here --> 
+                        <!-- paging goes here -->       
                     </section>
                 </main>
+                <!-- footer goes here -->
             </div>
         `;
     }

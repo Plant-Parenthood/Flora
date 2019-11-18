@@ -8,7 +8,7 @@ import HikeItem from './HikeItem.js';
 class HikesList extends Component {
 
     onRender(dom) {
-        const hikes = this.props.hikes;
+        const { hikes } = this.props;
 
         hikes.forEach(hike => {
             const props = {
@@ -16,7 +16,6 @@ class HikesList extends Component {
                 removeUnFavorites: this.props.removeUnFavorites
             };
 
-            console.log(this.props.removeUnFavorites);
             const hikeItem = new HikeItem(props);
             const hikeItemDOM = hikeItem.renderDOM();
             dom.appendChild(hikeItemDOM);
@@ -25,9 +24,8 @@ class HikesList extends Component {
     }
 
     renderHTML() {
-
         return /*html*/`
-            <ul class="hike"></ul>
+            <ul class="hikes-list"></ul>
         `;
     }
 }

@@ -28,6 +28,12 @@ class Search extends Component {
         const searchParams = new URLSearchParams(hashQuery);
         const search = searchParams.get('search') || '';
 
+
+        //we need to add sort/filter functionality - what are we sorting or filtering by? sort = dropdown? filter = checkboxes 
+
+        //sort by hike length, driving distance/distance from you 
+
+        // filter by is there a campground close by ? 
         return /*html*/`
             <form class="search-form">
                 <input name="search" value="${search}">

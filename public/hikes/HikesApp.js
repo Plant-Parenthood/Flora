@@ -1,6 +1,7 @@
 import Component from '../Component.js';
 import Header from '../common/Header.js';
-import HikesList from './HikeItem.js';
+import Footer from '../common/Footer.js';
+import HikesList from './HikesList.js';
 import Search from './Search.js';
 import Paging from './Paging.js';
 import { getHikes } from '../services/hikes-api.js';
@@ -18,16 +19,19 @@ class HikesApp extends Component {
         const optionsSection = dom.querySelector('.options-section');
         const search = new Search();
         optionsSection.appendChild(search.renderDOM());
-        const paging = new Paging();
-        optionsSection.appendChild(paging.renderDOM());
-
+        
         const listSection = dom.querySelector('.list-section');
-
-
+        
         const hikesList = new HikesList({ hikes: [] });
         listSection.appendChild(hikesList.renderDOM());
+        
+        const paging = new Paging();
+        listSection.appendChild(paging.renderDOM());
 
-        const loadHikes = async () => {
+        const footer = new Footer();
+        dom.appendChild(footer.renderDOM());
+
+        const loadHikes = async() => {
             try {
                 const hikes = await getHikes();
 
@@ -53,7 +57,7 @@ class HikesApp extends Component {
         return /*html*/`
             <div>
                 <!-- header goes here -->
-                
+                <main>
                     <section class="options-section">
                         <!-- options go here -->
                     </section>
@@ -63,6 +67,7 @@ class HikesApp extends Component {
                         <!-- hikes list goes here -->        
                     </section>
                 </main>
+                <!-- footer goes here -->
             </div>
         `;
     }

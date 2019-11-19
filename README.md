@@ -33,7 +33,7 @@ MVP: A responsive app that enables a user to search a database of hikes by param
 
 # User-stories:
 
-1. 
+1. As a backpacker, I want to be able to plan my drive to a hiking trail and see where I can camp near the trail using the same app rather than using several apps and websites together to plan my trip. (MVP)
 
 2. 
 

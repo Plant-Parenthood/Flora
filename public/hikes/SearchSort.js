@@ -5,8 +5,8 @@ class Search extends Component {
     onRender(form) {
 
         const input = form.querySelector('input');
-        const difficultyInput = form.querySelector('input[name=difficulty]');
-        const distanceInput = form.querySelector('input[name=distance]');
+        // const difficultyInput = form.querySelector('input[name=difficulty]');
+        // const distanceInput = form.querySelector('input[name=distance]');
         const ratingInput = form.querySelector('input[name=rating]');
 
         function updateControls() {
@@ -15,8 +15,8 @@ class Search extends Component {
 
             input.value = searchParams.get('search') || '';
 
-            difficultyInput.value = searchParams.get('difficulty') || '';
-            distanceInput.value = searchParams.get('distance') || '';
+            // difficultyInput.value = searchParams.get('difficulty') || 0;
+            // distanceInput.value = searchParams.get('distance') || '';
             ratingInput.value = searchParams.get('rating') || '';
 
         }
@@ -47,7 +47,7 @@ class Search extends Component {
                 searchParams.set('rating', formData.get('rating'));
             }
 
-            searchParams.set('page', 1);
+            // searchParams.set('page', 1);
 
 
             window.location.hash = searchParams.toString();
@@ -70,7 +70,7 @@ class Search extends Component {
                     <option value="greenBlue">Easy</option>
                     <option value="blue">Medium</option>
                     <option value="blueBlack">Hard</option>
-                    <option value="Black">Hardest</option>
+                    <option value="black">Hardest</option>
                 </select>
                 <label>Minimum Rating (out of five): <input type="number" max=5 name="rating"></label>
                 <button>🔍</button>

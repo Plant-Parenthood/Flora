@@ -25,6 +25,7 @@ class Header extends Component {
             <header>
                 <img class="logo" src="./assets/hike-icon.jpg" alt="Hike Logo">
                 <h1>${title}</h1>
+                <button class="log-out">Log out!</button>
             </header>
         `;
     }

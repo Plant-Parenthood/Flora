@@ -34,8 +34,7 @@ class Search extends Component {
             const searchParams = new URLSearchParams(queryString);
 
             searchParams.set('name', formData.get('search'));
-            //the API has "green, greenBlue, Blue" etc. Would we like to use that in our dropdown or add code to change a different
-            //rating system to match the API's?
+
             if (formData.get('difficulty') === '') {
                 searchParams.set('difficulty', 0);
             } else {
@@ -67,13 +66,13 @@ class Search extends Component {
             <form class="search-form">
                 <input name="search" value="${search}">
                 <select name="difficulty">
-                    <option value="Easiest">Easiest</option>
-                    <option value="Easy">Easy</option>
-                    <option value="Medium">Medium</option>
-                    <option value="Hard">Hard</option>
-                    <option value="Hardest">Hardest</option>
+                    <option value="green">Easiest</option>
+                    <option value="greenBlue">Easy</option>
+                    <option value="blue">Medium</option>
+                    <option value="blueBlack">Hard</option>
+                    <option value="Black">Hardest</option>
                 </select>
-                <label>Minimum Rating: <input type="number" name="rating"></label>
+                <label>Minimum Rating (out of five): <input type="number" max=5 name="rating"></label>
                 <button>🔍</button>
                 <button><a href = "../hikes.html">Reset Your Search</a></button>
             </form>

@@ -1,9 +1,5 @@
 const BASE_URL = '/api';
 
-// !!!
-// TO DO STILL: MAKE THIS FOR THE PLANT APP!!! DELETE THIS LINE ONCE DONE!!!
-// !!!
-
 let token = '';
 const json = localStorage.getItem('USER');
 if (json) {
@@ -28,7 +24,6 @@ async function fetchWithError(url, options) {
     const response = await fetch(url, options);
     const data = await response.json();
     if (response.ok) {
-        console.log(data);
         return data;
     }
     else {

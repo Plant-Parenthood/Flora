@@ -114,10 +114,10 @@ app.post('/api/favorites', async(req, res) => {
         const hike = req.body;
 
         const result = await client.query(`
-            INSERT INTO favorites (hike_id, user_id)
+            INSERT INTO favorites (user_id, hike_id)
             VALUES ($1, $2)
-            RETURNING hike as hike_id, user_id as "userId";
-        `, [hike.id, req.userId]);
+            RETURNING user_id as "userId", hike_id as "hikeId";
+        `, [req.userId, hike.id]);
 
         res.json(result.rows[0]);
     }

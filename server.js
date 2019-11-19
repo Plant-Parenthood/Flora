@@ -24,7 +24,6 @@ const authRoutes = createAuthRoutes({
         return result.rows[0];
     },
     async insertUser(user, hash) {
-        console.log(user);
         const result = await client.query(`
             INSERT into users (email, hash, display_name)
             VALUES ($1, $2, $3)
@@ -55,7 +54,7 @@ app.get('/api/hikes', async(req, res) => {
         const query = req.query;
 
         const hikes = await hikesApi.get();
-        console.log('HIKES HIKES HIKES HIKES HIKES HIKES', hikes);
+        
         const ids = hikes.map(hike => hike.id);
 
         const result = await client.query(`

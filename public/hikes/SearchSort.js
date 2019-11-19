@@ -6,6 +6,7 @@ class Search extends Component {
 
         const { hikes } = this.props;
 
+
         // const input = form.querySelector('input');
         // const difficultyInput = form.querySelector('input[name=difficulty]');
         // // const distanceInput = form.querySelector('input[name=distance]');
@@ -21,13 +22,40 @@ class Search extends Component {
         
             localStorage.setItem('rating', formData.get('rating'));
 
-            // const filteredDifficultyResultsArray = hikes.filter(hike => (hike.difficulty === formData.get('difficulty')));
+            const filteredDifficultyResultsArray = hikes.filter(hike => (hike.difficulty === formData.get('difficulty')));
 
             const filteredRatingResultsArray = hikes.filter(hike => (hike.stars >= formData.get('rating')));
 
+            const foundInboth = filteredDifficultyResultsArray.filter(element => filteredRatingResultsArray.includes(element));
+
+            console.log(foundInboth);
+
+            console.log(filteredRatingResultsArray, 'ratings');
+            console.log(filteredDifficultyResultsArray, 'difficulty');
+
+            
+            
+
+            // const foundInBoth = hikes.forEach((hike, i) => {
+            //     if (hike[i] === filteredDifficultyResultsArray[i] && filteredRatingResultsArray[i]) {
+            //         foundInBoth.push(hike[i]);
+            //     }
+            // });
+          
+            // console.log(foundInBoth);
+
+
+
+            // const bigMamaArray = hikes.reduce((acc, hike) => {
+            
+            // }, []);
+
+
+
+            // console.log(bigMamaArray);
+
             // filteredResultsArray.push(localStorage.getItem('rating'));
             // console.log(filteredDifficultyResultsArray);
-            console.log(filteredRatingResultsArray);
 
         });
     }

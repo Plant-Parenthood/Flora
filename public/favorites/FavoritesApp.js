@@ -5,7 +5,7 @@
 import Component from '../Component.js';
 import Header from '../common/Header.js';
 import Footer from '../common/Footer.js';
-import HikesList from '../hikes/HikeList.js';
+import HikesList from '../hikes/HikesList.js';
 import { getFavorites } from '../services/hike-api.js';
 
 class FindHikesApp extends Component {

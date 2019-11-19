@@ -4,53 +4,31 @@ class Search extends Component {
 
     onRender(form) {
 
-        const input = form.querySelector('input');
+        const { hikes } = this.props;
+
+        // const input = form.querySelector('input');
         // const difficultyInput = form.querySelector('input[name=difficulty]');
-        // const distanceInput = form.querySelector('input[name=distance]');
-        const ratingInput = form.querySelector('input[name=rating]');
+        // // const distanceInput = form.querySelector('input[name=distance]');
+        // const ratingInput = form.querySelector('input[name=rating]');
 
-        function updateControls() {
-            const queryString = window.location.hash.slice(1);
-            const searchParams = new URLSearchParams(queryString);
-
-            input.value = searchParams.get('search') || '';
-
-            // difficultyInput.value = searchParams.get('difficulty') || 0;
-            // distanceInput.value = searchParams.get('distance') || '';
-            ratingInput.value = searchParams.get('rating') || '';
-
-        }
-
-        window.addEventListener('hashchange', () => {
-            updateControls();
-
-        });
+       
 
         form.addEventListener('submit', event => {
             event.preventDefault();
             const formData = new FormData(form);
 
-            const queryString = window.location.hash.slice(1);
-            const searchParams = new URLSearchParams(queryString);
+            localStorage.setItem('difficulty', formData.get('difficulty'));
+        
+            localStorage.setItem('rating', formData.get('rating'));
 
-            searchParams.set('name', formData.get('search'));
+            // const filteredDifficultyResultsArray = hikes.filter(hike => (hike.difficulty === formData.get('difficulty')));
 
-            if (formData.get('difficulty') === '') {
-                searchParams.set('difficulty', 0);
-            } else {
-                searchParams.set('difficulty', formData.get('difficulty'));
-            }
+            const filteredRatingResultsArray = hikes.filter(hike => (hike.stars >= formData.get('rating')));
 
-            if (formData.get('rating') === '') {
-                searchParams.set('rating', 0);
-            } else {
-                searchParams.set('rating', formData.get('rating'));
-            }
+            // filteredResultsArray.push(localStorage.getItem('rating'));
+            // console.log(filteredDifficultyResultsArray);
+            console.log(filteredRatingResultsArray);
 
-            // searchParams.set('page', 1);
-
-
-            window.location.hash = searchParams.toString();
         });
     }
 
@@ -65,6 +43,7 @@ class Search extends Component {
         return /*html*/`
             <form class="search-form">
                 <input name="search" value="${search}">
+                <label>Difficulty:
                 <select name="difficulty">
                     <option value="green">Easiest</option>
                     <option value="greenBlue">Easy</option>
@@ -72,7 +51,16 @@ class Search extends Component {
                     <option value="blueBlack">Hard</option>
                     <option value="black">Hardest</option>
                 </select>
-                <label>Minimum Rating (out of five): <input type="number" max=5 name="rating"></label>
+                </label>
+                <label>Minimum Rating:
+                    <select name="rating">
+                        <option value=1>1</option>
+                        <option value=2>2</option>
+                        <option value=3>3</option>
+                        <option value=4>4</option>
+                        <option value=5>5</option>
+                    </select>
+                </label>
                 <button>🔍</button>
                 <button><a href = "../hikes.html">Reset Your Search</a></button>
             </form>
@@ -81,3 +69,24 @@ class Search extends Component {
 }
 
 export default Search;
+
+
+// const queryString = window.location.hash.slice(1);
+// const searchParams = new URLSearchParams(queryString);
+
+// function updateControls() {
+//     const queryString = window.location.hash.slice(1);
+//     const searchParams = new URLSearchParams(queryString);
+
+//     input.value = searchParams.get('search') || '';
+
+//     // difficultyInput.value = searchParams.get('difficulty') || 0;
+//     // distanceInput.value = searchParams.get('distance') || '';
+//     ratingInput.value = searchParams.get('rating') || '';
+
+// }
+
+// window.addEventListener('hashchange', () => {
+//     updateControls();
+
+// });

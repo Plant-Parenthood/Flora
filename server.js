@@ -36,7 +36,7 @@ const authRoutes = createAuthRoutes({
 
 // Application Setup
 const app = express();
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 3000;
 app.use(morgan('dev')); // http logging
 app.use(cors()); // enable CORS request
 app.use(express.static('public')); // server files from /public folder
@@ -53,11 +53,9 @@ app.get('/api/hikes', async(req, res) => {
 
     try {
         const query = req.query;
-        console.log('ADD SOMETHING TO THAT TOO SO WE CAN IDENTIFY IT' + query.search);
 
-        const hikes = await hikesApi.get(query.search);
-        console.log('OMG THIS IS OUR CONSOLE LOG FIND ME' + hikes);
-
+        const hikes = await hikesApi.get();
+        console.log('HIKES HIKES HIKES HIKES HIKES HIKES', hikes);
         const ids = hikes.map(hike => hike.id);
 
         const result = await client.query(`

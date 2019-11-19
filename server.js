@@ -133,11 +133,12 @@ app.post('/api/favorites', async(req, res) => {
 app.delete('/api/favorites/:hike_id', (req, res) => {
     
     try {
+        console.log('I SHOULD HAVE PUT MORE STUFF IN HERE', req.params);
         client.query(`
             DELETE FROM favorites
             WHERE hike_id = $1
             AND user_id = $2;
-        `, [req.params, req.userId]);
+        `, [req.params.hike_id, req.userId]);
 
         res.json({ removed: true });
     }

@@ -16,13 +16,14 @@ class HikeItem extends Component {
                 makeFavorite(hike);
             }
             else {
+                console.log(typeof hike.id);
                 unFavorite(hike.id);
-                setTimeout(() => {
-                    if (removeUnFavorites) {
-                        li.classList.add('fade');
-                        this.rootElement.remove();
-                    }
-                }, 300);
+                // setTimeout(() => {
+                //     if (removeUnFavorites) {
+                //         li.classList.add('fade');
+                //         this.rootElement.remove();
+                //     }
+                // }, 300);
             }
             favoriteButton.classList.toggle('is-favorite');
         });

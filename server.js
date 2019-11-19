@@ -57,7 +57,6 @@ app.get('/api/hikes', async(req, res) => {
     try {
         //const query = req.query;
         const hikes = await hikesApi.get(req);
-        console.log('HIKES HIKES HIKES HIKES HIKES HIKES', hikes);
         const ids = hikes.map(hike => hike.id);
         const result = await client.query(`
             SELECT id 
@@ -112,6 +111,7 @@ app.get('/api/favorites', async(req, res) => {
 app.post('/api/favorites', async(req, res) => {
     try {
         const hike = req.body;
+        
 
         const result = await client.query(`
             INSERT INTO favorites (user_id, hike_id)
@@ -130,13 +130,16 @@ app.post('/api/favorites', async(req, res) => {
     }
 });
 
-app.delete('api/favorites/:id', (req, res) => {
+app.delete('/api/favorites/:hike_id', (req, res) => {
+    
     try {
         client.query(`
             DELETE FROM favorites
-            WHERE id = $1
+            WHERE hike_id = $1
             AND user_id = $2;
-        `, [req.params.id, req.userId]);
+        `, [req.params, req.userId]);
+
+        res.json({ removed: true });
     }
 
     catch (err) {

@@ -22,12 +22,12 @@ async function run() {
                 id SERIAL PRIMARY KEY,
                 hike_obj VARCHAR(4000) NOT NULL,
                 campgrounds_arr VARCHAR(255)
-            )
+            );
 
             CREATE TABLE campgrounds (
                 id SERIAL PRIMARY KEY,
                 campground_obj VARCHAR(4000) NOT NULL
-            )
+            );
             
             CREATE TABLE favorites (
                 id SERIAL PRIMARY KEY,

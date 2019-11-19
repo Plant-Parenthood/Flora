@@ -31,7 +31,7 @@ class Search extends Component {
 
         //we need to add sort/filter functionality - what are we sorting or filtering by? sort = dropdown? filter = checkboxes 
 
-        //sort by hike length, driving distance/distance from you 
+        //sort by hike length, driving distance/distance from you ? Hiking API built in sort is either quality or distance!
 
         // filter by is there a campground close by ? 
         return /*html*/`

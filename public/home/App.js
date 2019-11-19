@@ -67,8 +67,6 @@ class App extends Component {
 
         const footer = new Footer();
         dom.appendChild(footer.renderDOM());
-
-
     }
 
     renderHTML() {
@@ -89,6 +87,7 @@ class App extends Component {
                         </p>
                     </section>
                 </main>
+                <!-- footer goes here -->
             </div>
         `;
     }

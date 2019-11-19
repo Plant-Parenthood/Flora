@@ -59,18 +59,18 @@ app.get('/api/hikes', async(req, res) => {
         const hikes = await hikesApi.get(req);
         const ids = hikes.map(hike => hike.id);
         const result = await client.query(`
-            SELECT id 
+            SELECT hike_id 
             FROM favorites
             WHERE user_id = $1
             AND hike_id = ANY($2)
         `, [req.userId, ids]);
-        const lookup = result.rows.reduce((acc, hike) => {
-            acc[hike.id] = true;
+        const lookup = result.rows.reduce((acc, object) => {
+            acc[object.hike_id] = true;
             return acc;
         }, {});
         // isFavorite property is added to each hike and set as true if isFavorite and false otherwise.
         hikes.forEach(hike => hike.isFavorite = lookup[hike.id] || false);
-
+        console.log(lookup);
         res.json(hikes);
     }
 
@@ -133,7 +133,6 @@ app.post('/api/favorites', async(req, res) => {
 app.delete('/api/favorites/:hike_id', (req, res) => {
     
     try {
-        console.log('I SHOULD HAVE PUT MORE STUFF IN HERE', req.params);
         client.query(`
             DELETE FROM favorites
             WHERE hike_id = $1

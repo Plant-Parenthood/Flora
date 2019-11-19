@@ -16,7 +16,6 @@ class HikeItem extends Component {
                 makeFavorite(hike);
             }
             else {
-                console.log(typeof hike.id);
                 unFavorite(hike.id);
                 // setTimeout(() => {
                 //     if (removeUnFavorites) {

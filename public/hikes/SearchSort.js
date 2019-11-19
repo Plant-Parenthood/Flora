@@ -3,23 +3,55 @@ import Component from '../Component.js';
 class Search extends Component {
 
     onRender(form) {
+
+        const input = form.querySelector('input');
+        const difficultyInput = form.querySelector('input[name=difficulty]');
+        const distanceInput = form.querySelector('input[name=distance]');
+        const ratingInput = form.querySelector('input[name=rating]');
+
+        function updateControls() {
+            const queryString = window.location.hash.slice(1);
+            const searchParams = new URLSearchParams(queryString);
+
+            input.value = searchParams.get('search') || '';
+
+            difficultyInput.value = searchParams.get('difficulty') || '';
+            distanceInput.value = searchParams.get('distance') || '';
+            ratingInput.value = searchParams.get('rating') || '';
+
+        }
+
+        window.addEventListener('hashchange', () => {
+            updateControls();
+
+        });
+
         form.addEventListener('submit', event => {
             event.preventDefault();
             const formData = new FormData(form);
-            const search = formData.get('search');
 
-            const searchParams = new URLSearchParams();
-            searchParams.set('search', search);
+            const queryString = window.location.hash.slice(1);
+            const searchParams = new URLSearchParams(queryString);
+
+            searchParams.set('name', formData.get('search'));
+            //the API has "green, greenBlue, Blue" etc. Would we like to use that in our dropdown or add code to change a different
+            //rating system to match the API's?
+            if (formData.get('difficulty') === '') {
+                searchParams.set('difficulty', 0);
+            } else {
+                searchParams.set('difficulty', formData.get('difficulty'));
+            }
+
+            if (formData.get('rating') === '') {
+                searchParams.set('rating', 0);
+            } else {
+                searchParams.set('rating', formData.get('rating'));
+            }
+
             searchParams.set('page', 1);
+
+
             window.location.hash = searchParams.toString();
-        });
-
-        const input = form.querySelector('input');
-
-        window.addEventListener('hashchange', () => {
-            const hashQuery = window.location.hash.slice(1);
-            const searchParams = new URLSearchParams(hashQuery);
-            input.value = searchParams.get('search') || '';
         });
     }
 
@@ -29,15 +61,21 @@ class Search extends Component {
         const search = searchParams.get('search') || '';
 
 
-        //we need to add sort/filter functionality - what are we sorting or filtering by? sort = dropdown? filter = checkboxes 
-
-        //sort by hike length, driving distance/distance from you ? Hiking API built in sort is either quality or distance!
-
-        // filter by is there a campground close by ? 
+        //we need to add sort functionality
+        //the filter function should be updated to reflect the API better.
         return /*html*/`
             <form class="search-form">
                 <input name="search" value="${search}">
+                <select name="difficulty">
+                    <option value="Easiest">Easiest</option>
+                    <option value="Easy">Easy</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Hard">Hard</option>
+                    <option value="Hardest">Hardest</option>
+                </select>
+                <label>Minimum Rating: <input type="number" name="rating"></label>
                 <button>🔍</button>
+                <button><a href = "../hikes.html">Reset Your Search</a></button>
             </form>
         `;
     }

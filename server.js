@@ -50,11 +50,39 @@ app.use('/api/auth', authRoutes);
 app.use('/api', ensureAuth);
 
 // *** API Routes ***
-app.get('/api/hikes', async (req, res) => {
+app.get('/api/hikes', async(req, res) => {
 
-//check if any of these are faves, make an array of ids
-    const ids = 
-})
+    try {
+        const query = req.query;
+
+        const hikes = await hikesApi.get(query.search, query.page);
+
+        const ids = hikes.map(hike => hike.id);
+
+        const result = await client.query(`
+            SELECT id 
+            FROM favorites
+            WHERE user_id = $1
+            AND id = ANY($2)
+        `, [req.userId, ids]);
+
+        const lookup = result.rows.reduce((acc, hike) => {
+            acc[hike.id] = true;
+            return acc;
+        }, {});
+
+        hikes.forEach(hike => hike.isFavorite = lookup[hike.id] || false);
+
+        res.json(hikes);
+    }
+
+    catch (err) {
+        console.log(err);
+        res.status(500).json({
+            error: err.message || err
+        });
+    }
+});
 
 //
 //we might have to add this back in - TRUE as "isFavorite"
@@ -65,12 +93,15 @@ app.get('/api/favorites', async(req, res) => {
             SELECT  id, 
                     user_id as "userId",
                     hike_id as "hikeId",
+                    TRUE as "isFavorite"
             FROM favorites
             WHERE user_id = $1;
         `, [req.userId]);
+
+        res.json(result.rows);
     }
 
-    catch(err) {
+    catch (err) {
         console.log(err);
         res.status(500).json({
             error: err.message || err
@@ -87,12 +118,12 @@ app.post('/api/favorites', async(req, res) => {
             INSERT INTO favorites (hike_id, user_id)
             VALUES ($1, $2)
             RETURNING hike as hike_id, user_id as "userId";
-        `, [hikes.id, req.userId]);
+        `, [hike.id, req.userId]);
 
         res.json(result.rows[0]);
     }
 
-    catch(err) {
+    catch (err) {
         console.log(err);
         res.status(500).json({
             error: err.message || err
@@ -109,7 +140,7 @@ app.delete('api/favorites/:id', (req, res) => {
         `, [req.params.id, req.userId]);
     }
 
-    catch(err) {
+    catch (err) {
         console.log(err);
         res.status(500).json({
             error: err.message || err

@@ -36,6 +36,13 @@ async function fetchWithError(url, options) {
     }
 }
 
+export function getHikes() {
+    const hashQuery = window.location.hash.slice(1);
+    const url = `${BASE_URL}/hikes?${hashQuery}`;
+    console.log(url);
+    return fetchWithError(url);
+}
+
 export function getFavorites() {
     const url = `${BASE_URL}/favorites`;
     return fetchWithError(url);

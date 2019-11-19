@@ -9,7 +9,6 @@ const morgan = require('morgan');
 const client = require('./lib/client');
 // Services
 const hikesApi = require('./lib/rei-hike-api-call.js');
-console.log(hikesApi);
 
 // Auth
 const ensureAuth = require('./lib/auth/ensure-auth');
@@ -54,8 +53,10 @@ app.get('/api/hikes', async(req, res) => {
 
     try {
         const query = req.query;
+        console.log('ADD SOMETHING TO THAT TOO SO WE CAN IDENTIFY IT' + query.search);
 
-        const hikes = await hikesApi.get(query.search, query.page);
+        const hikes = await hikesApi.get(query.search);
+        console.log('OMG THIS IS OUR CONSOLE LOG FIND ME' + hikes);
 
         const ids = hikes.map(hike => hike.id);
 

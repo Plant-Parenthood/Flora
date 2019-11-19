@@ -2,8 +2,8 @@ import Component from '../Component.js';
 import Header from '../common/Header.js';
 import Footer from '../common/Footer.js';
 import HikesList from './HikesList.js';
-import Search from './Search.js';
-import Paging from './Paging.js';
+import Search from './SearchSort.js';
+// import Paging from './Paging.js';
 import { getHikes } from '../services/hikes-api.js';
 
 // !!!
@@ -25,8 +25,8 @@ class HikesApp extends Component {
         const hikesList = new HikesList({ hikes: [] });
         listSection.appendChild(hikesList.renderDOM());
         
-        const paging = new Paging();
-        listSection.appendChild(paging.renderDOM());
+        // const paging = new Paging();
+        // listSection.appendChild(paging.renderDOM());
 
         const footer = new Footer();
         dom.appendChild(footer.renderDOM());
@@ -37,10 +37,10 @@ class HikesApp extends Component {
 
                 hikesList.update({ hikes: hikes });
 
-                paging.update({
-                    // This API does not give total results :(
-                    // totalResult: ?
-                });
+                // paging.update({
+                //     // This API does not give total results :(
+                //     // totalResult: ?
+                // });
             }
             catch (err) {
                 console.log(err);

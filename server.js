@@ -55,7 +55,7 @@ app.get('/api/hikes', async(req, res) => {
         const query = req.query;
 
         const hikes = await hikesApi.get();
-        console.log('HIKES HIKES HIKES HIKES HIKES HIKES', hikes);
+
         const ids = hikes.map(hike => hike.id);
 
         const result = await client.query(`

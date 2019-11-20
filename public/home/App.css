@@ -55,3 +55,7 @@ input {
     padding-left: 15px;
     height: 35px;
 } 
+
+.no-display {
+    display: none;
+}

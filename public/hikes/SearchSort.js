@@ -73,7 +73,7 @@ class Search extends Component {
         <div>
             <form class="search-form">
                 <section class="search-box">
-                    <input name="search" value="${search}">
+                <input name="search" placeholder="City, State" value="${search}">
                 </section>
                 <section class="difficulty">
                     <label>Difficulty:</label>
@@ -106,7 +106,6 @@ class Search extends Component {
                     <button class="reset-button"><a href = "../hikes.html">Reset</a></button>
                 </section>
             </form>
-            <button class = "reset-button"><a href = "../hikes.html">Reset</a></button>
         </div>
         `;
     }

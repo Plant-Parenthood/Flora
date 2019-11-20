@@ -34,22 +34,9 @@ h1 {
     text-align: center;
 }
 
-nav a {
+/* nav a {
     margin-right: 10px;
-}
-
-@media (min-width: 780px) {
-    h1 {
-        font-size: 60px;
-      }
-
-    img.logo {
-
-    }
-
-    button.log-out {
-    
-    }
+} */
 
 button.log-out {
     background-color: white;
@@ -67,4 +54,10 @@ button.log-out:hover {
 
 button.log-out:active {
     background-color: white;
+}
+
+@media (min-width: 780px) {
+    h1 {
+        font-size: 60px;
+      }
 }

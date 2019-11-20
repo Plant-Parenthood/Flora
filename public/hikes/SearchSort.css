@@ -1,17 +1,29 @@
 .search-form {
-    /* display: flex;
-    align-items: center; */
+    display: grid;
     grid-template:
-    '';
+    'search-box'
+    'difficulty'
+    'rating'
+    'length'
+    'buttons';
 }
 
 label {
-    display: inline-block;
     width: 80px;
     margin-right: 10px;
 }
 
+select {
+    height: 30px;
+    border-radius: 7px;
+    border: 1px solid black;
+    padding-left: 15px;
+    height: 35px;
+    background-color: white;
+}
+
 button.search-button,
+button.filter-button,
 button.reset-button {
     background-color: white;
     border-radius: 7px;
@@ -21,6 +33,7 @@ button.reset-button {
 }
 
 button.search-button:hover,
+button.filter-button,
 button.reset-button:hover {
     color: white;
     background-color: black;
@@ -28,6 +41,7 @@ button.reset-button:hover {
 }
 
 button.search-button:active,
+button.filter-button,
 button.reset-button:active {
     background-color: white;
 }

@@ -1,5 +1,7 @@
 .footer {
     text-align: center;
+    line-height: 30px;
+    margin: 1% auto;
 }
 
 .footer a {

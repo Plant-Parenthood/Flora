@@ -15,14 +15,23 @@ class HikesApp extends Component {
     onRender(dom) {
         const header = new Header();
         dom.prepend(header.renderDOM());
-
-        const optionsSection = dom.querySelector('.options-section');
-        const search = new Search({ hikes: [] });
-        optionsSection.appendChild(search.renderDOM());
         
         const listSection = dom.querySelector('.list-section');
         
-        const hikesList = new HikesList({ hikes: [] });
+        const hikesList = new HikesList({ 
+            hikes: [], 
+            onSearchSubmit: (array) => {
+                let searchedHikes;
+                if (!array){
+                    searchedHikes = this.state.hikes;
+                }
+                else {
+                    searchedHikes = array;
+                }
+                const updatedProps = { hikes: searchedHikes };
+                hikesList.update(updatedProps);
+            }    
+        });
         listSection.appendChild(hikesList.renderDOM());
         
         // const paging = new Paging();
@@ -34,7 +43,6 @@ class HikesApp extends Component {
         const loadHikes = async() => {
             try {
                 const hikes = await getHikes();
-                search.update({ hikes: hikes });
                 hikesList.update({ hikes: hikes });
 
                 // paging.update({
@@ -58,10 +66,6 @@ class HikesApp extends Component {
             <div>
                 <!-- header goes here -->
                 <main>
-                    <section class="options-section">
-                        <!-- options go here -->
-                    </section>
-                        
                     <section class="list-section">
                         <!-- paging goes here -->
                         <!-- hikes list goes here -->        

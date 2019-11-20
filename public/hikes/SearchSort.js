@@ -1,10 +1,10 @@
 import Component from '../Component.js';
-
 class Search extends Component {
 
     onRender(form) {
 
         const { hikes } = this.props;
+        const onSearchSubmit = this.props.onSearchSubmit;
        
         form.addEventListener('submit', event => {
             event.preventDefault();
@@ -55,6 +55,7 @@ class Search extends Component {
             const foundInAll = foundInTwo.filter(element => filteredLengthResultsArray.includes(element));
 
             console.log(foundInAll, 'foundinall');
+            onSearchSubmit(foundInAll);
 
         });
     }

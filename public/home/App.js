@@ -8,7 +8,7 @@ import { signUp as userSignUp, signIn as userSignIn } from '../services/hikes-ap
 function success(user) {
     localStorage.setItem('USER', JSON.stringify(user));
     const searchParams = new URLSearchParams(location.search);
-    location =  '/hikes.html';
+    location = '/hikes.html';
 }
 
 class App extends Component {

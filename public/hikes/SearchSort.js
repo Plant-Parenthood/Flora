@@ -95,8 +95,8 @@ class Search extends Component {
                     </label>
                 </section>
                 <section class="length">
-                    <label>Max Length
-                    <input type="number" name="length" value="length" placeholder=0>
+                    <label>Max Length</label>
+                    <input class="max-length" type="number" name="length" value="length" placeholder=0> mi.
                 </section>
                 <section class="buttons">
                     <button class="search-button">Search</button>

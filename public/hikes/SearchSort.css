@@ -6,6 +6,9 @@
     'rating'
     'length'
     'buttons';
+    border: 1px solid black;
+    padding: 20px;
+    border-radius: 10px;
 }
 
 .search-box {
@@ -26,20 +29,23 @@
 
 .buttons {
     margin-bottom: 10px;
+    margin-top: 10px;
 }
 
 label {
     width: 80px;
     margin-right: 10px;
+    font-weight: bold;
 }
 
 select {
     height: 30px;
     border-radius: 7px;
     border: 1px solid black;
-    padding-left: 15px;
+    padding-left: 6px;
     height: 35px;
     background-color: white;
+    font-size: 14px;
 }
 
 button.search-button {
@@ -76,6 +82,11 @@ input {
     border: 1px solid black;
     padding-left: 15px;
     height: 35px;
+    font-size: 14px;
+}
+
+.max-length {
+    width: 60px;
 }
 
 @media (min-width: 780px) {
@@ -88,23 +99,23 @@ input {
     }
 
     .search-box {
-        margin-right: 10px;
+        margin-right: 15px;
     }
     
     .difficulty {
-        margin-right: 10px;
+        margin-right: 15px;
     }
     
     .rating {
-        margin-right: 10px;
+        margin-right: 15px;
     }
     
     .length {
-        margin-right: 10px;
+        margin-right: 15px;
     }
     
     .buttons {
-        margin-right: 10px;
+        margin-right: 15px;
     }
 }
 

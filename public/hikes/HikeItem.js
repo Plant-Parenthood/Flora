@@ -27,7 +27,7 @@ class HikeItem extends Component {
                         li.classList.add('fade');
                         this.rootElement.remove();
                     }
-                }, 3000);
+                }, 300);
             }
             favoriteButton.classList.toggle('is-favorite');
         });

@@ -9,13 +9,11 @@
     border: 1px solid black;
     padding: 20px;
     border-radius: 10px;
+    margin: 0 auto;
 }
 
-.search-form input {
-    font-size: 1.2em;
-    height: 48px;
-    width: 300px;
-    padding: 0 5px;
+.search-box {
+    margin-bottom: 10px;
 }
 
 .difficulty {

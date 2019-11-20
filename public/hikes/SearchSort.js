@@ -6,7 +6,6 @@ class Search extends Component {
 
         const { hikes } = this.props;
 
-
         // const input = form.querySelector('input');
         // const difficultyInput = form.querySelector('input[name=difficulty]');
         // // const distanceInput = form.querySelector('input[name=distance]');
@@ -22,40 +21,53 @@ class Search extends Component {
         
             localStorage.setItem('rating', formData.get('rating'));
 
-            const filteredDifficultyResultsArray = hikes.filter(hike => (hike.difficulty === formData.get('difficulty')));
+            localStorage.setItem('length', formData.get('length'));
+
+            let filteredDifficultyResultsArray;
+
+            const makeDifficultyArray = () => {
+                if (formData.get('difficulty') === 'any') {
+                    filteredDifficultyResultsArray = hikes;
+                } else {
+                    filteredDifficultyResultsArray = hikes.filter(hike => (hike.difficulty === formData.get('difficulty')));
+                }
+                return filteredDifficultyResultsArray;
+            };
+
+            makeDifficultyArray();
+
+            // const filteredDifficultyResultsArray = hikes.filter(hike => (hike.difficulty === formData.get('difficulty')));
 
             const filteredRatingResultsArray = hikes.filter(hike => (hike.stars >= formData.get('rating')));
 
-            const foundInboth = filteredDifficultyResultsArray.filter(element => filteredRatingResultsArray.includes(element));
+            let filteredLengthResultsArray;
 
-            console.log(foundInboth);
+            const makeLengthArray = () => {
+                if (formData.get('length') === '') {
+                    filteredLengthResultsArray = hikes;
+                    console.log(formData.get('length'), 'formData length');
+                    console.log(filteredLengthResultsArray, 'filter length with nothing');
+                } else {
+                    filteredLengthResultsArray = hikes.filter(hike => (hike.length <= formData.get('length')));
+                    console.log(filteredLengthResultsArray, 'filtered length with something');
+                }
+                return filteredLengthResultsArray;
+            };
 
-            console.log(filteredRatingResultsArray, 'ratings');
-            console.log(filteredDifficultyResultsArray, 'difficulty');
+            makeLengthArray();
+
+
+            // const filteredLengthResultsArray = hikes.filter(hike => (hike.length <= formData.get('length')));
+            // console.log(hikes);
+           
+
+            const foundInTwo = filteredDifficultyResultsArray.filter(element => filteredRatingResultsArray.includes(element));
+
 
             
-            
+            const foundInAll = foundInTwo.filter(element => filteredLengthResultsArray.includes(element));
 
-            // const foundInBoth = hikes.forEach((hike, i) => {
-            //     if (hike[i] === filteredDifficultyResultsArray[i] && filteredRatingResultsArray[i]) {
-            //         foundInBoth.push(hike[i]);
-            //     }
-            // });
-          
-            // console.log(foundInBoth);
-
-
-
-            // const bigMamaArray = hikes.reduce((acc, hike) => {
-            
-            // }, []);
-
-
-
-            // console.log(bigMamaArray);
-
-            // filteredResultsArray.push(localStorage.getItem('rating'));
-            // console.log(filteredDifficultyResultsArray);
+            console.log(foundInAll, 'foundinall');
 
         });
     }
@@ -73,6 +85,7 @@ class Search extends Component {
                 <input name="search" value="${search}">
                 <label>Difficulty:
                 <select name="difficulty">
+                    <option value="any">All Levels</option>
                     <option value="green">Easiest</option>
                     <option value="greenBlue">Easy</option>
                     <option value="blue">Medium</option>
@@ -89,6 +102,8 @@ class Search extends Component {
                         <option value=5>5</option>
                     </select>
                 </label>
+                <label>Max Length
+                <input type="number" name="length" value="length" placeholder=0>
                 <button>🔍</button>
                 <button><a href = "../hikes.html">Reset Your Search</a></button>
             </form>

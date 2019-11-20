@@ -8,7 +8,7 @@ import { signUp as userSignUp, signIn as userSignIn } from '../services/hikes-ap
 function success(user) {
     localStorage.setItem('USER', JSON.stringify(user));
     const searchParams = new URLSearchParams(location.search);
-    location =  '/hikes.html';
+    location = '/hikes.html';
 }
 
 class App extends Component {
@@ -75,15 +75,15 @@ class App extends Component {
             <div>
                 <!-- header goes here -->
                 <main>
-                    <p class="errors"></p>
                     <section class="no-display" id="signup-container">
+                    <p class="errors"></p>
                         <p class="switch">
-                            <button id="signin-button">Already a User?</button>
+                        <button id="signin-button">Existing User Sign-In</button>
                         </p>
                     </section>
                     <section id="signin-container">
                         <p class="switch">
-                            <button id="signup-button">Need to create an Account?</button>
+                        <button id="signup-button">New User Registration</button>
                         </p>
                     </section>
                 </main>

@@ -1,14 +1,20 @@
 import Component from '../Component.js';
 import HikeItem from './HikeItem.js';
-
-// !!!
-// TO DO STILL: MAKE THIS FOR THE PLANT APP! DELETE THIS LINE ONCE DONE!
-// !!!
+import Search from './SearchSort.js';
 
 class HikesList extends Component {
 
     onRender(dom) {
-        const { hikes } = this.props;
+
+        const { hikes, onSearchSubmit } = this.props;
+        const optionsSection = dom.querySelector('.options-section');
+        const search = new Search({ 
+            hikes: hikes,
+            onSearchSubmit: onSearchSubmit 
+        });
+        optionsSection.appendChild(search.renderDOM());
+
+        
 
         hikes.forEach(hike => {
             const props = {
@@ -25,7 +31,12 @@ class HikesList extends Component {
 
     renderHTML() {
         return /*html*/`
+        <div>
+            <section class="options-section">
+            <!-- options go here -->
+            </section>
             <ul class="hikes-list"></ul>
+        </div>
         `;
     }
 }

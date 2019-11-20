@@ -11,8 +11,11 @@ class HikeItem extends Component {
         //Favorite functionality same as source- SHOULD WE CHANGE? 
         const removeUnFavorites = this.props.removeUnFavorites;
         const favoriteButton = li.querySelector('.favorite-star');
+<<<<<<< HEAD
         const infoButton = li.querySelector('.info-button');
 
+=======
+>>>>>>> 1e203ca376a428752c966f676cc4129520453c52
         favoriteButton.addEventListener('click', async() => {
             hike.isFavorite = !hike.isFavorite;
 
@@ -49,8 +52,12 @@ class HikeItem extends Component {
             <li class="hike-item">
 
                     <button class="favorite-star ${starClass}">❤</button>
+<<<<<<< HEAD
                     <button class="info-button">INFO</button>
                     <a href="${hike.url}" class="hike-name"><img src="${hike.imgMedium}" alt="${hike.name}">${hike.name}</a>
+=======
+                    <a href="${hike.url}" class="hike-name"><img src="${hike.imgMedium}" onerror="this.onerror=null;this.src='/assets/placeholder-image.png';" alt="${hike.name}">${hike.name}</a>
+>>>>>>> 1e203ca376a428752c966f676cc4129520453c52
                 
                 <summary>
                     Length: ${hike.length} m.<br>

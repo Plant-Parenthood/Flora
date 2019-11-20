@@ -1,25 +1,26 @@
 import Component from '../Component.js';
-
 class Search extends Component {
 
-    onRender(form) {
-
-        const { hikes } = this.props;
+    onRender(dom) {
+        const form = dom.querySelector('.search-form');
+        
+        const onSearchSubmit = this.props.onSearchSubmit;
        
         form.addEventListener('submit', event => {
             event.preventDefault();
+            //const { hikes } = this.props;
+            const hikes = JSON.parse(localStorage.getItem('allHikes'));
+            console.log(hikes);
             const formData = new FormData(form);
 
             localStorage.setItem('difficulty', formData.get('difficulty'));
-        
             localStorage.setItem('rating', formData.get('rating'));
-
             localStorage.setItem('length', formData.get('length'));
 
             let filteredDifficultyResultsArray;
 
             const makeDifficultyArray = () => {
-                if (formData.get('difficulty') === 'any') {
+                if (formData.get('difficulty') === 'any') {  
                     filteredDifficultyResultsArray = hikes;
                 } else {
                     filteredDifficultyResultsArray = hikes.filter(hike => (hike.difficulty === formData.get('difficulty')));
@@ -55,6 +56,7 @@ class Search extends Component {
             const foundInAll = foundInTwo.filter(element => filteredLengthResultsArray.includes(element));
 
             console.log(foundInAll, 'foundinall');
+            onSearchSubmit(foundInAll);
 
         });
     }
@@ -68,32 +70,43 @@ class Search extends Component {
         //we need to add sort functionality
         //the filter function should be updated to reflect the API better.
         return /*html*/`
+        <div>
             <form class="search-form">
-                <input name="search" value="${search}">
-                <label>Difficulty:
-                <select name="difficulty">
-                    <option value="any">All Levels</option>
-                    <option value="green">Easiest</option>
-                    <option value="greenBlue">Easy</option>
-                    <option value="blue">Medium</option>
-                    <option value="blueBlack">Hard</option>
-                    <option value="black">Hardest</option>
-                </select>
-                </label>
-                <label>Minimum Rating:
-                    <select name="rating">
-                        <option value=1>1</option>
-                        <option value=2>2</option>
-                        <option value=3>3</option>
-                        <option value=4>4</option>
-                        <option value=5>5</option>
+                <section class="search-box">
+                <input name="search" placeholder="City, State" value="${search}">
+                </section>
+                <section class="difficulty">
+                    <label>Difficulty:</label>
+                        <select name="difficulty">
+                        <option value="any">All Levels</option>
+                        <option value="green">Easiest</option>
+                        <option value="greenBlue">Easy</option>
+                        <option value="blue">Medium</option>
+                        <option value="blueBlack">Hard</option>
+                        <option value="black">Hardest</option>
                     </select>
-                </label>
-                <label>Max Length
-                <input type="number" name="length" value="length" placeholder=0>
-                <button>🔍</button>
-                <button><a href = "../hikes.html">Reset Your Search</a></button>
+                </section>
+                <section class="rating">
+                    <label>Minimum Rating:
+                        <select name="rating">
+                            <option value=1>1</option>
+                            <option value=2>2</option>
+                            <option value=3>3</option>
+                            <option value=4>4</option>
+                            <option value=5>5</option>
+                        </select>
+                    </label>
+                </section>
+                <section class="length">
+                    <label>Max Length</label>
+                    <input class="max-length" type="number" name="length" value="length" placeholder=0> mi.
+                </section>
+                <section class="buttons">
+                    <button class="search-button">Search</button>
+                    <button class="reset-button"><a href = "../hikes.html">Reset</a></button>
+                </section>
             </form>
+        </div>
         `;
     }
 }

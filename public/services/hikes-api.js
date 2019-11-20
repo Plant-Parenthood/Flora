@@ -43,8 +43,15 @@ export async function getHikes(search) {
                 resolve(await fetchWithError(url));
             });
         });
-        // user chose to use current location
-        
+    }
+    else {
+        const geocodeApi = require('./google-geocode-api-call.js');
+        // if problems, figure out how to call formatLocationResponse(locationItem)
+        const locationObject = geocodeApi(search);
+        let lat = locationObject.lat;
+        let lon = locationObject.lon;
+        const url = `${BASE_URL}/hikes?lat=${lat}&lon=${lon}`;
+        await fetchWithError(url);
     }
 }
 

@@ -26,7 +26,6 @@ summary {
 
 .hike-item img {
     width: 330px;
-    margin: 0 auto;
     height: 200px;
     object-fit: cover;
     border-radius: 10px;
@@ -53,11 +52,11 @@ a:hover {
     border: 0;
     outline: 0;
     background: none;
-    font-size: 2em;
+    font-size: 2.5em;
     color: #ccc;
     position: relative;
-    top: -220px;
-    right: -260px;
+    top: 10px;
+    right: -230px;
 }
 
 .hike-item h2 .favorite-star.is-favorite {

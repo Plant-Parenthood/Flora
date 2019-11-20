@@ -80,10 +80,31 @@ input {
 
 @media (min-width: 780px) {
     .search-form {
+        margin: 0 auto;
         display: grid;
         grid-template:
         'search-box difficulty rating length'
-        'buttons';
+        'buttons . . .';
+    }
+
+    .search-box {
+        margin-right: 10px;
+    }
+    
+    .difficulty {
+        margin-right: 10px;
+    }
+    
+    .rating {
+        margin-right: 10px;
+    }
+    
+    .length {
+        margin-right: 10px;
+    }
+    
+    .buttons {
+        margin-right: 10px;
     }
 }
 

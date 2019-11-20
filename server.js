@@ -49,28 +49,27 @@ app.use('/api/auth', authRoutes);
 // everything that starts with "/api" below here requires an auth token!
 app.use('/api', ensureAuth);
 
+
+
+
 // *** API Routes ***
 app.get('/api/hikes', async(req, res) => {
 
     try {
-        const query = req.query;
-
-        const hikes = await hikesApi.get();
-        
+        //const query = req.query;
+        const hikes = await hikesApi.get(req);
         const ids = hikes.map(hike => hike.id);
-
         const result = await client.query(`
             SELECT id 
             FROM favorites
             WHERE user_id = $1
-            AND id = ANY($2)
+            AND hike_id = ANY($2)
         `, [req.userId, ids]);
-
         const lookup = result.rows.reduce((acc, hike) => {
             acc[hike.id] = true;
             return acc;
         }, {});
-
+        // isFavorite property is added to each hike and set as true if isFavorite and false otherwise.
         hikes.forEach(hike => hike.isFavorite = lookup[hike.id] || false);
 
         res.json(hikes);

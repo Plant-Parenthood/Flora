@@ -27,8 +27,8 @@ async function fetchWithError(url, options) {
 
     const response = await fetch(url, options);
     const data = await response.json();
-
     if (response.ok) {
+        console.log(data);
         return data;
     }
     else {
@@ -36,11 +36,21 @@ async function fetchWithError(url, options) {
     }
 }
 
-export function getHikes() {
-    const hashQuery = window.location.hash.slice(1);
-    const url = `${BASE_URL}/hikes?${hashQuery}`;
-    console.log(url);
-    return fetchWithError(url);
+export async function getHikes(search) {
+    if (!search) {
+        return new Promise((resolve) => {
+            navigator.geolocation.getCurrentPosition(async function(position) {
+                let lat = position.coords.latitude;
+                let lon = position.coords.longitude;
+                //const hashQuery = window.location.hash.slice(1);
+                const url = `${BASE_URL}/hikes?lat=${lat}&lon=${lon}`;
+                //const url = `${BASE_URL}/hikes?${hashQuery}`;
+                resolve(await fetchWithError(url));
+            });
+        });
+        // user chose to use current location
+        
+    }
 }
 
 export function getFavorites() {
@@ -87,4 +97,3 @@ export function signIn(credentials) {
         body: JSON.stringify(credentials)
     });
 }
-

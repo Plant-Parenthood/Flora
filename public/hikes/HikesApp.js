@@ -33,6 +33,7 @@ class HikesApp extends Component {
 
         const loadHikes = async() => {
             try {
+                console.log('inside loadHikes');
                 const hikes = await getHikes();
                 search.update({ hikes: hikes });
                 hikesList.update({ hikes: hikes });

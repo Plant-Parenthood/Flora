@@ -1,5 +1,6 @@
 import Component from '../Component.js';
-import { makeFavorite, unFavorite } from '../services/hikes-api.js';
+import { makeFavorite, unFavorite, saveOrFetchHike } from '../services/hikes-api.js';
+
 
 
 class HikeItem extends Component {
@@ -10,10 +11,14 @@ class HikeItem extends Component {
         //Favorite functionality same as source- SHOULD WE CHANGE? 
         const removeUnFavorites = this.props.removeUnFavorites;
         const favoriteButton = li.querySelector('.favorite-star');
-        favoriteButton.addEventListener('click', () => {
+        favoriteButton.addEventListener('click', async () => {
             hike.isFavorite = !hike.isFavorite;
+
             if (hike.isFavorite) {
-                makeFavorite(hike);
+                const savedOrFetchedHike = await saveOrFetchHike(hike);
+                makeFavorite(savedOrFetchedHike);
+                // save the favorited hike object from the hikes API to the table hikes 
+
             }
             else {
                 unFavorite(hike.id);

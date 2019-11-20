@@ -37,10 +37,8 @@ class HikeItem extends Component {
         return /*html*/`
             <li class="hike-item">
 
-                <h2>
-                    <a href="${hike.url}" class="hike-name"><img src="${hike.imgMedium}" alt="${hike.name}">${hike.name}</a>
                     <button class="favorite-star ${starClass}">❤</button>
-                </h2>
+                    <a href="${hike.url}" class="hike-name"><img src="${hike.imgMedium}" alt="${hike.name}">${hike.name}</a>
                 
                 <summary>
                     Length: ${hike.length} m.<br>

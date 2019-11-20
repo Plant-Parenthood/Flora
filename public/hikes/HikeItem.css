@@ -8,7 +8,7 @@
     padding: 10px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     border: 1px solid #aaa;
     background-color: white;
     transition: opacity 300ms ease-out;
@@ -18,12 +18,6 @@ summary {
     line-height: 25px;
 }
 
-.hike-item h2 {
-    font-size: 1.3em;
-    font-weight: bold;
-
-}
-
 .hike-item img {
     width: 330px;
     height: 200px;
@@ -31,10 +25,17 @@ summary {
     border-radius: 10px;
 }
 
+.hike-item img:hover {
+    opacity: 0.8;
+}
+
 .hike-name {
     display: flex;
     justify-content: center;
     display: block;
+    margin: 10px auto;
+    font-size: 1.3em;
+    font-weight: bold;
 }
 
 a {
@@ -46,20 +47,19 @@ a:hover {
     color: rgb(151, 151, 151);
 }
 
-.hike-item h2 .favorite-star {
+.favorite-star {
     cursor: pointer;
     user-select: none;
     border: 0;
     outline: 0;
     background: none;
-    font-size: 2.5em;
+    font-size: 3em;
     color: #ccc;
-    position: relative;
-    top: 10px;
-    right: -230px;
+    display: flex;
+    align-self: flex-end;
 }
 
-.hike-item h2 .favorite-star.is-favorite {
+.favorite-star.is-favorite {
     color: rgb(185, 70, 70);
 }
 

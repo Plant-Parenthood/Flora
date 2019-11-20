@@ -1,5 +1,4 @@
 .search-form {
-    
     display: grid;
     grid-template:
     'search-box'
@@ -78,3 +77,13 @@ input {
     padding-left: 15px;
     height: 35px;
 }
+
+@media (min-width: 780px) {
+    .search-form {
+        display: grid;
+        grid-template:
+        'search-box difficulty rating length'
+        'buttons';
+    }
+}
+

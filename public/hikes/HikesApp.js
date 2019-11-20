@@ -42,7 +42,7 @@ class HikesApp extends Component {
         const loadHikes = async() => {
             try {
                 const hikes = await getHikes();
-                localStorage.setItem(JSON.stringify('allHikes', hikes));
+                localStorage.setItem('allHikes', JSON.stringify(hikes));
                 hikesList.update({ hikes: hikes });
 
                 // paging.update({

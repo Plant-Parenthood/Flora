@@ -4,7 +4,7 @@
 
 body {
     font-family: verdana;
-    background: rgb(236, 229, 238);
+    background: rgb(238, 238, 238);
     line-height: 1.5em;
 }
 
@@ -31,4 +31,5 @@ input {
     border-radius: 7px;
     border: 1px solid black;
     padding-left: 15px;
+    height: 35px;
 }

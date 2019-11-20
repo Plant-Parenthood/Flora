@@ -1,0 +1,11 @@
+* {
+    box-sizing: border-box;
+}
+
+button.log-out {
+    height: 55px;
+    width: 100px;
+    padding: 5px;
+    margin: 10px;
+    text-align: center;
+}

@@ -75,8 +75,8 @@ class App extends Component {
             <div>
                 <!-- header goes here -->
                 <main>
-                    <p class="errors"></p>
                     <section class="no-display" id="signup-container">
+                        <p class="errors"></p>
                         <p class="switch">
                             <button id="signin-button">Existing User Sign-In</button>
                         </p>

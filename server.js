@@ -16,15 +16,16 @@ const createAuthRoutes = require('./lib/auth/create-auth-routes');
 
 const authRoutes = createAuthRoutes({
     async selectUser(email) {
+        console.log(email)
         const result = await client.query(`
             SELECT id, email, hash, display_name as "displayName" 
             FROM users
             WHERE email = $1;
         `, [email]);
+        console.log(result)
         return result.rows[0];
     },
     async insertUser(user, hash) {
-        console.log(user);
         const result = await client.query(`
             INSERT into users (email, hash, display_name)
             VALUES ($1, $2, $3)
@@ -57,7 +58,6 @@ app.get('/api/hikes', async(req, res) => {
     try {
         //const query = req.query;
         const hikes = await hikesApi.get(req);
-        console.log('HIKES HIKES HIKES HIKES HIKES HIKES', hikes);
         const ids = hikes.map(hike => hike.id);
         const result = await client.query(`
             SELECT id 

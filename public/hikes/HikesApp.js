@@ -17,7 +17,7 @@ class HikesApp extends Component {
         dom.prepend(header.renderDOM());
 
         const optionsSection = dom.querySelector('.options-section');
-        const search = new Search();
+        const search = new Search({ hikes: [] });
         optionsSection.appendChild(search.renderDOM());
         
         const listSection = dom.querySelector('.list-section');
@@ -35,7 +35,7 @@ class HikesApp extends Component {
             try {
                 console.log('inside loadHikes');
                 const hikes = await getHikes();
-                console.log('hikes should be defined here in loadHikes', hikes);
+                search.update({ hikes: hikes });
                 hikesList.update({ hikes: hikes });
 
                 // paging.update({

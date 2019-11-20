@@ -43,10 +43,13 @@ nav a {
         font-size: 60px;
       }
 
-    header {
+    img.logo {
 
     }
-}
+
+    button.log-out {
+    
+    }
 
 button.log-out {
     background-color: white;

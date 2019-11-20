@@ -17,12 +17,16 @@ async function run() {
                 hash VARCHAR(512) NOT NULL,
                 display_name VARCHAR(256) NOT NULL
             );
+            CREATE TABLE favorites (
+                id SERIAL PRIMARY KEY,
+                hike_id INTEGER UNIQUE NOT NULL,
+                user_id INTEGER NOT NULL REFERENCES users(id)
+            );
         
             CREATE TABLE saved_hikes (
-                id SERIAL PRIMARY KEY,
+                id INTEGER PRIMARY KEY,
                 hike_obj VARCHAR(4000) NOT NULL,
-                campgrounds_arr VARCHAR(255),
-                rei_hike_id INTEGER NOT NULL UNIQUE REFERENCES favorites(hike_id)
+                campgrounds_arr VARCHAR(4000)
             );
 
             CREATE TABLE campgrounds (
@@ -30,11 +34,6 @@ async function run() {
                 campground_obj VARCHAR(4000) NOT NULL
             );
             
-            CREATE TABLE favorites (
-                id SERIAL PRIMARY KEY,
-                user_id INTEGER NOT NULL REFERENCES users(id),
-                hike_id INTEGER NOT NULL
-            );
 
             
         `);

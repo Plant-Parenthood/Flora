@@ -55,8 +55,6 @@ export function getFavorites() {
 
 export function makeFavorite(hike) {
     const url = `${BASE_URL}/favorites`;
-    console.log(JSON.stringify(hike), 'this is the body of the hike we favorited');
-    console.log(typeof (JSON.stringify(hike)), 'this is the body of the hike we favorited');
     return fetchWithError(url, {
         method: 'POST',
         headers: {
@@ -66,7 +64,7 @@ export function makeFavorite(hike) {
     });
 }
 
-export function saveHike(hike) {
+export function saveOrFetchHike(hike) {
     const url = `${BASE_URL}/hikes`;
     return fetchWithError(url, {
         method: 'POST',

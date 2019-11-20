@@ -91,13 +91,25 @@ app.post('/api/hikes', async(req, res) => {
         //WE NEED TO CHANGE THIS ONCE WE INCORPORATE CAMPGROUNDS
         const campgrounds = req.body;
 
-        const result = await client.query(`
-            INSERT INTO hikes (hike_obj, campgrounds_arr, rei_hike_id)
-            VALUES ($1, $2, $3)
-            RETURNING hike_obj as "hikeObj". campgrounds_arr as "campgroundsArr", rei_hike_id as "hikeId";
-        `, [hike, campgrounds, hike.id]);
+        const existingSavedHike = await client.query(`
+            SELECT * FROM saved_hikes
+            WHERE $1 = id;
+        `, [hike.id]);
 
-        res.json(result.rows[0]);
+        // the outcome of the saveOrFetch is a backend fetch from our database of a hike that was not already there
+        if (!existingSavedHike.rows.length) {
+            const result = await client.query(`
+                INSERT INTO saved_hikes (hike_obj, campgrounds_arr, id)
+                VALUES ($1, $2, $3)
+                RETURNING hike_obj as "hikeObj", campgrounds_arr as "campgroundsArr", id as "hikeId";
+            `, [hike, campgrounds || 'wow', hike.id]);
+            
+            res.json(result.rows[0]);
+        } else {
+            // the outcome of the saveOrFetch is a backend fetch from our database of an already existing hike
+            res.json(existingSavedHike.rows[0]);
+        }
+
     }
 
     catch (err) {
@@ -112,15 +124,23 @@ app.post('/api/hikes', async(req, res) => {
 //we might have to add this back in - TRUE as "isFavorite"
 app.get('/api/favorites', async(req, res) => {
     try {
-        const result = await client.query(`
-            SELECT saved_hikes.hike_obj
-            FROM saved_hikes 
-            JOIN favorites
-            ON favorites.hike_id = saved_hikes.rei_hike_id;
+        const favorites = await client.query(`
+            SELECT *
+            FROM favorites 
+            WHERE user_id=$1
         `, [req.userId]);
 
-        console.log(result)
-        res.json(result.rows);
+        const favoriteHikeIds = favorites.rows.map(favorite => favorite.hike_id);
+        const result = await client.query(`
+            SELECT hike_obj
+            FROM saved_hikes
+            WHERE id = ANY($1) 
+        `, [favoriteHikeIds]);
+
+        const parsedRows = result.rows.map(row => {
+            return JSON.parse(row.hike_obj);
+        });
+        res.json(parsedRows);
     }
 
     catch (err) {
@@ -135,7 +155,6 @@ app.get('/api/favorites', async(req, res) => {
 app.post('/api/favorites', async(req, res) => {
     try {
         const hike = req.body;
-        
 
         const result = await client.query(`
             INSERT INTO favorites (user_id, hike_id)

@@ -18,17 +18,9 @@ class FindHikesApp extends Component {
 
         const hikesList = new HikesList({ hikes: [], removeUnFavorites: true });
         listSection.appendChild(hikesList.renderDOM());
-        console.log('right before getFavorites', hikesList);
 
         getFavorites()
             .then(hikes => {
-                console.log(hikes, 'in the getFavorites callback of the promise');
-
-                //making it so that every item in the hikes array is an obj so that it can render on update correctly
-                hikes.forEach(hike => {
-                    JSON.parse(hike);
-                });
-
                 hikesList.update({ hikes: hikes });
             });
         

@@ -11,9 +11,7 @@ class Search extends Component {
             const formData = new FormData(form);
 
             localStorage.setItem('difficulty', formData.get('difficulty'));
-        
             localStorage.setItem('rating', formData.get('rating'));
-
             localStorage.setItem('length', formData.get('length'));
 
             let filteredDifficultyResultsArray;

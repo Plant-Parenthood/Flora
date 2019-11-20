@@ -95,14 +95,13 @@ app.post('/api/hikes', async(req, res) => {
             SELECT * FROM saved_hikes
             WHERE $1 = id;
         `, [hike.id]);
-        console.log(existingSavedHike);
 
         // the outcome of the saveOrFetch is a backend fetch from our database of a hike that was not already there
         if (!existingSavedHike.rows.length) {
             const result = await client.query(`
                 INSERT INTO saved_hikes (hike_obj, campgrounds_arr, id)
                 VALUES ($1, $2, $3)
-                RETURNING hike_obj as "hikeObj", campgrounds_arr as "campgroundsArr", id as "hikeId";
+                RETURNING hike_obj as "hikeObj", campgrounds_arr as "campgroundsArr", id;
             `, [hike, campgrounds || 'wow', hike.id]);
             
             res.json(result.rows[0]);

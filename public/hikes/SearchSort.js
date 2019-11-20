@@ -72,29 +72,39 @@ class Search extends Component {
         return /*html*/`
         <div>
             <form class="search-form">
-                <input name="search" value="${search}">
-                <label>Difficulty:
-                <select name="difficulty">
-                    <option value="any">All Levels</option>
-                    <option value="green">Easiest</option>
-                    <option value="greenBlue">Easy</option>
-                    <option value="blue">Medium</option>
-                    <option value="blueBlack">Hard</option>
-                    <option value="black">Hardest</option>
-                </select>
-                </label>
-                <label>Minimum Rating:
-                    <select name="rating">
-                        <option value=1>1</option>
-                        <option value=2>2</option>
-                        <option value=3>3</option>
-                        <option value=4>4</option>
-                        <option value=5>5</option>
+                <section class="search-box">
+                    <input name="search" value="${search}">
+                </section>
+                <section class="difficulty">
+                    <label>Difficulty:</label>
+                        <select name="difficulty">
+                        <option value="any">All Levels</option>
+                        <option value="green">Easiest</option>
+                        <option value="greenBlue">Easy</option>
+                        <option value="blue">Medium</option>
+                        <option value="blueBlack">Hard</option>
+                        <option value="black">Hardest</option>
                     </select>
-                </label>
-                <label>Max Length
-                <input type="number" name="length" value="length" placeholder=0>
-                <button>🔍</button>
+                </section>
+                <section class="rating">
+                    <label>Minimum Rating:
+                        <select name="rating">
+                            <option value=1>1</option>
+                            <option value=2>2</option>
+                            <option value=3>3</option>
+                            <option value=4>4</option>
+                            <option value=5>5</option>
+                        </select>
+                    </label>
+                </section>
+                <section class="length">
+                    <label>Max Length</label>
+                    <input class="max-length" type="number" name="length" value="length" placeholder=0> mi.
+                </section>
+                <section class="buttons">
+                    <button class="search-button">Search</button>
+                    <button class="reset-button"><a href = "../hikes.html">Reset</a></button>
+                </section>
             </form>
             <button class = "reset-button"><a href = "../hikes.html">Reset</a></button>
         </div>

@@ -1,5 +1,6 @@
 import Component from '../Component.js';
-import { makeFavorite, unFavorite } from '../services/hikes-api.js';
+import { makeFavorite, unFavorite, saveHike } from '../services/hikes-api.js';
+
 
 
 class HikeItem extends Component {
@@ -12,8 +13,13 @@ class HikeItem extends Component {
         const favoriteButton = li.querySelector('.favorite-star');
         favoriteButton.addEventListener('click', () => {
             hike.isFavorite = !hike.isFavorite;
+
             if (hike.isFavorite) {
+                console.log(hike, 'in hike item class');
                 makeFavorite(hike);
+                // save the favorited hike object from the hikes API to the table hikes 
+                saveHike(hike);
+
             }
             else {
                 unFavorite(hike.id);

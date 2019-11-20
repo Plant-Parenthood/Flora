@@ -6,7 +6,7 @@ import Component from '../Component.js';
 import Header from '../common/Header.js';
 import Footer from '../common/Footer.js';
 import HikesList from '../hikes/HikesList.js';
-import { getFavorites } from '../services/hike-api.js';
+import { getFavorites } from '../services/hikes-api.js';
 
 class FindHikesApp extends Component {
 
@@ -18,9 +18,17 @@ class FindHikesApp extends Component {
 
         const hikesList = new HikesList({ hikes: [], removeUnFavorites: true });
         listSection.appendChild(hikesList.renderDOM());
+        console.log('right before getFavorites', hikesList);
 
         getFavorites()
             .then(hikes => {
+                console.log(hikes, 'in the getFavorites callback of the promise');
+
+                //making it so that every item in the hikes array is an obj so that it can render on update correctly
+                hikes.forEach(hike => {
+                    JSON.parse(hike);
+                });
+
                 hikesList.update({ hikes: hikes });
             });
         

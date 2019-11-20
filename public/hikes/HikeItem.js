@@ -1,5 +1,5 @@
 import Component from '../Component.js';
-import { makeFavorite, unFavorite, saveOrFetchHike } from '../services/hikes-api.js';
+import { makeFavorite, unFavorite, saveOrFetchHike, getCampgrounds } from '../services/hikes-api.js';
 
 
 
@@ -11,6 +11,8 @@ class HikeItem extends Component {
         //Favorite functionality same as source- SHOULD WE CHANGE? 
         const removeUnFavorites = this.props.removeUnFavorites;
         const favoriteButton = li.querySelector('.favorite-star');
+        const infoButton = li.querySelector('.info-button');
+
         favoriteButton.addEventListener('click', async() => {
             hike.isFavorite = !hike.isFavorite;
 
@@ -31,6 +33,10 @@ class HikeItem extends Component {
             }
             favoriteButton.classList.toggle('is-favorite');
         });
+
+        infoButton.addEventListener('click', async() => {
+            const campgrounds = await getCampgrounds(hike.latitude, hike.longitude);
+        });
     }
 
     renderHTML() {
@@ -43,6 +49,7 @@ class HikeItem extends Component {
             <li class="hike-item">
 
                     <button class="favorite-star ${starClass}">❤</button>
+                    <button class="info-button">INFO</button>
                     <a href="${hike.url}" class="hike-name"><img src="${hike.imgMedium}" alt="${hike.name}">${hike.name}</a>
                 
                 <summary>
@@ -50,7 +57,7 @@ class HikeItem extends Component {
                     Difficulty: ${hike.difficulty}<br>
                     Summary: ${hike.summary}
                 </summary>
-
+                
             </li>
         `;
     }

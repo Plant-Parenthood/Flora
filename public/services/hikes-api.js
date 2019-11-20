@@ -48,6 +48,12 @@ export async function getHikes(search) {
     }
 }
 
+export async function getCampgrounds(lat, lon) {
+    const url = `${BASE_URL}/campgrounds?lat=${lat}&lon=${lon}`;
+    return await fetchWithError(url);
+}
+        
+
 export function getFavorites() {
     const url = `${BASE_URL}/favorites`;
     return fetchWithError(url);

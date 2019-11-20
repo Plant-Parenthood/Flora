@@ -1,5 +1,6 @@
 import Component from '../Component.js';
-import { makeFavorite, unFavorite } from '../services/hikes-api.js';
+import { makeFavorite, unFavorite, saveOrFetchHike } from '../services/hikes-api.js';
+
 
 
 class HikeItem extends Component {
@@ -10,10 +11,14 @@ class HikeItem extends Component {
         //Favorite functionality same as source- SHOULD WE CHANGE? 
         const removeUnFavorites = this.props.removeUnFavorites;
         const favoriteButton = li.querySelector('.favorite-star');
-        favoriteButton.addEventListener('click', () => {
+        favoriteButton.addEventListener('click', async () => {
             hike.isFavorite = !hike.isFavorite;
+
             if (hike.isFavorite) {
-                makeFavorite(hike);
+                const savedOrFetchedHike = await saveOrFetchHike(hike);
+                makeFavorite(savedOrFetchedHike);
+                // save the favorited hike object from the hikes API to the table hikes 
+
             }
             else {
                 unFavorite(hike.id);
@@ -37,16 +42,13 @@ class HikeItem extends Component {
         return /*html*/`
             <li class="hike-item">
 
-                <h2>
-                    <img src="${hike.imgSmall}" alt="${hike.name}">
-                    <a href="${hike.url}" class="hike-name">${hike.name}</a>
-                    <button class="favorite-star ${starClass}">★</button>
-                </h2>
+                    <button class="favorite-star ${starClass}">❤</button>
+                    <a href="${hike.url}" class="hike-name"><img src="${hike.imgMedium}" alt="${hike.name}">${hike.name}</a>
                 
                 <summary>
-                    Length (miles): ${hike.length}<br>
-                    Summary: ${hike.summary}<br>
-                    Difficulty: ${hike.difficulty} 
+                    Length: ${hike.length} m.<br>
+                    Difficulty: ${hike.difficulty}<br>
+                    Summary: ${hike.summary}
                 </summary>
 
             </li>

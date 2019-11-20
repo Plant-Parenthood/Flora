@@ -1,4 +1,5 @@
 .search-form {
+    
     display: grid;
     grid-template:
     'search-box'
@@ -6,6 +7,26 @@
     'rating'
     'length'
     'buttons';
+}
+
+.search-box {
+    margin-bottom: 10px;
+}
+
+.difficulty {
+    margin-bottom: 10px;
+}
+
+.rating {
+    margin-bottom: 10px;
+}
+
+.length {
+    margin-bottom: 10px;
+}
+
+.buttons {
+    margin-bottom: 10px;
 }
 
 label {
@@ -20,6 +41,10 @@ select {
     padding-left: 15px;
     height: 35px;
     background-color: white;
+}
+
+button.search-button {
+    margin-right: 5px;
 }
 
 button.search-button,

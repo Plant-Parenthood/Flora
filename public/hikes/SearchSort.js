@@ -1,8 +1,8 @@
 import Component from '../Component.js';
 class Search extends Component {
 
-    onRender(form) {
-
+    onRender(dom) {
+        const form = dom.querySelector('.search-form');
         
         const onSearchSubmit = this.props.onSearchSubmit;
        
@@ -14,9 +14,7 @@ class Search extends Component {
             const formData = new FormData(form);
 
             localStorage.setItem('difficulty', formData.get('difficulty'));
-        
             localStorage.setItem('rating', formData.get('rating'));
-
             localStorage.setItem('length', formData.get('length'));
 
             let filteredDifficultyResultsArray;
@@ -72,6 +70,7 @@ class Search extends Component {
         //we need to add sort functionality
         //the filter function should be updated to reflect the API better.
         return /*html*/`
+        <div>
             <form class="search-form">
                 <section class="search-box">
                     <input name="search" value="${search}">
@@ -107,6 +106,8 @@ class Search extends Component {
                     <button class="reset-button"><a href = "../hikes.html">Reset</a></button>
                 </section>
             </form>
+            <button class = "reset-button"><a href = "../hikes.html">Reset</a></button>
+        </div>
         `;
     }
 }

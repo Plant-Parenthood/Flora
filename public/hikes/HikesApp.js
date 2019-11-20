@@ -2,7 +2,6 @@ import Component from '../Component.js';
 import Header from '../common/Header.js';
 import Footer from '../common/Footer.js';
 import HikesList from './HikesList.js';
-import Search from './SearchSort.js';
 // import Paging from './Paging.js';
 import { getHikes } from '../services/hikes-api.js';
 
@@ -43,6 +42,7 @@ class HikesApp extends Component {
         const loadHikes = async() => {
             try {
                 const hikes = await getHikes();
+                localStorage.setItem(JSON.stringify('allHikes', hikes));
                 hikesList.update({ hikes: hikes });
 
                 // paging.update({

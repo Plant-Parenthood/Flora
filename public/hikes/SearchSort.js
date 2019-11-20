@@ -3,11 +3,14 @@ class Search extends Component {
 
     onRender(form) {
 
-        const { hikes } = this.props;
+        
         const onSearchSubmit = this.props.onSearchSubmit;
        
         form.addEventListener('submit', event => {
             event.preventDefault();
+            //const { hikes } = this.props;
+            const hikes = JSON.parse(localStorage.getItem('allHikes'));
+            console.log(hikes);
             const formData = new FormData(form);
 
             localStorage.setItem('difficulty', formData.get('difficulty'));

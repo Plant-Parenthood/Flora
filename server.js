@@ -95,6 +95,7 @@ app.post('/api/hikes', async(req, res) => {
             SELECT * FROM saved_hikes
             WHERE $1 = id;
         `, [hike.id]);
+        console.log(existingSavedHike);
 
         // the outcome of the saveOrFetch is a backend fetch from our database of a hike that was not already there
         if (!existingSavedHike.rows.length) {
@@ -155,7 +156,6 @@ app.get('/api/favorites', async(req, res) => {
 app.post('/api/favorites', async(req, res) => {
     try {
         const hike = req.body;
-
         const result = await client.query(`
             INSERT INTO favorites (user_id, hike_id)
             VALUES ($1, $2)

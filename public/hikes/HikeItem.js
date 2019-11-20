@@ -11,7 +11,7 @@ class HikeItem extends Component {
         //Favorite functionality same as source- SHOULD WE CHANGE? 
         const removeUnFavorites = this.props.removeUnFavorites;
         const favoriteButton = li.querySelector('.favorite-star');
-        favoriteButton.addEventListener('click', async () => {
+        favoriteButton.addEventListener('click', async() => {
             hike.isFavorite = !hike.isFavorite;
 
             if (hike.isFavorite) {
@@ -22,12 +22,12 @@ class HikeItem extends Component {
             }
             else {
                 unFavorite(hike.id);
-                // setTimeout(() => {
-                //     if (removeUnFavorites) {
-                //         li.classList.add('fade');
-                //         this.rootElement.remove();
-                //     }
-                // }, 300);
+                setTimeout(() => {
+                    if (removeUnFavorites) {
+                        li.classList.add('fade');
+                        this.rootElement.remove();
+                    }
+                }, 3000);
             }
             favoriteButton.classList.toggle('is-favorite');
         });

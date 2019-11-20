@@ -1,3 +1,39 @@
+* {
+    box-sizing: border-box;
+}
+
+section {
+    max-width: 400px;
+    margin: 30px auto;
+    background: whitesmoke;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+form p {
+    margin: 10px 0;
+}
+
+main p.errors, .user-display {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.errors {
+    color: rgb(168, 0, 0);
+}
+
 .no-display {
     display: none;
+}
+
+label {
+    display: inline-block;
+    width: 80px;
+    margin-right: 10px;
+}
+
+button.log-out {
+    height: 50px;
+    width: 65px;
 }

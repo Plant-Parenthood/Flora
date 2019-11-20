@@ -16,15 +16,16 @@ const createAuthRoutes = require('./lib/auth/create-auth-routes');
 
 const authRoutes = createAuthRoutes({
     async selectUser(email) {
+        console.log(email);
         const result = await client.query(`
             SELECT id, email, hash, display_name as "displayName" 
             FROM users
             WHERE email = $1;
         `, [email]);
+        console.log(result);
         return result.rows[0];
     },
     async insertUser(user, hash) {
-        console.log(user);
         const result = await client.query(`
             INSERT into users (email, hash, display_name)
             VALUES ($1, $2, $3)
@@ -57,21 +58,20 @@ app.get('/api/hikes', async(req, res) => {
     try {
         //const query = req.query;
         const hikes = await hikesApi.get(req);
-        // console.log('HIKES HIKES HIKES HIKES HIKES HIKES', hikes);
         const ids = hikes.map(hike => hike.id);
         const result = await client.query(`
-            SELECT id 
+            SELECT hike_id 
             FROM favorites
             WHERE user_id = $1
             AND hike_id = ANY($2)
         `, [req.userId, ids]);
-        const lookup = result.rows.reduce((acc, hike) => {
-            acc[hike.id] = true;
+        const lookup = result.rows.reduce((acc, object) => {
+            acc[object.hike_id] = true;
             return acc;
         }, {});
         // isFavorite property is added to each hike and set as true if isFavorite and false otherwise.
         hikes.forEach(hike => hike.isFavorite = lookup[hike.id] || false);
-
+        console.log(lookup);
         res.json(hikes);
     }
 
@@ -112,12 +112,13 @@ app.get('/api/favorites', async(req, res) => {
 app.post('/api/favorites', async(req, res) => {
     try {
         const hike = req.body;
+        
 
         const result = await client.query(`
-            INSERT INTO favorites (hike_id, user_id)
+            INSERT INTO favorites (user_id, hike_id)
             VALUES ($1, $2)
-            RETURNING hike as hike_id, user_id as "userId";
-        `, [hike.id, req.userId]);
+            RETURNING user_id as "userId", hike_id as "hikeId";
+        `, [req.userId, hike.id]);
 
         res.json(result.rows[0]);
     }
@@ -130,13 +131,16 @@ app.post('/api/favorites', async(req, res) => {
     }
 });
 
-app.delete('api/favorites/:id', (req, res) => {
+app.delete('/api/favorites/:hike_id', (req, res) => {
+    
     try {
         client.query(`
             DELETE FROM favorites
-            WHERE id = $1
+            WHERE hike_id = $1
             AND user_id = $2;
-        `, [req.params.id, req.userId]);
+        `, [req.params.hike_id, req.userId]);
+
+        res.json({ removed: true });
     }
 
     catch (err) {

@@ -17,12 +17,12 @@ class HikeItem extends Component {
             }
             else {
                 unFavorite(hike.id);
-                setTimeout(() => {
-                    if (removeUnFavorites) {
-                        li.classList.add('fade');
-                        this.rootElement.remove();
-                    }
-                }, 300);
+                // setTimeout(() => {
+                //     if (removeUnFavorites) {
+                //         li.classList.add('fade');
+                //         this.rootElement.remove();
+                //     }
+                // }, 300);
             }
             favoriteButton.classList.toggle('is-favorite');
         });

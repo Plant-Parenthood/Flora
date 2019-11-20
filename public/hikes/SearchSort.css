@@ -1,17 +1,80 @@
 .search-form {
-    display: flex;
-    align-items: center;
+    
+    display: grid;
+    grid-template:
+    'search-box'
+    'difficulty'
+    'rating'
+    'length'
+    'buttons';
 }
 
-.search-form input {
-    font-size: 1.2em;
-    height: 48px;
-    width: 300px;
-    padding: 0 5px;
+.search-box {
+    margin-bottom: 10px;
 }
 
-.search-form button {
-    font-size: 1.2em;
-    height: 46px;
-    width: 46px;
+.difficulty {
+    margin-bottom: 10px;
+}
+
+.rating {
+    margin-bottom: 10px;
+}
+
+.length {
+    margin-bottom: 10px;
+}
+
+.buttons {
+    margin-bottom: 10px;
+}
+
+label {
+    width: 80px;
+    margin-right: 10px;
+}
+
+select {
+    height: 30px;
+    border-radius: 7px;
+    border: 1px solid black;
+    padding-left: 15px;
+    height: 35px;
+    background-color: white;
+}
+
+button.search-button {
+    margin-right: 5px;
+}
+
+button.search-button,
+button.filter-button,
+button.reset-button {
+    background-color: white;
+    border-radius: 7px;
+    height: 35px;
+    border: 1px solid black;
+    font-size: 20px;
+}
+
+button.search-button:hover,
+button.filter-button,
+button.reset-button:hover {
+    color: white;
+    background-color: black;
+    cursor: pointer;
+}
+
+button.search-button:active,
+button.filter-button,
+button.reset-button:active {
+    background-color: white;
+}
+
+input {
+    height: 30px;
+    border-radius: 7px;
+    border: 1px solid black;
+    padding-left: 15px;
+    height: 35px;
 }

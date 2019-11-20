@@ -1,0 +1,14 @@
+.footer {
+    text-align: center;
+}
+
+.footer a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+.footer a:hover {
+    color: rgb(151, 151, 151);
+    text-decoration: underline;
+}

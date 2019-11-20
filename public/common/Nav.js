@@ -23,6 +23,7 @@ class Nav extends Component {
             <a href="./">Home</a>
             <a href="./hikes.html">Hikes</a>
             <a href="./favorites.html">Favorites</a>
+            <button class="log-out hidden">Log Out</button>
         </nav>
         `;
     }

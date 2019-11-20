@@ -5,14 +5,7 @@ class Search extends Component {
     onRender(form) {
 
         const { hikes } = this.props;
-
-        // const input = form.querySelector('input');
-        // const difficultyInput = form.querySelector('input[name=difficulty]');
-        // // const distanceInput = form.querySelector('input[name=distance]');
-        // const ratingInput = form.querySelector('input[name=rating]');
-
        
-
         form.addEventListener('submit', event => {
             event.preventDefault();
             const formData = new FormData(form);
@@ -36,14 +29,12 @@ class Search extends Component {
 
             makeDifficultyArray();
 
-            // const filteredDifficultyResultsArray = hikes.filter(hike => (hike.difficulty === formData.get('difficulty')));
-
             const filteredRatingResultsArray = hikes.filter(hike => (hike.stars >= formData.get('rating')));
 
             let filteredLengthResultsArray;
 
             const makeLengthArray = () => {
-                if (formData.get('length') === '') {
+                if (!formData.get('length')) {
                     filteredLengthResultsArray = hikes;
                     console.log(formData.get('length'), 'formData length');
                     console.log(filteredLengthResultsArray, 'filter length with nothing');
@@ -56,10 +47,6 @@ class Search extends Component {
 
             makeLengthArray();
 
-
-            // const filteredLengthResultsArray = hikes.filter(hike => (hike.length <= formData.get('length')));
-            // console.log(hikes);
-           
 
             const foundInTwo = filteredDifficultyResultsArray.filter(element => filteredRatingResultsArray.includes(element));
 
@@ -113,23 +100,3 @@ class Search extends Component {
 
 export default Search;
 
-
-// const queryString = window.location.hash.slice(1);
-// const searchParams = new URLSearchParams(queryString);
-
-// function updateControls() {
-//     const queryString = window.location.hash.slice(1);
-//     const searchParams = new URLSearchParams(queryString);
-
-//     input.value = searchParams.get('search') || '';
-
-//     // difficultyInput.value = searchParams.get('difficulty') || 0;
-//     // distanceInput.value = searchParams.get('distance') || '';
-//     ratingInput.value = searchParams.get('rating') || '';
-
-// }
-
-// window.addEventListener('hashchange', () => {
-//     updateControls();
-
-// });

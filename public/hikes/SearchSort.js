@@ -69,8 +69,8 @@ class Search extends Component {
         //the filter function should be updated to reflect the API better.
         return /*html*/`
             <form class="search-form">
-                <input name="search" value="${search}">
-                <label>Difficulty:
+                <input name="search" placeholder="City, State" value="${search}">
+                <label>Difficulty:</label>
                 <select name="difficulty">
                     <option value="any">All Levels</option>
                     <option value="green">Easiest</option>
@@ -79,7 +79,6 @@ class Search extends Component {
                     <option value="blueBlack">Hard</option>
                     <option value="black">Hardest</option>
                 </select>
-                </label>
                 <label>Minimum Rating:
                     <select name="rating">
                         <option value=1>1</option>
@@ -91,8 +90,8 @@ class Search extends Component {
                 </label>
                 <label>Max Length
                 <input type="number" name="length" value="length" placeholder=0>
-                <button>🔍</button>
-                <button><a href = "../hikes.html">Reset Your Search</a></button>
+                <button class="search-button">Search</button>
+                <button class="reset-button"><a href = "../hikes.html">Reset</a></button>
             </form>
         `;
     }

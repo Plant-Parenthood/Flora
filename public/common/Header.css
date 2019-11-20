@@ -13,6 +13,7 @@ header {
     background-image: url("../assets/forest1.jpg");
     background-repeat: cover;
     background-position: 70% 70%;
+    margin: 0px;
 }
 
 img.logo {

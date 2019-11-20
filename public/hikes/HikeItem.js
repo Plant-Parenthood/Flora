@@ -38,15 +38,14 @@ class HikeItem extends Component {
             <li class="hike-item">
 
                 <h2>
-                    <img src="${hike.imgSmallMed}" alt="${hike.name}">
-                    <a href="${hike.url}" class="hike-name">${hike.name}</a>
-                    <button class="favorite-star ${starClass}">★</button>
+                    <a href="${hike.url}" class="hike-name"><img src="${hike.imgMedium}" alt="${hike.name}">${hike.name}</a>
+                    <button class="favorite-star ${starClass}">❤</button>
                 </h2>
                 
                 <summary>
-                    Length (miles): ${hike.length}<br>
-                    Summary: ${hike.summary}<br>
-                    Difficulty: ${hike.difficulty} 
+                    Length: ${hike.length} m.<br>
+                    Difficulty: ${hike.difficulty}<br>
+                    Summary: ${hike.summary}
                 </summary>
 
             </li>

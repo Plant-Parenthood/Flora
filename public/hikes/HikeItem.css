@@ -1,32 +1,50 @@
+* {
+    box-sizing: border-box;
+}
 
 .hike-item {
-    height: 200px;
+    width: 350px;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     border: 1px solid #aaa;
     background-color: white;
-    padding: 10px;
-    overflow: hidden;
     transition: opacity 300ms ease-out;
 }
 
+summary {
+    line-height: 25px;
+}
 
 .hike-item h2 {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
     font-size: 1.3em;
+    font-weight: bold;
+
 }
 
-.hike-item hike {
-    margin-top: 10px;   
-    padding: 3px;
+.hike-item img {
+    width: 330px;
+    margin: 0 auto;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.hike-name {
     display: flex;
     justify-content: center;
-    align-items: center;
-    font-size: 0.9em;
+    display: block;
 }
 
-.hike-item h2 .hike-name {
-    flex-grow: 1;
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    color: rgb(151, 151, 151);
 }
 
 .hike-item h2 .favorite-star {
@@ -35,21 +53,47 @@
     border: 0;
     outline: 0;
     background: none;
-    font-size: 1.4em;
+    font-size: 2em;
     color: #ccc;
+    position: relative;
+    top: -220px;
+    right: -260px;
 }
 
 .hike-item h2 .favorite-star.is-favorite {
-    color: gold;
-}
-
-.hike-item img {
-    height: 50px;
-    width: 50px;
-    object-fit: contain;
-    margin-right: 5px;
+    color: rgb(185, 70, 70);
 }
 
 .fade {
     opacity: 0;
 }
+
+/* .hike-item {
+    width: 300px;
+    border-radius: 10px;
+    padding: 0px 20px 20px 20px;
+    border: 2px solid rgba(122, 122, 122, 0.8);
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-color: white;
+}
+
+.hike-item img {
+    position: relative;
+    float: left;
+    height: 150px;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 10px;
+} */
+
+/* .hike-item hike {
+    margin-top: 10px;   
+    padding: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.9em;
+} */

@@ -9,6 +9,9 @@ import { getHikes } from '../services/hikes-api.js';
 class HikesApp extends Component {
 
     onRender(dom) {
+        localStorage.removeItem('difficulty');
+        localStorage.removeItem('rating');
+        localStorage.removeItem('length');
         const header = new Header();
         dom.prepend(header.renderDOM());
 
@@ -50,10 +53,7 @@ class HikesApp extends Component {
         dom.appendChild(footer.renderDOM());
 
         //event listener for search location
-        const searchForm = dom.querySelector('.location-search');
-
-       
-       
+        const searchForm = dom.querySelector('.location-search');   
 
         const loadHikes = async() => {
             try {

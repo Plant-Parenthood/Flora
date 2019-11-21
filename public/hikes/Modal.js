@@ -8,12 +8,34 @@ class Modal extends Component {
         closeButton.addEventListener('click', () => {
             modal.hidden = true;
         });
+
+        window.onclick = function(event) {
+            if (event.target === modal) {
+                modal.hidden = true;
+            }
+        };
     }
 
     renderHTML() {
 
         const { modalHike } = this.props;
-         
+        let timeString;
+        let conditionTime;
+        
+        if (modalHike.conditionDate){
+            timeString = modalHike.conditionDate.slice(0, 10);
+
+            conditionTime = modalHike.conditionDate === '1970-01-01 00:00:00' ? 'Condition information unavailable' : 'Trail conditions as of ' + timeString; 
+
+            if (modalHike.conditionStatus === 'Unknown'){
+                modalHike.conditionStatus = 'Sorry, trail status unknown';
+            }
+
+            if (modalHike.conditionDetails === null){
+                modalHike.conditionDetails = 'Sorry, condition details unknown';
+            }
+        }
+
         const difficultyValues = {
             'any': 'All Levels',
             'green': 'Easiest',
@@ -43,7 +65,7 @@ class Modal extends Component {
                         <span class="modal-high"><span class="bold-please">Max elevation:</span> ${modalHike.high} feet</span><span class="modal-low"><span class="bold-please">Minimum elevation:</span> ${modalHike.low} feet</span>
                     </div>
                     <fieldset class="modal-trail-status">
-                        <legend>Trail conditions as of ${modalHike.conditionDate}</legend>
+                        <legend>${conditionTime}</legend>
                         <p class="modal-condition-status"><span class="bold-please">Trail status:</span> ${modalHike.conditionStatus}<p>
                         <p class="modal-condition-details"><span class="bold-please">Condition details:</span> ${modalHike.conditionDetails}</p>
                     </fieldset>

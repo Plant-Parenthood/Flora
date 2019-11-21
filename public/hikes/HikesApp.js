@@ -94,7 +94,6 @@ class HikesApp extends Component {
                 console.log(err);
             }
             finally {
-                console.log('in finalllyyyyy');
                 loading.update({ loading: false });
             }
 

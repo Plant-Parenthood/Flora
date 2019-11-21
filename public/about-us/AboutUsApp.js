@@ -46,8 +46,8 @@ class AboutUsApp extends Component {
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                         </li>
                         <li>
-                            <img src="../assets/brittany_square.jpg" alt="Tali">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                            <img src="../assets/tess_square.jpg" alt="Tess">
+                            <p>Tess loves trails and camping, though she prefers land that is close to the ocean. When not developing software, she's exploring Oregon's outdoors, indulging in visual art, or dreaming of sailing the coast of Maine.</p>
                         </li>
                         
                     </ul>

@@ -121,17 +121,13 @@ app.get('/api/campgrounds', async(req, res) => {
     }
 });
 
-
+//endpoint for getting weather of the current day (will only happen when user clicks the "i" button for the modal)
 app.get('/api/weather', async(req, res) => {
-
     try {
-        //const query = req.query;
-        console.log(req.query, 'this is the req');
         const weather = await weatherApi.get(req);
         console.log('WEATHER', weather);
         res.json(weather);
     }
-
     catch (err) {
         console.log(err);
         res.status(500).json({

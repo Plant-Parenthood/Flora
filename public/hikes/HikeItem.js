@@ -47,10 +47,12 @@ class HikeItem extends Component {
 
         return /*html*/`
             <li class="hike-item">
-
+                <section class="fav-info">
+                    <button class="info-button"><abbr title="Info">ⓘ</abbr></button>
                     <button class="favorite-star ${starClass}">❤</button>
-                    <button class="info-button">INFO</button>
-                    <a href="${hike.url}" class="hike-name"><img src="${hike.imgMedium}" onerror="this.onerror=null;this.src='/assets/placeholder-image.png';" alt="${hike.name}">${hike.name}</a>
+                </section>
+                    <img src="${hike.imgMedium}" onerror="this.onerror=null;this.src='/assets/placeholder-image.png';">
+                    <h2 class="hike-name">${hike.name}</h2>
                 <summary>
                     Length: ${hike.length} m.<br>
                     Difficulty: ${hike.difficulty}<br>

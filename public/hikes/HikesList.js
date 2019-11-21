@@ -22,7 +22,7 @@ class HikesList extends Component {
 
             const hikeItem = new HikeItem(props);
             const hikeItemDOM = hikeItem.renderDOM();
-            dom.appendChild(hikeItemDOM);
+            dom.querySelector('.hikes-list').appendChild(hikeItemDOM);
         });
 
     }

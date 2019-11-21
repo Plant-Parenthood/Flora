@@ -1,5 +1,6 @@
 import Component from '../Component.js';
 import Header from '../common/Header.js';
+import Nav from '../common/Nav.js';
 import Footer from '../common/Footer.js';
 import HikesList from './HikesList.js';
 // import Paging from './Paging.js';
@@ -10,6 +11,9 @@ class HikesApp extends Component {
     onRender(dom) {
         const header = new Header();
         dom.prepend(header.renderDOM());
+
+        const nav = new Nav();
+        dom.appendChild(nav.renderDOM());
 
         const listSection = dom.querySelector('.list-section');
 

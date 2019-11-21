@@ -81,29 +81,28 @@ class Search extends Component {
         <div>
             <form class="search-form">
                 <section class="search-box">
+                    <label>Location:</label>
                     <input name="search" placeholder="City, State" value="">
                 </section>
                 <section class="difficulty">
-                    <label>Difficulty:
+                    <label>Difficulty:</label>
                     <select name="difficulty">
                         ${optionValuesString}
                     </select>
-                    </label>
                 </section>
                 <section class="rating">
-                    <label>Minimum Rating:
+                    <label>Minimum Rating:</label>
                         <select name="rating">
                         ${ratingValuesString}
                         </select>
-                    </label>
                 </section>
                 <section class="length">
-                    <label>Max Length
-                    <input class="max-length" type="number" min="0" name="length" value=${length}>
+                    <label>Max Length:</label>
+                    <input class="max-length" type="number" min="0" name="length" value=${length}> mi.
                 </section>
                 <section class="buttons">
-                    <button>Filter Search</button>
-                    <button class = "reset-button"><a href = "../hikes.html">Reset Filters</a></button>
+                    <button class="filter-button">Filter Search</button>
+                    <button class="reset-button"><a href="../hikes.html">Reset Filters</a></button>
                 </section>
             </form>
         </div>

@@ -4,15 +4,17 @@
 }
 
 header {
-    display: flex;
-    align-items: center;
-    padding: 10px;
     height: 150px;
-    justify-content: space-around;
     background-image: url("../assets/forest1.jpg");
     background-repeat: cover;
     background-position: 70% 70%;
-    margin: 0px;
+}
+
+.header-contents {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    justify-content: space-around;
 }
 
 img.logo {
@@ -54,8 +56,21 @@ button.log-out:active {
     background-color: white;
 }
 
+@media (min-width: 450px) {
+    header {
+        background-image: url("../assets/trail1.jpeg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: 50% 56%;
+    }
+}
+
 @media (min-width: 780px) {
     h1 {
         font-size: 60px;
       }
+
+    .header-contents {
+        margin: 0 18% 0 18%;
+    }
 }

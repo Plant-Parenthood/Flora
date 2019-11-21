@@ -10,7 +10,7 @@ class HikeItem extends Component {
 
         //Favorite functionality same as source- SHOULD WE CHANGE?
         const removeUnFavorites = this.props.removeUnFavorites;
-        const favoriteButton = li.querySelector('.favorite-star');
+        const favoriteButton = li.querySelector('.favorite-heart');
         const infoButton = li.querySelector('.info-button');
 
         favoriteButton.addEventListener('click', async() => {
@@ -44,20 +44,28 @@ class HikeItem extends Component {
     renderHTML() {
         //what props do we need for showing user info??
         const { hike } = this.props;
+        const heartClass = hike.isFavorite ? 'is-favorite' : '';
 
-        const starClass = hike.isFavorite ? 'is-favorite' : '';
-
+        const difficultyValues = {
+            'any': 'All Levels',
+            'green': 'Easiest',
+            'greenBlue': 'Easy',
+            'blue': 'Medium',
+            'blueBlack': 'Hard',
+            'black': 'Hardest'
+        };
+ 
         return /*html*/`
             <li class="hike-item">
                 <section class="fav-info">
-                    <button class="info-button"><abbr title="Info">ⓘ</abbr></button>
-                    <button class="favorite-star ${starClass}">❤</button>
+                    <button class="info-button">ⓘ</button>
+                    <button class="favorite-heart ${heartClass}">❤</button>
                 </section>
                     <img src="${hike.imgMedium}" onerror="this.onerror=null;this.src='/assets/placeholder-image.png';">
                     <h2 class="hike-name">${hike.name}</h2>
                 <summary>
                     Length: ${hike.length} m.<br>
-                    Difficulty: ${hike.difficulty}<br>
+                    Difficulty: ${difficultyValues[hike.difficulty]}<br>
                     Summary: ${hike.summary}
                 </summary>
 

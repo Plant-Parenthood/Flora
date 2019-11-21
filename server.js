@@ -11,6 +11,7 @@ const client = require('./lib/client');
 // Services
 const hikesApi = require('./lib/rei-hike-api-call.js');
 const campgroundsApi = require('./lib/rei-campground-api-call.js');
+const geocodeApi = require('./lib/google-geocode-api-call.js');
 const weatherApi = require('./lib/weather-api-call.js');
 
 // Auth
@@ -56,10 +57,29 @@ app.use('/api', ensureAuth);
 
 
 // *** API Routes ***
+
+//location endpoint 
+app.get('/api/location', async(req, res) => {
+    try {
+        const location = await geocodeApi.get(req.query.search);
+        const hikes = await hikesApi.get({
+            query: location
+        });
+        res.json(hikes);
+    }
+    catch (err) {
+        console.log(err);
+        res.status(500).json({
+            error: err.message || err
+        });
+    }
+});
+
 app.get('/api/hikes', async(req, res) => {
 
     try {
         //const query = req.query;
+
         const hikes = await hikesApi.get(req);
         const ids = hikes.map(hike => hike.id);
         const result = await client.query(`

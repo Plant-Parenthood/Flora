@@ -1,0 +1,160 @@
+.modal {
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+    margin: 3% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 3px solid #888888;
+    border-radius: 10px;
+    width: 92%; /* Could be more or less, depending on screen size */
+    background-color: #fefefe;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: black;
+  }
+
+  /* The Close Button */
+.close-button {
+    color: #aaa;
+    align-self: flex-end;
+    font-size: 28px;
+    font-weight: bold;
+    border: 1px solid #aaa;
+    border-radius: 3px;
+    width: 31px;
+    text-align: center;
+  }
+  
+  .close-button:hover,
+  .close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 3px 3px 3px #888888;
+  }
+
+  .modal-hike-name {
+    margin: 10px auto;
+    font-size: 2em;
+    font-weight: bold;
+    text-decoration: underline;
+  }
+
+  .modal-hike-location {
+    margin: 10px auto;
+    font-size: 1.5em;
+  }
+
+  .modal-hike-picture {
+    border: 2px solid black;
+    border-radius: 5px;
+    margin: 10px auto;
+    width: 90%;
+  }
+
+  .modal-stars-votes-difficulty {
+    display: flex;
+    width: 90%;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 10px auto;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 12px;
+    background: lightcyan;
+  }
+
+  .modal-num-stars, .modal-num-votes, .modal-difficulty {
+      font-weight: bold;
+  }
+
+  .summary-decl {
+    font-size: 1.5em;
+    font-weight: bold;
+    text-decoration: underline;
+    margin: 10px auto;
+  }
+
+  .modal-hike-summary {
+    text-align: center;
+    padding: 15px;
+    font-size: 1.3em;
+    border-radius: 5px;
+    width: 90%;
+  }
+
+  .modal-length-ascent-descent {
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    border: 1px solid black;
+    border-bottom: 0;
+    border-radius: 5px 5px 0 0;
+    padding: 10px;
+    margin: 10px auto;
+    margin-bottom: 0;
+    background: antiquewhite;
+  }
+
+  .modal-high-low {
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    border: 1px solid black;
+    border-top: 0;
+    border-radius: 0 0 5px 5px;
+    padding: 10px;
+    margin: 10px auto;
+    margin-top: 0;
+    background: antiquewhite;
+  }
+
+  .modal-trail-status {
+    border: 1px solid black;
+    padding: 0px 20px 10px 20px;
+    line-height: 2em;
+    border-radius: 5px;
+    background: aliceblue;
+  }
+
+  legend {
+    font-style: italic;
+  }
+
+  .bold-please {
+      font-weight: bold;
+  }
+
+  .modal-website-link {
+    padding: 30px;
+    margin: 10px auto;
+    font-size: 1.5em;
+    color: darkgreen;
+    border: 3px solid darkgreen;
+    border-radius: 5px;
+    background: darkseagreen;
+  }
+
+  .modal-website-link:hover {
+    padding: 30px;
+    margin: 10px auto;
+    font-size: 1.5em;
+    color: darkseagreen;
+    border: 3px solid darkseagreen;
+    border-radius: 5px;
+    background: darkgreen;
+    cursor: pointer;
+  }

@@ -10,8 +10,11 @@ const client = require('./lib/client');
 // Services
 const hikesApi = require('./lib/rei-hike-api-call.js');
 const campgroundsApi = require('./lib/rei-campground-api-call.js');
+<<<<<<< HEAD
+=======
 const geocodeApi = require('./lib/google-geocode-api-call.js');
 const weatherApi = require('./lib/weather-api-call.js');
+>>>>>>> c16731a24edf3342f6edcc2ea7943428f67a0213
 
 // Auth
 const ensureAuth = require('./lib/auth/ensure-auth');
@@ -109,7 +112,10 @@ app.get('/api/campgrounds', async(req, res) => {
     try {
         //const query = req.query;
         const campgrounds = await campgroundsApi.get(req);
+<<<<<<< HEAD
+=======
         console.log('CAMPGROUNDS CAMPGROUNDS CAMPGROUNDS', campgrounds);
+>>>>>>> c16731a24edf3342f6edcc2ea7943428f67a0213
         res.json(campgrounds);
     }
 
@@ -121,6 +127,8 @@ app.get('/api/campgrounds', async(req, res) => {
     }
 });
 
+<<<<<<< HEAD
+=======
 
 app.get('/api/weather', async(req, res) => {
 
@@ -139,6 +147,7 @@ app.get('/api/weather', async(req, res) => {
     }
 });
 
+>>>>>>> c16731a24edf3342f6edcc2ea7943428f67a0213
 //endpoint for saving hikes (will only happen when user favorites a hike)
 app.post('/api/hikes', async(req, res) => {
     try {

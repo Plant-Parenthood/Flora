@@ -2,29 +2,15 @@
     box-sizing: border-box;
 }
 
-nav {
+.nav {
+    width: 110%;
+    display: flex;
+    justify-content: space-around;
     position: fixed;
+    bottom: 0px;
+    left: -5%;
+    height: 50px;
+    font-size: 25px;
+    background-color: rgb(255, 255, 255, 0.8);
+    padding: 15px;
 }
-
-/* button {
-    background-color: white;
-    border-radius: 7px;
-    height: 35px;
-    border: 1px solid black;
-    font-size: 20px;
-}
-button:hover {
-    color: white;
-    background-color: black;
-    cursor: pointer;
-}
-button:active {
-    background-color: white;
-}
-input {
-    height: 30px;
-    border-radius: 7px;
-    border: 1px solid black;
-    padding-left: 15px;
-    height: 35px;
-} */

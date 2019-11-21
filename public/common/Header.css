@@ -54,6 +54,15 @@ button.log-out:active {
     background-color: white;
 }
 
+@media (min-width: 450px) {
+    header {
+        background-image: url("../assets/trail1.jpeg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: 50% 56%;
+    }
+}
+
 @media (min-width: 780px) {
     h1 {
         font-size: 60px;

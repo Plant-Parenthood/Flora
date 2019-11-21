@@ -33,6 +33,7 @@ class HikesApp extends Component {
             },
             renderModal: (modalHike, campgrounds) => {
                 modal.update({ modalHike, campgrounds });
+                modal.rootElement.hidden = false;
             }    
         });
         listSection.appendChild(hikesList.renderDOM());
@@ -40,7 +41,7 @@ class HikesApp extends Component {
         const modalSection = dom.querySelector('.modal-section');
         const modal = new Modal({
             modalHike: {},
-            campgrounds: []
+            campgrounds: [],
         });
         modalSection.appendChild(modal.renderDOM());
         // const paging = new Paging();

@@ -2,29 +2,30 @@ import Component from '../Component.js';
 
 class Modal extends Component {
 
+    onRender(modal) {
+        // const { campgrounds, renderModal } = this.props;
+        const closeButton = modal.querySelector('.close-button');
+        closeButton.addEventListener('click', () => {
+            modal.hidden = true;
+        });
+    }
+
     renderHTML() {
 
-        const { modalHike, campgrounds } = this.props;
-        const strigifiedModalHike = JSON.stringify(modalHike);
-        const strigifiedEmptyObject = JSON.stringify({});
-        if (strigifiedModalHike === strigifiedEmptyObject){
-            return /*html*/ `
-                <div>
-                </div>
-            `;
-        } else {
-            const difficultyValues = {
-                'any': 'All Levels',
-                'green': 'Easiest',
-                'greenBlue': 'Easy',
-                'blue': 'Medium',
-                'blueBlack': 'Hard',
-                'black': 'Hardest'
-            };
+        const { modalHike } = this.props;
+         
+        const difficultyValues = {
+            'any': 'All Levels',
+            'green': 'Easiest',
+            'greenBlue': 'Easy',
+            'blue': 'Medium',
+            'blueBlack': 'Hard',
+            'black': 'Hardest'
+        };
 
         
-            return /*html*/ `
-            <div class="modal">
+        return /*html*/ `
+            <div class="modal" hidden>
                 <div class="modal-content">
                     <span class="close-button">&times;</span>
                     <p class="modal-hike-name">${modalHike.name}</p>
@@ -48,13 +49,13 @@ class Modal extends Component {
                     </fieldset>
                     <a class="modal-website-link" href="${modalHike.url}" target="_blank">Check out this trail's website!</a>
                     <section>
-                        Campgrounds: ${JSON.stringify(campgrounds)}
+                        
                     </section>
                 </div>
             </div>
             `;
-        }
     }
 }
+
 
 export default Modal;

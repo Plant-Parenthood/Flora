@@ -4,6 +4,7 @@
 
 import Component from '../Component.js';
 import Header from '../common/Header.js';
+import Nav from '../common/Nav.js';
 import Footer from '../common/Footer.js';
 import HikesList from '../hikes/HikesList.js';
 import { getFavorites } from '../services/hikes-api.js';
@@ -13,6 +14,9 @@ class FindHikesApp extends Component {
     onRender(dom) {
         const header = new Header();
         dom.prepend(header.renderDOM());
+
+        const nav = new Nav();
+        dom.appendChild(nav.renderDOM());
 
         const listSection = dom.querySelector('.list-section');
 

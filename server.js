@@ -9,6 +9,7 @@ const morgan = require('morgan');
 const client = require('./lib/client');
 // Services
 const hikesApi = require('./lib/rei-hike-api-call.js');
+const campgroundsApi = require('./lib/rei-campground-api-call.js');
 
 // Auth
 const ensureAuth = require('./lib/auth/ensure-auth');
@@ -71,8 +72,23 @@ app.get('/api/hikes', async(req, res) => {
         }, {});
         // isFavorite property is added to each hike and set as true if isFavorite and false otherwise.
         hikes.forEach(hike => hike.isFavorite = lookup[hike.id] || false);
-        console.log(lookup);
         res.json(hikes);
+    }
+
+    catch (err) {
+        console.log(err);
+        res.status(500).json({
+            error: err.message || err
+        });
+    }
+});
+
+app.get('/api/campgrounds', async(req, res) => {
+
+    try {
+        //const query = req.query;
+        const campgrounds = await campgroundsApi.get(req);
+        res.json(campgrounds);
     }
 
     catch (err) {

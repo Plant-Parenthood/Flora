@@ -2,6 +2,7 @@ import Component from '../Component.js';
 import Header from '../common/Header.js';
 import Footer from '../common/Footer.js';
 import HikesList from './HikesList.js';
+import Modal from './Modal.js';
 // import Paging from './Paging.js';
 import { getHikes } from '../services/hikes-api.js';
 
@@ -33,6 +34,12 @@ class HikesApp extends Component {
         });
         listSection.appendChild(hikesList.renderDOM());
         
+        const modalSection = dom.querySelector('.modal-section');
+        const modal = new Modal({
+            modalHike: [],
+            campgrounds: []
+        });
+        modalSection.appendChild(modal.renderDOM());
         // const paging = new Paging();
         // listSection.appendChild(paging.renderDOM());
 
@@ -69,6 +76,9 @@ class HikesApp extends Component {
                     <section class="list-section">
                         <!-- paging goes here -->
                         <!-- hikes list goes here -->        
+                    </section>
+                    <section class="modal-section">
+                        <!-- modal goes here -->
                     </section>
                 </main>
                 <!-- footer goes here -->

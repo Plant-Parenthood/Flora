@@ -69,6 +69,7 @@ class HikesApp extends Component {
                 const hikes = await getHikes();
                 localStorage.setItem('allHikes', JSON.stringify(hikes));
                 hikesList.update({ hikes: hikes });
+
                 searchForm.addEventListener('submit', async(event) => {
                     event.preventDefault();
                     const formData = new FormData(searchForm);
@@ -76,9 +77,10 @@ class HikesApp extends Component {
                     const searchLocation = formData.get('search');
                     console.log(searchLocation, 'searchLocation');
                 
+                    const loading2 = new Loading({ loading: true });
+                    dom.appendChild(loading2.renderDOM());
     
                     try {
-                        
                         const hikes = await getHikes(searchLocation);
                         localStorage.setItem('allHikes', JSON.stringify(hikes));
                         hikesList.update({ hikes: hikes });
@@ -87,6 +89,9 @@ class HikesApp extends Component {
                     catch (err) {
                         console.log(err);
                     }
+                    finally {
+                        loading2.update({ loading: false });
+                    }
                 });
             }
             
@@ -94,7 +99,6 @@ class HikesApp extends Component {
                 console.log(err);
             }
             finally {
-                console.log('in finalllyyyyy');
                 loading.update({ loading: false });
             }
 

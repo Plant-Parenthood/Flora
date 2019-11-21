@@ -20,7 +20,7 @@ class Search extends Component {
             let filteredDifficultyResultsArray;
 
             const makeDifficultyArray = () => {
-                if (formData.get('difficulty') === 'any') {
+                if (formData.get('difficulty') === 'any') {  
                     filteredDifficultyResultsArray = hikes;
                 } else {
                     filteredDifficultyResultsArray = hikes.filter(hike => (hike.difficulty === formData.get('difficulty')));

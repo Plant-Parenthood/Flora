@@ -35,9 +35,9 @@ MVP: A responsive app that enables a user to search a database of hikes by param
 
 1. As a backpacker, I want to be able to plan my drive to a hiking trail and see where I can camp near the trail using the same app rather than using several apps and websites together to plan my trip. (MVP)
 
-2. 
+2. I am a novice hiker and am looking for some easy hikes near me that are under 5 miles. I want to be able to store the ones that look good to me or that I want to go to in an easy to access location. 
 
-3. 
+3. I am visiting my folks in Maryland and have never gone hiking where they live now. I am interested in finding some hikes for us to go on that my family can all enjoy.
 
 4. 
 

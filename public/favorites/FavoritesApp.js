@@ -1,7 +1,3 @@
-// !!!
-// TO-DO STILL: MODIFY THIS PAGE FOR PLANT APP! DELETE THIS LINE ONCE DONE!
-// !!!
-
 import Component from '../Component.js';
 import Header from '../common/Header.js';
 import Nav from '../common/Nav.js';
@@ -39,8 +35,7 @@ class FindHikesApp extends Component {
                 
                 <main> 
                     <section class="list-section">
-                        <!-- hikes list goes here --> 
-                        <!-- paging goes here -->       
+                        <!-- hikes list goes here -->     
                     </section>
                 </main>
                 <!-- footer goes here -->

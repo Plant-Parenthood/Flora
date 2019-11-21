@@ -2,6 +2,7 @@ import Component from '../Component.js';
 import Header from '../common/Header.js';
 import Nav from '../common/Nav.js';
 import Footer from '../common/Footer.js';
+import Loading from '../common/Loading.js';
 import HikesList from './HikesList.js';
 import Modal from './Modal.js';
 import { getHikes } from '../services/hikes-api.js';
@@ -9,16 +10,30 @@ import { getHikes } from '../services/hikes-api.js';
 class HikesApp extends Component {
 
     onRender(dom) {
+        localStorage.removeItem('difficulty');
+        localStorage.removeItem('rating');
+        localStorage.removeItem('length');
         const header = new Header();
         dom.prepend(header.renderDOM());
 
         const nav = new Nav();
         dom.appendChild(nav.renderDOM());
 
-        const listSection = dom.querySelector('.list-section');
+        const loading = new Loading({ loading: true });
+        dom.appendChild(loading.renderDOM());
 
-        const hikesList = new HikesList({
-            hikes: [],
+        const footer = new Footer();
+        dom.appendChild(footer.renderDOM());
+
+        const listSection = dom.querySelector('.list-section');
+        
+        
+        // const paging = new Paging();
+        // listSection.appendChild(paging.renderDOM());
+        
+        
+        const hikesList = new HikesList({ 
+            hikes: [], 
             onSearchSubmit: (array) => {
                 let searchedHikes;
                 if (!array){
@@ -46,21 +61,45 @@ class HikesApp extends Component {
         // const paging = new Paging();
         // listSection.appendChild(paging.renderDOM());
 
-        const footer = new Footer();
-        dom.appendChild(footer.renderDOM());
-
         //event listener for search location
+<<<<<<< HEAD
         const searchForm = dom.querySelector('.location-search');
+=======
+        const searchForm = dom.querySelector('.location-search');   
+>>>>>>> 4c6c4c973dc5af377cab9dd6ab4180c897b0214b
 
         const loadHikes = async() => {
             try {
                 const hikes = await getHikes();
                 localStorage.setItem('allHikes', JSON.stringify(hikes));
                 hikesList.update({ hikes: hikes });
+                searchForm.addEventListener('submit', async(event) => {
+                    event.preventDefault();
+                    const formData = new FormData(searchForm);
+                    console.log(formData, 'formData');
+                    const searchLocation = formData.get('search');
+                    console.log(searchLocation, 'searchLocation');
+                
+    
+                    try {
+                        
+                        const hikes = await getHikes(searchLocation);
+                        localStorage.setItem('allHikes', JSON.stringify(hikes));
+                        hikesList.update({ hikes: hikes });
+                    }
+                    
+                    catch (err) {
+                        console.log(err);
+                    }
+                });
             }
             
             catch (err) {
                 console.log(err);
+            }
+            finally {
+                console.log('in finalllyyyyy');
+                loading.update({ loading: false });
             }
 
             searchForm.addEventListener('submit', async(event) => {
@@ -81,9 +120,6 @@ class HikesApp extends Component {
         };
 
         loadHikes();
-        window.addEventListener('hashchange', () => {
-            loadHikes();
-        });
     }
     
     renderHTML() {

@@ -24,26 +24,33 @@ class Modal extends Component {
 
         
             return /*html*/ `
-            <div class=modal>
-                <h1 class="hike-name">${modalHike.name}</h1>
-                <h3 class="hike-location">${modalHike.location}</h3>
-                <img class="hike-picture" src="${modalHike.imgMedium}" onerror="this.onerror=null;this.src='/assets/placeholder-image.png';" alt="${modalHike.name}">
-                <div class="stars-votes-difficult">
-                    <span class="num-stars">Rating: ${modalHike.stars}⭐s</span><span class="num-votes">Votes: ${modalHike.starVotes}</span><span class="difficulty">Difficulty: ${difficultyValues[modalHike.difficulty]}</span>
+            <div class="modal">
+                <div class="modal-content">
+                    <span class="close-button">&times;</span>
+                    <p class="modal-hike-name">${modalHike.name}</p>
+                    <p class="modal-hike-location">${modalHike.location}</p>
+                    <img class="modal-hike-picture" src="${modalHike.imgMedium}" onerror="this.onerror=null;this.src='/assets/placeholder-image.png';" alt="${modalHike.name}">
+                    <div class="modal-stars-votes-difficulty">
+                        <span class="modal-num-stars">Rating: ${modalHike.stars}⭐s</span><span class="modal-num-votes">Votes: ${modalHike.starVotes}</span><span class="modal-difficulty">Difficulty: ${difficultyValues[modalHike.difficulty]}</span>
+                    </div>
+                    <p class="summary-decl">HIKE SUMMARY:</p>
+                    <p class="modal-hike-summary">${modalHike.summary}</p>
+                    <div class="modal-length-ascent-descent">
+                        <span class="modal-length"><span class="bold-please">Length:</span> ${modalHike.length} miles</span><span class="modal-ascent"><span class="bold-please">Vertical ascent:</span> ${modalHike.ascent} feet</span><span class="modal-descent"><span class="bold-please">Vertical descent:</span> ${modalHike.descent} feet</span>
+                    </div>
+                    <div class="modal-high-low">
+                        <span class="modal-high"><span class="bold-please">Max elevation:</span> ${modalHike.high} feet</span><span class="modal-low"><span class="bold-please">Minimum elevation:</span> ${modalHike.low} feet</span>
+                    </div>
+                    <fieldset class="modal-trail-status">
+                        <legend>Trail conditions as of ${modalHike.conditionDate}</legend>
+                        <p class="modal-condition-status"><span class="bold-please">Trail status:</span> ${modalHike.conditionStatus}<p>
+                        <p class="modal-condition-details"><span class="bold-please">Condition details:</span> ${modalHike.conditionDetails}</p>
+                    </fieldset>
+                    <a class="modal-website-link" href="${modalHike.url}" target="_blank">Check out this trail's website!</a>
+                    <section>
+                        Campgrounds: ${JSON.stringify(campgrounds)}
+                    </section>
                 </div>
-                <p class="hike-summary">${modalHike.summary}</p>
-                <div class="length-high-low">
-                    <span class="length">Length: ${modalHike.length} miles</span><span class="ascent">Vertical ascent: ${modalHike.ascent} feet</span><span class="descent">Vertical descent: ${modalHike.descent} feet</span><span class="high">Max elevation: ${modalHike.high} feet</span><span class="low">Minimum elevation: ${modalHike.low} feet</span>
-                </div>
-                <fieldset class="trail-status">
-                    <legend>Trail conditions as of ${modalHike.conditionDate}</legend>
-                    <p class="condition-status">Trail condition: ${modalHike.conditionStatus}<p>
-                    <p class="condition-details">Condition details: ${modalHike.conditionDetails}</p>
-                </fieldset>
-                <a class="website-link" src="${modalHike.url}" target="_blank">Check out this trail's website!</a>
-                <section>
-                    Campgrounds: ${JSON.stringify(campgrounds)}
-                </section>
             </div>
             `;
         }

@@ -9,7 +9,7 @@ class Modal extends Component {
         const strigifiedEmptyObject = JSON.stringify({});
         if (strigifiedModalHike === strigifiedEmptyObject){
             return /*html*/ `
-                <div>HELLOOOOOOO!!!
+                <div>
                 </div>
             `;
         } else {
@@ -23,7 +23,7 @@ class Modal extends Component {
                 </summary>
                 <section>
                 <-- Because we will have many campgrounds we will want another component for campgrounds and do logic to append campground components to the modal component -->
-                    Campgrounds: ${campgrounds}
+                    Campgrounds: ${JSON.stringify(campgrounds)}
                 </section>
             </div>
             `;

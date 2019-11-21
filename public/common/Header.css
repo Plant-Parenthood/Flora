@@ -4,15 +4,18 @@
 }
 
 header {
-    display: flex;
-    align-items: center;
-    padding: 10px;
     height: 150px;
-    justify-content: space-around;
     background-image: url("../assets/forest1.jpg");
     background-repeat: cover;
     background-position: 70% 70%;
-    margin: 0px;
+}
+
+.header-contents {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    justify-content: space-around;
+    margin: ;
 }
 
 img.logo {

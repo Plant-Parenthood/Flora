@@ -13,11 +13,11 @@ class HikesApp extends Component {
 
         const nav = new Nav();
         dom.appendChild(nav.renderDOM());
-        
+
         const listSection = dom.querySelector('.list-section');
-        
-        const hikesList = new HikesList({ 
-            hikes: [], 
+
+        const hikesList = new HikesList({
+            hikes: [],
             onSearchSubmit: (array) => {
                 let searchedHikes;
                 if (!array){
@@ -28,7 +28,7 @@ class HikesApp extends Component {
                 }
                 const updatedProps = { hikes: searchedHikes };
                 hikesList.update(updatedProps);
-            }    
+            }
         });
         listSection.appendChild(hikesList.renderDOM());
 
@@ -59,7 +59,12 @@ class HikesApp extends Component {
                 <!-- header goes here -->
                 <main>
                     <section class="list-section">
+<<<<<<< HEAD
                         <!-- hikes list goes here -->        
+=======
+                        <!-- paging goes here -->
+                        <!-- hikes list goes here -->
+>>>>>>> d65802a2cc953caef89f7f4a2cbf43669b086bd6
                     </section>
                 </main>
                 <!-- footer goes here -->

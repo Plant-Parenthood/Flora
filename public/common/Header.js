@@ -23,9 +23,11 @@ class Header extends Component {
 
         return /*html*/`
             <header>
-            <img class="logo" src="./assets/hike-icon-white.png" alt="Hike Logo">
-                <h1>${title}</h1>
-                <button class="log-out">Log Out</button>
+                <section class="header-contents">
+                    <img class="logo" src="./assets/hike-icon-white.png" alt="Hike Logo">
+                    <h1>${title}</h1>
+                    <button class="log-out">Log Out</button>
+                </section>
             </header>
         `;
     }

@@ -1,5 +1,5 @@
 import Component from '../Component.js';
-import { makeFavorite, unFavorite, saveOrFetchHike, getCampgrounds } from '../services/hikes-api.js';
+import { makeFavorite, unFavorite, saveOrFetchHike, getCampgrounds, getWeather } from '../services/hikes-api.js';
 
 
 
@@ -8,7 +8,7 @@ class HikeItem extends Component {
     onRender(li) {
         const { hike } = this.props;
 
-        //Favorite functionality same as source- SHOULD WE CHANGE? 
+        //Favorite functionality same as source- SHOULD WE CHANGE?
         const removeUnFavorites = this.props.removeUnFavorites;
         const favoriteButton = li.querySelector('.favorite-heart');
         const infoButton = li.querySelector('.info-button');
@@ -19,7 +19,7 @@ class HikeItem extends Component {
             if (hike.isFavorite) {
                 const savedOrFetchedHike = await saveOrFetchHike(hike);
                 makeFavorite(savedOrFetchedHike);
-                // save the favorited hike object from the hikes API to the table hikes 
+                // save the favorited hike object from the hikes API to the table hikes
 
             }
             else {
@@ -36,14 +36,21 @@ class HikeItem extends Component {
 
         infoButton.addEventListener('click', async() => {
             const campgrounds = await getCampgrounds(hike.latitude, hike.longitude);
+            const weather = await getWeather(hike.latitude, hike.longitude);
+            console.log(weather, 'weather');
         });
     }
 
     renderHTML() {
-        //what props do we need for showing user info?? 
+        //what props do we need for showing user info??
         const { hike } = this.props;
+<<<<<<< HEAD
         
         const heartClass = hike.isFavorite ? 'is-favorite' : '';
+=======
+
+        const starClass = hike.isFavorite ? 'is-favorite' : '';
+>>>>>>> d65802a2cc953caef89f7f4a2cbf43669b086bd6
 
         return /*html*/`
             <li class="hike-item">
@@ -58,7 +65,7 @@ class HikeItem extends Component {
                     Difficulty: ${hike.difficulty}<br>
                     Summary: ${hike.summary}
                 </summary>
-                
+
             </li>
         `;
     }

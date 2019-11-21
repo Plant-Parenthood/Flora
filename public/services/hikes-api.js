@@ -59,7 +59,11 @@ export async function getCampgrounds(lat, lon) {
     const url = `${BASE_URL}/campgrounds?lat=${lat}&lon=${lon}`;
     return await fetchWithError(url);
 }
-        
+
+export async function getWeather(lat, lon) {
+    const url = `${BASE_URL}/weather?lat=${lat}&lon=${lon}`;
+    return await fetchWithError(url);
+}
 
 export function getFavorites() {
     const url = `${BASE_URL}/favorites`;

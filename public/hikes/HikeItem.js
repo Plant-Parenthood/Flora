@@ -1,16 +1,17 @@
 import Component from '../Component.js';
-import { makeFavorite, unFavorite, saveOrFetchHike } from '../services/hikes-api.js';
+import { makeFavorite, unFavorite, saveOrFetchHike, getCampgrounds } from '../services/hikes-api.js';
 
 
 
 class HikeItem extends Component {
 
     onRender(li) {
-        const { hike } = this.props;
+        const { hike, renderModal } = this.props;
 
         //Favorite functionality same as source- SHOULD WE CHANGE? 
         const removeUnFavorites = this.props.removeUnFavorites;
         const favoriteButton = li.querySelector('.favorite-star');
+        const infoButton = li.querySelector('.info-button');
         favoriteButton.addEventListener('click', async() => {
             hike.isFavorite = !hike.isFavorite;
 
@@ -22,14 +23,20 @@ class HikeItem extends Component {
             }
             else {
                 unFavorite(hike.id);
-                // setTimeout(() => {
-                //     if (removeUnFavorites) {
-                //         li.classList.add('fade');
-                //         this.rootElement.remove();
-                //     }
-                // }, 300);
+                setTimeout(() => {
+                    if (removeUnFavorites) {
+                        li.classList.add('fade');
+                        this.rootElement.remove();
+                    }
+                }, 300);
             }
             favoriteButton.classList.toggle('is-favorite');
+        });
+
+        infoButton.addEventListener('click', async() => {
+            const campgrounds = await getCampgrounds(hike.latitude, hike.longitude);
+            console.log('SHOULD BE OUR CAMPGROUNDS', campgrounds);
+            renderModal(hike, campgrounds);
         });
     }
 

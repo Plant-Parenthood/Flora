@@ -6,7 +6,7 @@ class HikesList extends Component {
 
     onRender(dom) {
 
-        const { hikes, onSearchSubmit } = this.props;
+        const { hikes, onSearchSubmit, renderModal } = this.props;
         const optionsSection = dom.querySelector('.options-section');
         const search = new Search({ 
             hikes: hikes,
@@ -19,7 +19,8 @@ class HikesList extends Component {
         hikes.forEach(hike => {
             const props = {
                 hike: hike,
-                removeUnFavorites: this.props.removeUnFavorites
+                removeUnFavorites: this.props.removeUnFavorites,
+                renderModal: renderModal
             };
 
             const hikeItem = new HikeItem(props);

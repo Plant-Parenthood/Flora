@@ -43,25 +43,42 @@ class HikesApp extends Component {
         const footer = new Footer();
         dom.appendChild(footer.renderDOM());
 
+        //event listener for search location
+        const searchForm = dom.querySelector('.location-search');
+
+       
+       
+
         const loadHikes = async() => {
             try {
-                const searchFormButton = dom.querySelector('.location-search-button');
-                searchFormButton.addEventListener('submit', async(event) => {
-                    event.preventDefault();
-
-                    const hikes = await getHikes(event.target.value);
-                    console.log(event.target.value);
-                    localStorage.setItem('allHikes', JSON.stringify(hikes));
-                    hikesList.update({ hikes: hikes });
-                });
-                
-
-
-                
+                const hikes = await getHikes();
+                localStorage.setItem('allHikes', JSON.stringify(hikes));
+                hikesList.update({ hikes: hikes });
             }
+            
             catch (err) {
                 console.log(err);
             }
+
+            searchForm.addEventListener('submit', async(event) => {
+                event.preventDefault();
+                const formData = new FormData(searchForm);
+                console.log(formData, 'formData');
+                const searchLocation = formData.get('search');
+                console.log(searchLocation, 'searchLocation');
+            
+
+                try {
+                    
+                    const hikes = await getHikes(searchLocation);
+                    localStorage.setItem('allHikes', JSON.stringify(hikes));
+                    hikesList.update({ hikes: hikes });
+                }
+                
+                catch (err) {
+                    console.log(err);
+                }
+            });
         };
 
         loadHikes();
@@ -69,7 +86,7 @@ class HikesApp extends Component {
             loadHikes();
         });
     }
-
+    
     renderHTML() {
         return /*html*/`
             <div>
@@ -79,7 +96,7 @@ class HikesApp extends Component {
                         <input type="text" name="search" placeholder="City, State">
                         <button class = 'location-search-button'>Search</button>
                     </form>
-                    <button id = "current-location">Use Current Location</button>
+                    
                     <section class="list-section">
                         <!-- paging goes here -->
                         <!-- hikes list goes here -->        
@@ -89,6 +106,7 @@ class HikesApp extends Component {
             </div>
         `;
     }
+
 }
 
 export default HikesApp;

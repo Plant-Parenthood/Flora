@@ -84,21 +84,19 @@ class Search extends Component {
                     <input name="search" placeholder="City, State" value="">
                 </section>
                 <section class="difficulty">
-                    <label>Difficulty:
+                    <label>Difficulty:</label>
                     <select name="difficulty">
                         ${optionValuesString}
                     </select>
-                    </label>
                 </section>
                 <section class="rating">
-                    <label>Minimum Rating:
+                    <label>Minimum Rating:</label>
                         <select name="rating">
                         ${ratingValuesString}
                         </select>
-                    </label>
                 </section>
                 <section class="length">
-                    <label>Max Length
+                    <label>Max Length:</label>
                     <input class="max-length" type="number" min="0" name="length" value=${length}>
                 </section>
                 <section class="buttons">

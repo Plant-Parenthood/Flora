@@ -1,5 +1,7 @@
 .footer {
     text-align: center;
+    line-height: 30px;
+    margin: 1% auto;
 }
 
 .footer a {
@@ -12,3 +14,9 @@
     color: rgb(151, 151, 151);
     text-decoration: underline;
 } 
+
+@media (max-width: 450px) {
+    .footer {
+        display: none;
+    }
+}

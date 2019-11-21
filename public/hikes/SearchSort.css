@@ -6,10 +6,12 @@
     'rating'
     'length'
     'buttons';
-    border: 1px solid black;
+    border: 1px solid #aaa;
     padding: 20px;
     border-radius: 10px;
-    margin: 0 auto;
+    width: 350px;
+    margin: 2% auto;
+    background: white;
 }
 
 .search-box {
@@ -29,14 +31,13 @@
 }
 
 .buttons {
-    margin-bottom: 10px;
     margin-top: 10px;
 }
 
 label {
     width: 80px;
     margin-right: 10px;
-    font-weight: bold;
+    font-family: 'Calistoga', cursive;
 }
 
 select {
@@ -92,11 +93,12 @@ input {
 
 @media (min-width: 780px) {
     .search-form {
-        margin: 0 auto;
+        margin: 2% auto;
         display: grid;
         grid-template:
         'search-box difficulty rating length'
         'buttons . . .';
+        width: 60%;
     }
 
     .search-box {

@@ -1,7 +1,6 @@
 .search-form {
     display: grid;
     grid-template:
-    'search-box'
     'difficulty'
     'rating'
     'length'
@@ -14,8 +13,33 @@
     background: white;
 }
 
-.search-box {
-    margin-bottom: 10px;
+form.location-search {
+    border: 1px solid #aaa;
+    padding: 20px;
+    border-radius: 10px;
+    width: 350px;
+    margin: 0 auto;
+    background: white;
+    display: flex;
+    justify-content: space-between;
+}
+
+.location-search-button {
+    background-color: white;
+    border-radius: 7px;
+    height: 35px;
+    border: 1px solid black;
+    font-size: 20px;
+}
+
+.location-search-button:hover {
+    color: white;
+    background-color: black;
+    cursor: pointer;
+}
+
+.location-search-button:active {
+    background-color: white;
 }
 
 .difficulty {
@@ -99,13 +123,9 @@ input {
         margin: 60px auto 10px auto;
         display: grid;
         grid-template:
-        'search-box difficulty rating length'
-        'buttons . . .';
-        width: 60%;
-    }
-
-    .search-box {
-        margin-right: 15px;
+        'difficulty rating length'
+        'buttons . . ';
+        width: 805px;
     }
     
     .difficulty {
@@ -121,3 +141,12 @@ input {
     }
 }
 
+@media (min-width: 415px) {
+    form.location-search {
+        display: flex;
+        justify-content: space-evenly;
+        width: 350px;
+        position: relative;
+        top: 50px;
+    }
+}

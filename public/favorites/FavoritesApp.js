@@ -33,10 +33,10 @@ class FindHikesApp extends Component {
             <div>
                 <!-- header goes here -->
                 
-                <main> 
-                    <section class="list-section">
-                        <!-- hikes list goes here -->     
-                    </section>
+                <main>
+                        <section class="list-section">
+                            <!-- hikes list goes here -->     
+                        </section>
                 </main>
                 <!-- footer goes here -->
             </div>

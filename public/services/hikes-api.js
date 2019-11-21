@@ -23,6 +23,7 @@ async function fetchWithError(url, options) {
 
     const response = await fetch(url, options);
     const data = await response.json();
+    
     if (response.ok) {
         return data;
     }
@@ -63,7 +64,7 @@ export async function getCampgrounds(lat, lon) {
 
 export async function getWeather(lat, lon) {
     const url = `${BASE_URL}/weather?lat=${lat}&lon=${lon}`;
-    return await fetchWithError(url);
+    return fetchWithError(url);
 }
 
 export function getFavorites() {

@@ -45,9 +45,7 @@ class Search extends Component {
             makeLengthArray();
 
             const foundInTwo = filteredDifficultyResultsArray.filter(element => filteredRatingResultsArray.includes(element));
-
-
-
+            
             const foundInAll = foundInTwo.filter(element => filteredLengthResultsArray.includes(element));
 
             onSearchSubmit(foundInAll);

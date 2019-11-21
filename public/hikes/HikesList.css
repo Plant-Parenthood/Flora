@@ -12,13 +12,15 @@ body {
     grid-gap: 10px;
     width: 380px;
     border-radius: 15px;
-    margin: 0 auto;
+    margin: 0 auto 60px auto;
+
 }
 
 @media (min-width: 780px) {
     .hikes-list {
         width: 730px;
         grid-template-columns: repeat(2, minmax(300px, 1fr));
+        margin: 0 auto;
       }
 }
 
@@ -26,6 +28,7 @@ body {
     .hikes-list {
         width: 1080px;
         grid-template-columns: repeat(3, minmax(300px, 1fr));
+        margin: 0 auto;
       }
 }
 
@@ -33,5 +36,6 @@ body {
     .hikes-list {
         width: 1430px;
         grid-template-columns: repeat(4, minmax(300px, 1fr));
+        margin: 0 auto;
       }
 }

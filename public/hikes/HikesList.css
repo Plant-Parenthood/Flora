@@ -2,6 +2,10 @@
     box-sizing: border-box;
 }
 
+body {
+    background: rgb(233, 233, 233);
+}
+
 .hikes-list {
     display: grid;
     grid-template-columns: repeat(1, minmax(300px, 1fr));

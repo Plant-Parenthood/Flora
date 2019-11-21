@@ -9,7 +9,8 @@
     border: 1px solid black;
     padding: 20px;
     border-radius: 10px;
-    margin: 0 auto;
+    width: 70%;
+    margin: 2% auto;
 }
 
 .search-box {
@@ -92,7 +93,7 @@ input {
 
 @media (min-width: 780px) {
     .search-form {
-        margin: 0 auto;
+        margin: 2% auto;
         display: grid;
         grid-template:
         'search-box difficulty rating length'

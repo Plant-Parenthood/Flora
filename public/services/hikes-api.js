@@ -22,7 +22,9 @@ async function fetchWithError(url, options) {
     }
 
     const response = await fetch(url, options);
+    console.log(response, 'this is the response');
     const data = await response.json();
+    console.log(data, 'this is the data of the response');
     if (response.ok) {
         return data;
     }

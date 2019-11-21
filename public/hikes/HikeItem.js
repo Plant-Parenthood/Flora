@@ -35,9 +35,10 @@ class HikeItem extends Component {
         });
 
         infoButton.addEventListener('click', async() => {
-            const campgrounds = await getCampgrounds(hike.latitude, hike.longitude);
+            // const campgrounds = await getCampgrounds(hike.latitude, hike.longitude);
             const weather = await getWeather(hike.latitude, hike.longitude);
-            console.log(weather, 'weather');
+            console.log(weather, 'weather in the info button event listener');
+
         });
     }
 

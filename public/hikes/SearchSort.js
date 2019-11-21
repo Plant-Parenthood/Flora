@@ -19,7 +19,7 @@ class Search extends Component {
             let filteredDifficultyResultsArray;
 
             const makeDifficultyArray = () => {
-                if (formData.get('difficulty') === 'any') {  
+                if (formData.get('difficulty') === 'any') {
                     filteredDifficultyResultsArray = hikes;
                 } else {
                     filteredDifficultyResultsArray = hikes.filter(hike => (hike.difficulty === formData.get('difficulty')));
@@ -47,7 +47,7 @@ class Search extends Component {
             const foundInTwo = filteredDifficultyResultsArray.filter(element => filteredRatingResultsArray.includes(element));
 
 
-            
+
             const foundInAll = foundInTwo.filter(element => filteredLengthResultsArray.includes(element));
 
             onSearchSubmit(foundInAll);
@@ -67,23 +67,19 @@ class Search extends Component {
 
         const optionValues = [['any', 'All Levels'], ['green', 'Easiest'], ['greenBlue', 'Easy'], ['blue', 'Medium'], ['blueBlack', 'Hard'], ['black', 'Hardest']];
 
-        const optionValuesString = optionValues.map(array => `<option value=${array[0]} ${difficulty === array[0] ? 'selected=true' : '' }>${array[1]}</option>`).reduce((acc, optionString) => acc + optionString, '');
+        const optionValuesString = optionValues.map(array => `<option value=${array[0]} ${difficulty === array[0] ? 'selected=true' : ''}>${array[1]}</option>`).reduce((acc, optionString) => acc + optionString, '');
 
         const rating = parseInt(localStorage.getItem('rating')) || 1;
 
         const ratingsArray = [1, 2, 3, 4, 5];
 
-        const ratingValuesString = ratingsArray.map(value=> `<option value=${value} ${rating === value ? 'selected=true' : '' }>${value}</option>`).reduce((acc, valuesString) => acc + valuesString, '');
+        const ratingValuesString = ratingsArray.map(value => `<option value=${value} ${rating === value ? 'selected=true' : ''}>${value}</option>`).reduce((acc, valuesString) => acc + valuesString, '');
 
         const length = parseInt(localStorage.getItem('length'));
-        console.log(length, 'length');
         return /*html*/`
         <div>
             <form class="search-form">
-                <section class="search-box">
-                    <label>Location:</label>
-                    <input name="search" placeholder="City, State" value="">
-                </section>
+                
                 <section class="difficulty">
                     <label>Difficulty:</label>
                     <select name="difficulty">

@@ -3,12 +3,7 @@ import Header from '../common/Header.js';
 import Nav from '../common/Nav.js';
 import Footer from '../common/Footer.js';
 import HikesList from './HikesList.js';
-// import Paging from './Paging.js';
 import { getHikes } from '../services/hikes-api.js';
-
-// !!!
-// TO-DO STILL: MAKE THIS FOR THE PLANT APP! DELETE THIS LINE ONCE DONE!
-// !!!
 
 class HikesApp extends Component {
 
@@ -36,9 +31,6 @@ class HikesApp extends Component {
             }    
         });
         listSection.appendChild(hikesList.renderDOM());
-        
-        // const paging = new Paging();
-        // listSection.appendChild(paging.renderDOM());
 
         const footer = new Footer();
         dom.appendChild(footer.renderDOM());
@@ -49,10 +41,6 @@ class HikesApp extends Component {
                 localStorage.setItem('allHikes', JSON.stringify(hikes));
                 hikesList.update({ hikes: hikes });
 
-                // paging.update({
-                //     // This API does not give total results :(
-                //     // totalResult: ?
-                // });
             }
             catch (err) {
                 console.log(err);

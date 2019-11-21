@@ -19,7 +19,7 @@ class Search extends Component {
             let filteredDifficultyResultsArray;
 
             const makeDifficultyArray = () => {
-                if (formData.get('difficulty') === 'any') {
+                if (formData.get('difficulty') === 'any') {  
                     filteredDifficultyResultsArray = hikes;
                 } else {
                     filteredDifficultyResultsArray = hikes.filter(hike => (hike.difficulty === formData.get('difficulty')));
@@ -80,22 +80,32 @@ class Search extends Component {
         return /*html*/`
         <div>
             <form class="search-form">
-                <input name="search" value="">
-                <label>Difficulty:
-                <select name="difficulty">
-                    ${optionValuesString}
-                </select>
-                </label>
-                <label>Minimum Rating:
-                    <select name="rating">
-                    ${ratingValuesString}
+                <section class="search-box">
+                    <input name="search" placeholder="City, State" value="">
+                </section>
+                <section class="difficulty">
+                    <label>Difficulty:
+                    <select name="difficulty">
+                        ${optionValuesString}
                     </select>
-                </label>
-                <label>Max Length
-                <input type="number" name="length" value=${length}>
-                <button>🔍</button>
+                    </label>
+                </section>
+                <section class="rating">
+                    <label>Minimum Rating:
+                        <select name="rating">
+                        ${ratingValuesString}
+                        </select>
+                    </label>
+                </section>
+                <section class="length">
+                    <label>Max Length
+                    <input class="max-length" type="number" min="0" name="length" value=${length}>
+                </section>
+                <section class="buttons">
+                    <button>Filter Search</button>
+                    <button class = "reset-button"><a href = "../hikes.html">Reset Filters</a></button>
+                </section>
             </form>
-            <button class = "reset-button"><a href = "../hikes.html">Reset Filters</a></button>
         </div>
         `;
     }

@@ -19,7 +19,7 @@ async function run() {
             );
             CREATE TABLE favorites (
                 id SERIAL PRIMARY KEY,
-                hike_id INTEGER UNIQUE NOT NULL,
+                hike_id INTEGER NOT NULL,
                 user_id INTEGER NOT NULL REFERENCES users(id)
             );
         

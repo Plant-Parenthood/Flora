@@ -15,7 +15,6 @@ header {
     align-items: center;
     padding: 10px;
     justify-content: space-around;
-    margin: ;
 }
 
 img.logo {
@@ -70,4 +69,8 @@ button.log-out:active {
     h1 {
         font-size: 60px;
       }
+
+    .header-contents {
+        margin: 0 18% 0 18%;
+    }
 }

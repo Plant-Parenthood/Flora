@@ -59,12 +59,7 @@ class HikesApp extends Component {
                 <!-- header goes here -->
                 <main>
                     <section class="list-section">
-<<<<<<< HEAD
                         <!-- hikes list goes here -->        
-=======
-                        <!-- paging goes here -->
-                        <!-- hikes list goes here -->
->>>>>>> d65802a2cc953caef89f7f4a2cbf43669b086bd6
                     </section>
                 </main>
                 <!-- footer goes here -->

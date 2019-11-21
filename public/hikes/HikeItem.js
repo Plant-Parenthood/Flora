@@ -44,13 +44,8 @@ class HikeItem extends Component {
     renderHTML() {
         //what props do we need for showing user info??
         const { hike } = this.props;
-<<<<<<< HEAD
         
         const heartClass = hike.isFavorite ? 'is-favorite' : '';
-=======
-
-        const starClass = hike.isFavorite ? 'is-favorite' : '';
->>>>>>> d65802a2cc953caef89f7f4a2cbf43669b086bd6
 
         return /*html*/`
             <li class="hike-item">

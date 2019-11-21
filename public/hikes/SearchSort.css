@@ -31,7 +31,7 @@
 }
 
 .buttons {
-    margin-top: 10px;
+    margin: 10px auto 0 auto;
 }
 
 label {
@@ -50,11 +50,10 @@ select {
     font-size: 14px;
 }
 
-button.search-button {
+button.filter-button {
     margin-right: 5px;
 }
 
-button.search-button,
 button.filter-button,
 button.reset-button {
     background-color: white;
@@ -64,16 +63,14 @@ button.reset-button {
     font-size: 20px;
 }
 
-button.search-button:hover,
-button.filter-button,
+button.filter-button:hover,
 button.reset-button:hover {
     color: white;
     background-color: black;
     cursor: pointer;
 }
 
-button.search-button:active,
-button.filter-button,
+button.filter-button:active,
 button.reset-button:active {
     background-color: white;
 }
@@ -91,9 +88,15 @@ input {
     width: 60px;
 }
 
+@media (min-width: 450px) {
+    .search-form {
+        margin-top: 60px;
+    }
+}
+
 @media (min-width: 780px) {
     .search-form {
-        margin: 2% auto;
+        margin: 60px auto 10px auto;
         display: grid;
         grid-template:
         'search-box difficulty rating length'
@@ -114,10 +117,6 @@ input {
     }
     
     .length {
-        margin-right: 15px;
-    }
-    
-    .buttons {
         margin-right: 15px;
     }
 }

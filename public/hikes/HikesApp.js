@@ -3,12 +3,7 @@ import Header from '../common/Header.js';
 import Nav from '../common/Nav.js';
 import Footer from '../common/Footer.js';
 import HikesList from './HikesList.js';
-// import Paging from './Paging.js';
 import { getHikes } from '../services/hikes-api.js';
-
-// !!!
-// TO-DO STILL: MAKE THIS FOR THE PLANT APP! DELETE THIS LINE ONCE DONE!
-// !!!
 
 class HikesApp extends Component {
 
@@ -18,11 +13,11 @@ class HikesApp extends Component {
 
         const nav = new Nav();
         dom.appendChild(nav.renderDOM());
-        
+
         const listSection = dom.querySelector('.list-section');
-        
-        const hikesList = new HikesList({ 
-            hikes: [], 
+
+        const hikesList = new HikesList({
+            hikes: [],
             onSearchSubmit: (array) => {
                 let searchedHikes;
                 if (!array){
@@ -33,12 +28,9 @@ class HikesApp extends Component {
                 }
                 const updatedProps = { hikes: searchedHikes };
                 hikesList.update(updatedProps);
-            }    
+            }
         });
         listSection.appendChild(hikesList.renderDOM());
-        
-        // const paging = new Paging();
-        // listSection.appendChild(paging.renderDOM());
 
         const footer = new Footer();
         dom.appendChild(footer.renderDOM());
@@ -98,7 +90,6 @@ class HikesApp extends Component {
                     </form>
                     
                     <section class="list-section">
-                        <!-- paging goes here -->
                         <!-- hikes list goes here -->        
                     </section>
                 </main>

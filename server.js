@@ -11,6 +11,7 @@ const client = require('./lib/client');
 const hikesApi = require('./lib/rei-hike-api-call.js');
 const campgroundsApi = require('./lib/rei-campground-api-call.js');
 const geocodeApi = require('./lib/google-geocode-api-call.js');
+const weatherApi = require('./lib/weather-api-call.js');
 
 // Auth
 const ensureAuth = require('./lib/auth/ensure-auth');
@@ -20,7 +21,7 @@ const authRoutes = createAuthRoutes({
     async selectUser(email) {
         console.log(email);
         const result = await client.query(`
-            SELECT id, email, hash, display_name as "displayName" 
+            SELECT id, email, hash, display_name as "displayName"
             FROM users
             WHERE email = $1;
         `, [email]);
@@ -81,7 +82,7 @@ app.get('/api/hikes', async(req, res) => {
         const hikes = await hikesApi.get(req);
         const ids = hikes.map(hike => hike.id);
         const result = await client.query(`
-            SELECT hike_id 
+            SELECT hike_id
             FROM favorites
             WHERE user_id = $1
             AND hike_id = ANY($2)
@@ -120,10 +121,28 @@ app.get('/api/campgrounds', async(req, res) => {
     }
 });
 
+
+app.get('/api/weather', async(req, res) => {
+
+    try {
+        //const query = req.query;
+        const weather = await weatherApi.get(req);
+        console.log('WEATHER', weather);
+        res.json(weather);
+    }
+
+    catch (err) {
+        console.log(err);
+        res.status(500).json({
+            error: err.message || err
+        });
+    }
+});
+
 //endpoint for saving hikes (will only happen when user favorites a hike)
 app.post('/api/hikes', async(req, res) => {
     try {
-        const hike = req.body; 
+        const hike = req.body;
 
         //WE NEED TO CHANGE THIS ONCE WE INCORPORATE CAMPGROUNDS
         const campgrounds = req.body;
@@ -140,7 +159,7 @@ app.post('/api/hikes', async(req, res) => {
                 VALUES ($1, $2, $3)
                 RETURNING hike_obj as "hikeObj", campgrounds_arr as "campgroundsArr", id;
             `, [hike, campgrounds || 'wow', hike.id]);
-            
+
             res.json(result.rows[0]);
         } else {
             // the outcome of the saveOrFetch is a backend fetch from our database of an already existing hike
@@ -163,7 +182,7 @@ app.get('/api/favorites', async(req, res) => {
     try {
         const favorites = await client.query(`
             SELECT *
-            FROM favorites 
+            FROM favorites
             WHERE user_id=$1
         `, [req.userId]);
 
@@ -171,7 +190,7 @@ app.get('/api/favorites', async(req, res) => {
         const result = await client.query(`
             SELECT hike_obj
             FROM saved_hikes
-            WHERE id = ANY($1) 
+            WHERE id = ANY($1)
         `, [favoriteHikeIds]);
 
         const parsedRows = result.rows.map(row => {
@@ -210,7 +229,7 @@ app.post('/api/favorites', async(req, res) => {
 });
 
 app.delete('/api/favorites/:hike_id', (req, res) => {
-    
+
     try {
         client.query(`
             DELETE FROM favorites

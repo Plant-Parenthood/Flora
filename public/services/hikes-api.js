@@ -8,7 +8,7 @@ if (json) {
 }
 
 // redirect if not on home page
-if (!token && location.pathname !== '/index.html') {
+if (!token && location.pathname !== '/index.html' && location.pathname !== '/about-us.html') {
     const searchParams = new URLSearchParams();
     searchParams.set('redirect', location.pathname);
     location = `/index.html?${searchParams.toString()}`;

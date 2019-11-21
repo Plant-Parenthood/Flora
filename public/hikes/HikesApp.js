@@ -62,7 +62,7 @@ class HikesApp extends Component {
         // listSection.appendChild(paging.renderDOM());
 
         //event listener for search location
-        const searchForm = dom.querySelector('.location-search');   
+        const searchForm = dom.querySelector('.location-search');
 
         const loadHikes = async() => {
             try {
@@ -102,6 +102,21 @@ class HikesApp extends Component {
                 loading.update({ loading: false });
             }
 
+            searchForm.addEventListener('submit', async(event) => {
+                event.preventDefault();
+                const formData = new FormData(searchForm);
+                const searchLocation = formData.get('search');            
+
+                try {
+                    const hikes = await getHikes(searchLocation);
+                    localStorage.setItem('allHikes', JSON.stringify(hikes));
+                    hikesList.update({ hikes: hikes });
+                }
+                
+                catch (err) {
+                    console.log(err);
+                }
+            });
         };
 
         loadHikes();

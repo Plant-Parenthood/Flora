@@ -36,9 +36,9 @@ async function fetchWithError(url, options) {
 export async function getHikes(search) {
     console.log('we are inside getHikes');
     if (!search) {
-        console.log('not search')
+        console.log('not search');
         return new Promise((resolve) => {
-            navigator.geolocation.getCurrentPosition(async function (position) {
+            navigator.geolocation.getCurrentPosition(async function(position) {
                 let lat = position.coords.latitude;
                 let lon = position.coords.longitude;
                 const url = `${BASE_URL}/hikes?lat=${lat}&lon=${lon}`;
@@ -61,14 +61,11 @@ export async function getCampgrounds(lat, lon) {
     return await fetchWithError(url);
 }
 
-<<<<<<< HEAD
-=======
 export async function getWeather(lat, lon) {
     const url = `${BASE_URL}/weather?lat=${lat}&lon=${lon}`;
     return await fetchWithError(url);
 }
 
->>>>>>> c16731a24edf3342f6edcc2ea7943428f67a0213
 export function getFavorites() {
     const url = `${BASE_URL}/favorites`;
     return fetchWithError(url);

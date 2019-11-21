@@ -7,11 +7,6 @@ import HikesList from './HikesList.js';
 // import Paging from './Paging.js';
 import { getHikes } from '../services/hikes-api.js';
 
-
-// !!!
-// TO-DO STILL: MAKE THIS FOR THE PLANT APP! DELETE THIS LINE ONCE DONE!
-// !!!
-
 class HikesApp extends Component {
 
     onRender(dom) {
@@ -82,7 +77,7 @@ class HikesApp extends Component {
                 <main>
                     <section class="list-section">
                         <!-- paging goes here -->
-                        <!-- hikes list goes here -->        
+                        <!-- hikes list goes here -->
                     </section>
                 </main>
                 <!-- footer goes here -->

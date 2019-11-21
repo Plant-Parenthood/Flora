@@ -44,6 +44,14 @@ class HikeItem extends Component {
         const { hike } = this.props;
         
         const starClass = hike.isFavorite ? 'is-favorite' : '';
+        const difficultyValues = {
+            'any': 'All Levels',
+            'green': 'Easiest',
+            'greenBlue': 'Easy',
+            'blue': 'Medium',
+            'blueBlack': 'Hard',
+            'black': 'Hardest'
+        };
 
         return /*html*/`
             <li class="hike-item">
@@ -53,7 +61,7 @@ class HikeItem extends Component {
                     <a href="${hike.url}" class="hike-name"><img src="${hike.imgMedium}" onerror="this.onerror=null;this.src='/assets/placeholder-image.png';" alt="${hike.name}">${hike.name}</a>
                 <summary>
                     Length: ${hike.length} m.<br>
-                    Difficulty: ${hike.difficulty}<br>
+                    Difficulty: ${difficultyValues[hike.difficulty]}<br>
                     Summary: ${hike.summary}
                 </summary>
                 

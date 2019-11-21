@@ -25,7 +25,8 @@ form.location-search {
 }
 
 .location-search-button {
-    background-color: white;
+    background-color: black;
+    color: white;
     border-radius: 7px;
     height: 35px;
     border: 1px solid black;
@@ -33,13 +34,14 @@ form.location-search {
 }
 
 .location-search-button:hover {
-    color: white;
-    background-color: black;
+    color: black;
+    background-color: white;
     cursor: pointer;
 }
 
 .location-search-button:active {
-    background-color: white;
+    background-color: black;
+    color: white;
 }
 
 .difficulty {
@@ -55,7 +57,7 @@ form.location-search {
 }
 
 .buttons {
-    margin: 10px auto 0 auto;
+    margin: 10px 0px 0px 0px;
 }
 
 label {
@@ -74,13 +76,26 @@ select {
     font-size: 14px;
 }
 
+a.reset {
+    color: white;
+}
+
+a.reset:hover {
+    color: black;
+}
+
+a.reset:active {
+    color: white;
+}
+
 button.filter-button {
     margin-right: 5px;
 }
 
 button.filter-button,
 button.reset-button {
-    background-color: white;
+    background-color: black;
+    color: white;
     border-radius: 7px;
     height: 35px;
     border: 1px solid black;
@@ -89,14 +104,15 @@ button.reset-button {
 
 button.filter-button:hover,
 button.reset-button:hover {
-    color: white;
-    background-color: black;
+    color: black;
+    background-color: white;
     cursor: pointer;
 }
 
 button.filter-button:active,
 button.reset-button:active {
-    background-color: white;
+    background-color: black;
+    color: white;
 }
 
 input {
@@ -118,14 +134,14 @@ input {
     }
 }
 
-@media (min-width: 780px) {
+@media (min-width: 810px) {
     .search-form {
         margin: 60px auto 10px auto;
         display: grid;
         grid-template:
         'difficulty rating length'
         'buttons . . ';
-        width: 805px;
+        width: 780px;
     }
     
     .difficulty {

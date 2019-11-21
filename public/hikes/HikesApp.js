@@ -38,9 +38,6 @@ class HikesApp extends Component {
         //event listener for search location
         const searchForm = dom.querySelector('.location-search');
 
-       
-       
-
         const loadHikes = async() => {
             try {
                 const hikes = await getHikes();
@@ -55,13 +52,9 @@ class HikesApp extends Component {
             searchForm.addEventListener('submit', async(event) => {
                 event.preventDefault();
                 const formData = new FormData(searchForm);
-                console.log(formData, 'formData');
-                const searchLocation = formData.get('search');
-                console.log(searchLocation, 'searchLocation');
-            
+                const searchLocation = formData.get('search');            
 
                 try {
-                    
                     const hikes = await getHikes(searchLocation);
                     localStorage.setItem('allHikes', JSON.stringify(hikes));
                     hikesList.update({ hikes: hikes });

@@ -19,10 +19,10 @@ async function run() {
             );
             CREATE TABLE favorites (
                 id SERIAL PRIMARY KEY,
-                hike_id INTEGER UNIQUE NOT NULL,
+                hike_id INTEGER NOT NULL,
                 user_id INTEGER NOT NULL REFERENCES users(id)
             );
-        
+
             CREATE TABLE saved_hikes (
                 id INTEGER PRIMARY KEY,
                 hike_obj VARCHAR(4000) NOT NULL,
@@ -33,9 +33,7 @@ async function run() {
                 id SERIAL PRIMARY KEY,
                 campground_obj VARCHAR(4000) NOT NULL
             );
-            
 
-            
         `);
 
         console.log('create tables complete');
@@ -48,5 +46,5 @@ async function run() {
         // success or failure, need to close the db connection
         client.end();
     }
-    
+
 }

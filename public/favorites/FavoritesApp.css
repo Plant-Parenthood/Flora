@@ -1,0 +1,9 @@
+@media (max-width: 450px) {
+    .footer {
+        display: none;
+    }
+}
+
+form.search-form {
+    display: none;
+}

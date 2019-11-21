@@ -14,8 +14,6 @@ class HikesList extends Component {
         });
         optionsSection.appendChild(search.renderDOM());
 
-        
-
         hikes.forEach(hike => {
             const props = {
                 hike: hike,
@@ -25,7 +23,7 @@ class HikesList extends Component {
 
             const hikeItem = new HikeItem(props);
             const hikeItemDOM = hikeItem.renderDOM();
-            dom.appendChild(hikeItemDOM);
+            dom.querySelector('.hikes-list').appendChild(hikeItemDOM);
         });
 
     }

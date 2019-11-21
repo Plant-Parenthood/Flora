@@ -13,10 +13,4 @@
 .footer a:hover {
     color: rgb(151, 151, 151);
     text-decoration: underline;
-} 
-
-@media (max-width: 450px) {
-    .footer {
-        display: none;
-    }
 }

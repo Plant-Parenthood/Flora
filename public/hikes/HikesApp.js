@@ -4,7 +4,6 @@ import Nav from '../common/Nav.js';
 import Footer from '../common/Footer.js';
 import Loading from '../common/Loading.js';
 import HikesList from './HikesList.js';
-// import Paging from './Paging.js';
 import { getHikes } from '../services/hikes-api.js';
 
 class HikesApp extends Component {
@@ -47,17 +46,17 @@ class HikesApp extends Component {
         listSection.appendChild(hikesList.renderDOM());
         
 
+        //event listener for search location
+        const searchForm = dom.querySelector('.location-search');
+
+
         const loadHikes = async() => {
             try {
                 const hikes = await getHikes();
                 localStorage.setItem('allHikes', JSON.stringify(hikes));
                 hikesList.update({ hikes: hikes });
-
-                // paging.update({
-                //     // This API does not give total results :(
-                //     // totalResult: ?
-                // });
             }
+            
             catch (err) {
                 console.log(err);
             }
@@ -65,25 +64,50 @@ class HikesApp extends Component {
                 console.log('in finalllyyyyy');
                 loading.update({ loading: false });
             }
+
+            searchForm.addEventListener('submit', async(event) => {
+                event.preventDefault();
+                const formData = new FormData(searchForm);
+                console.log(formData, 'formData');
+                const searchLocation = formData.get('search');
+                console.log(searchLocation, 'searchLocation');
+            
+
+                try {
+                    
+                    const hikes = await getHikes(searchLocation);
+                    localStorage.setItem('allHikes', JSON.stringify(hikes));
+                    hikesList.update({ hikes: hikes });
+                }
+                
+                catch (err) {
+                    console.log(err);
+                }
+            });
         };
 
         loadHikes();
     }
-
+    
     renderHTML() {
         return /*html*/`
             <div>
                 <!-- header goes here -->
                 <main>
+                    <form class = "location-search">
+                        <input type="text" name="search" placeholder="City, State">
+                        <button class = 'location-search-button'>Search</button>
+                    </form>
+                    
                     <section class="list-section">
-                        <!-- paging goes here -->
-                        <!-- hikes list goes here -->
+                        <!-- hikes list goes here -->        
                     </section>
                 </main>
                 <!-- footer goes here -->
             </div>
         `;
     }
+
 }
 
 export default HikesApp;

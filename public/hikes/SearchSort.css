@@ -1,19 +1,45 @@
 .search-form {
     display: grid;
     grid-template:
-    'search-box'
     'difficulty'
     'rating'
     'length'
     'buttons';
-    border: 1px solid black;
+    border: 1px solid #aaa;
     padding: 20px;
     border-radius: 10px;
-    margin: 0 auto;
+    width: 350px;
+    margin: 2% auto;
+    background: white;
 }
 
-.search-box {
-    margin-bottom: 10px;
+form.location-search {
+    border: 1px solid #aaa;
+    padding: 20px;
+    border-radius: 10px;
+    width: 350px;
+    margin: 0 auto;
+    background: white;
+    display: flex;
+    justify-content: space-between;
+}
+
+.location-search-button {
+    background-color: white;
+    border-radius: 7px;
+    height: 35px;
+    border: 1px solid black;
+    font-size: 20px;
+}
+
+.location-search-button:hover {
+    color: white;
+    background-color: black;
+    cursor: pointer;
+}
+
+.location-search-button:active {
+    background-color: white;
 }
 
 .difficulty {
@@ -29,14 +55,13 @@
 }
 
 .buttons {
-    margin-bottom: 10px;
-    margin-top: 10px;
+    margin: 10px auto 0 auto;
 }
 
 label {
     width: 80px;
     margin-right: 10px;
-    font-weight: bold;
+    font-family: 'Calistoga', cursive;
 }
 
 select {
@@ -49,11 +74,10 @@ select {
     font-size: 14px;
 }
 
-button.search-button {
+button.filter-button {
     margin-right: 5px;
 }
 
-button.search-button,
 button.filter-button,
 button.reset-button {
     background-color: white;
@@ -63,16 +87,14 @@ button.reset-button {
     font-size: 20px;
 }
 
-button.search-button:hover,
-button.filter-button,
+button.filter-button:hover,
 button.reset-button:hover {
     color: white;
     background-color: black;
     cursor: pointer;
 }
 
-button.search-button:active,
-button.filter-button,
+button.filter-button:active,
 button.reset-button:active {
     background-color: white;
 }
@@ -90,17 +112,20 @@ input {
     width: 60px;
 }
 
+@media (min-width: 450px) {
+    .search-form {
+        margin-top: 60px;
+    }
+}
+
 @media (min-width: 780px) {
     .search-form {
-        margin: 0 auto;
+        margin: 60px auto 10px auto;
         display: grid;
         grid-template:
-        'search-box difficulty rating length'
-        'buttons . . .';
-    }
-
-    .search-box {
-        margin-right: 15px;
+        'difficulty rating length'
+        'buttons . . ';
+        width: 805px;
     }
     
     .difficulty {
@@ -114,9 +139,14 @@ input {
     .length {
         margin-right: 15px;
     }
-    
-    .buttons {
-        margin-right: 15px;
-    }
 }
 
+@media (min-width: 415px) {
+    form.location-search {
+        display: flex;
+        justify-content: space-evenly;
+        width: 350px;
+        position: relative;
+        top: 50px;
+    }
+}

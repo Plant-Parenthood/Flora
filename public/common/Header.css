@@ -1,20 +1,15 @@
-
-@import url("https://fonts.googleapis.com/css?family=Calistoga&display=swap");
-
-* {
-    box-sizing: border-box;
-}
-
 header {
-    display: flex;
-    align-items: center;
-    padding: 10px;
     height: 150px;
-    justify-content: space-around;
     background-image: url("../assets/forest1.jpg");
     background-repeat: cover;
     background-position: 70% 70%;
-    margin: 0px;
+}
+
+.header-contents {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    justify-content: space-around;
 }
 
 img.logo {
@@ -27,7 +22,7 @@ h1 {
     font-size: 40px;
     line-height: 36px;
     font-family: 'Calistoga', cursive;
-    margin: 0 20px;
+    margin: 0 auto;
     flex-grow: 1;
     color: white;
     letter-spacing: 1px;
@@ -37,9 +32,9 @@ h1 {
 button.log-out {
     background-color: white;
     border-radius: 7px;
-    height: 35px;
     border: 1px solid black;
-    font-size: 20px;
+    font-size: 14px;
+    font-weight: bold;
     height: 55px;
     width: 100px;
     padding: 5px;
@@ -56,8 +51,21 @@ button.log-out:active {
     background-color: white;
 }
 
+@media (min-width: 450px) {
+    header {
+        background-image: url("../assets/trail1.jpeg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: 50% 56%;
+    }
+}
+
 @media (min-width: 780px) {
     h1 {
         font-size: 60px;
       }
+
+    .header-contents {
+        margin: 0 18% 0 18%;
+    }
 }

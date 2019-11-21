@@ -9,6 +9,12 @@ const morgan = require('morgan');
 const client = require('./lib/client');
 // Services
 const hikesApi = require('./lib/rei-hike-api-call.js');
+const campgroundsApi = require('./lib/rei-campground-api-call.js');
+<<<<<<< HEAD
+=======
+const geocodeApi = require('./lib/google-geocode-api-call.js');
+const weatherApi = require('./lib/weather-api-call.js');
+>>>>>>> c16731a24edf3342f6edcc2ea7943428f67a0213
 
 // Auth
 const ensureAuth = require('./lib/auth/ensure-auth');
@@ -18,7 +24,7 @@ const authRoutes = createAuthRoutes({
     async selectUser(email) {
         console.log(email);
         const result = await client.query(`
-            SELECT id, email, hash, display_name as "displayName" 
+            SELECT id, email, hash, display_name as "displayName"
             FROM users
             WHERE email = $1;
         `, [email]);
@@ -53,14 +59,33 @@ app.use('/api', ensureAuth);
 
 
 // *** API Routes ***
+
+//location endpoint 
+app.get('/api/location', async(req, res) => {
+    try {
+        const location = await geocodeApi.get(req.query.search);
+        const hikes = await hikesApi.get({
+            query: location
+        });
+        res.json(hikes);
+    }
+    catch (err) {
+        console.log(err);
+        res.status(500).json({
+            error: err.message || err
+        });
+    }
+});
+
 app.get('/api/hikes', async(req, res) => {
 
     try {
         //const query = req.query;
+
         const hikes = await hikesApi.get(req);
         const ids = hikes.map(hike => hike.id);
         const result = await client.query(`
-            SELECT hike_id 
+            SELECT hike_id
             FROM favorites
             WHERE user_id = $1
             AND hike_id = ANY($2)
@@ -71,7 +96,6 @@ app.get('/api/hikes', async(req, res) => {
         }, {});
         // isFavorite property is added to each hike and set as true if isFavorite and false otherwise.
         hikes.forEach(hike => hike.isFavorite = lookup[hike.id] || false);
-        console.log(lookup);
         res.json(hikes);
     }
 
@@ -83,10 +107,51 @@ app.get('/api/hikes', async(req, res) => {
     }
 });
 
+app.get('/api/campgrounds', async(req, res) => {
+
+    try {
+        //const query = req.query;
+        const campgrounds = await campgroundsApi.get(req);
+<<<<<<< HEAD
+=======
+        console.log('CAMPGROUNDS CAMPGROUNDS CAMPGROUNDS', campgrounds);
+>>>>>>> c16731a24edf3342f6edcc2ea7943428f67a0213
+        res.json(campgrounds);
+    }
+
+    catch (err) {
+        console.log(err);
+        res.status(500).json({
+            error: err.message || err
+        });
+    }
+});
+
+<<<<<<< HEAD
+=======
+
+app.get('/api/weather', async(req, res) => {
+
+    try {
+        //const query = req.query;
+        const weather = await weatherApi.get(req);
+        console.log('WEATHER', weather);
+        res.json(weather);
+    }
+
+    catch (err) {
+        console.log(err);
+        res.status(500).json({
+            error: err.message || err
+        });
+    }
+});
+
+>>>>>>> c16731a24edf3342f6edcc2ea7943428f67a0213
 //endpoint for saving hikes (will only happen when user favorites a hike)
 app.post('/api/hikes', async(req, res) => {
     try {
-        const hike = req.body; 
+        const hike = req.body;
 
         //WE NEED TO CHANGE THIS ONCE WE INCORPORATE CAMPGROUNDS
         const campgrounds = req.body;
@@ -101,9 +166,9 @@ app.post('/api/hikes', async(req, res) => {
             const result = await client.query(`
                 INSERT INTO saved_hikes (hike_obj, campgrounds_arr, id)
                 VALUES ($1, $2, $3)
-                RETURNING hike_obj as "hikeObj", campgrounds_arr as "campgroundsArr", id as "hikeId";
+                RETURNING hike_obj as "hikeObj", campgrounds_arr as "campgroundsArr", id;
             `, [hike, campgrounds || 'wow', hike.id]);
-            
+
             res.json(result.rows[0]);
         } else {
             // the outcome of the saveOrFetch is a backend fetch from our database of an already existing hike
@@ -126,7 +191,7 @@ app.get('/api/favorites', async(req, res) => {
     try {
         const favorites = await client.query(`
             SELECT *
-            FROM favorites 
+            FROM favorites
             WHERE user_id=$1
         `, [req.userId]);
 
@@ -134,7 +199,7 @@ app.get('/api/favorites', async(req, res) => {
         const result = await client.query(`
             SELECT hike_obj
             FROM saved_hikes
-            WHERE id = ANY($1) 
+            WHERE id = ANY($1)
         `, [favoriteHikeIds]);
 
         const parsedRows = result.rows.map(row => {
@@ -155,7 +220,6 @@ app.get('/api/favorites', async(req, res) => {
 app.post('/api/favorites', async(req, res) => {
     try {
         const hike = req.body;
-
         const result = await client.query(`
             INSERT INTO favorites (user_id, hike_id)
             VALUES ($1, $2)
@@ -174,7 +238,7 @@ app.post('/api/favorites', async(req, res) => {
 });
 
 app.delete('/api/favorites/:hike_id', (req, res) => {
-    
+
     try {
         client.query(`
             DELETE FROM favorites

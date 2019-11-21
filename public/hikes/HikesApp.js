@@ -84,9 +84,9 @@ class HikesApp extends Component {
             <div>
                 <!-- header goes here -->
                 <main>
-                    <form class = "location-search">
+                    <form class="location-search">
                         <input type="text" name="search" placeholder="City, State">
-                        <button class = 'location-search-button'>Search</button>
+                        <button class="location-search-button">Search</button>
                     </form>
                     
                     <section class="list-section">

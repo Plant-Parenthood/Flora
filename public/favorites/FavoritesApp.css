@@ -3,3 +3,7 @@
         display: none;
     }
 }
+
+form.search-form {
+    display: none;
+}

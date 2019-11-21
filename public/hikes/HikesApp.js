@@ -62,11 +62,7 @@ class HikesApp extends Component {
         // listSection.appendChild(paging.renderDOM());
 
         //event listener for search location
-<<<<<<< HEAD
         const searchForm = dom.querySelector('.location-search');
-=======
-        const searchForm = dom.querySelector('.location-search');   
->>>>>>> 4c6c4c973dc5af377cab9dd6ab4180c897b0214b
 
         const loadHikes = async() => {
             try {

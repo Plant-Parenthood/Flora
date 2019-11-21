@@ -70,7 +70,7 @@ class App extends Component {
     }
 
     renderHTML() {
-        // TO DO: update what is shown to user based on sign in status 
+        // TO DO: update what is shown to user based on sign in status
         return /*html*/`
             <div>
                 <!-- header goes here -->

@@ -3,11 +3,7 @@ import Header from '../common/Header.js';
 import Nav from '../common/Nav.js';
 import Footer from '../common/Footer.js';
 import HikesList from './HikesList.js';
-<<<<<<< HEAD
 import Modal from './Modal.js';
-// import Paging from './Paging.js';
-=======
->>>>>>> c16731a24edf3342f6edcc2ea7943428f67a0213
 import { getHikes } from '../services/hikes-api.js';
 
 class HikesApp extends Component {
@@ -33,7 +29,6 @@ class HikesApp extends Component {
                 }
                 const updatedProps = { hikes: searchedHikes };
                 hikesList.update(updatedProps);
-<<<<<<< HEAD
             },
             renderModal: (modalHike, campgrounds) => {
                 modal.update({ modalHike, campgrounds });
@@ -50,11 +45,6 @@ class HikesApp extends Component {
         modalSection.appendChild(modal.renderDOM());
         // const paging = new Paging();
         // listSection.appendChild(paging.renderDOM());
-=======
-            }
-        });
-        listSection.appendChild(hikesList.renderDOM());
->>>>>>> c16731a24edf3342f6edcc2ea7943428f67a0213
 
         const footer = new Footer();
         dom.appendChild(footer.renderDOM());

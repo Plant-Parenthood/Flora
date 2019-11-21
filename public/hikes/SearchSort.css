@@ -31,7 +31,7 @@
 }
 
 .buttons {
-    margin-top: 10px;
+    margin: 10px auto 0 auto;
 }
 
 label {
@@ -50,11 +50,10 @@ select {
     font-size: 14px;
 }
 
-button.search-button {
+button.filter-button {
     margin-right: 5px;
 }
 
-button.search-button,
 button.filter-button,
 button.reset-button {
     background-color: white;
@@ -64,16 +63,14 @@ button.reset-button {
     font-size: 20px;
 }
 
-button.search-button:hover,
-button.filter-button,
+button.filter-button:hover,
 button.reset-button:hover {
     color: white;
     background-color: black;
     cursor: pointer;
 }
 
-button.search-button:active,
-button.filter-button,
+button.filter-button:active,
 button.reset-button:active {
     background-color: white;
 }

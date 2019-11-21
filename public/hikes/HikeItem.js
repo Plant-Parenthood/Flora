@@ -41,11 +41,7 @@ class HikeItem extends Component {
 
             renderModal(hike, campgrounds);
             const weather = await getWeather(hike.latitude, hike.longitude);
-<<<<<<< HEAD
-
-=======
             
->>>>>>> f80a4fa9bdec4b17e79b25ad0785a90cb8c02f10
             console.log(weather, 'weather');
         });
     }

@@ -50,9 +50,7 @@ class HikeItem extends Component {
 
                     <button class="favorite-star ${starClass}">❤</button>
                     <button class="info-button">INFO</button>
-                    <a href="${hike.url}" class="hike-name"><img src="${hike.imgMedium}" alt="${hike.name}">${hike.name}</a>
                     <a href="${hike.url}" class="hike-name"><img src="${hike.imgMedium}" onerror="this.onerror=null;this.src='/assets/placeholder-image.png';" alt="${hike.name}">${hike.name}</a>
-                
                 <summary>
                     Length: ${hike.length} m.<br>
                     Difficulty: ${hike.difficulty}<br>

@@ -45,14 +45,19 @@ class HikesApp extends Component {
 
         const loadHikes = async() => {
             try {
-                const hikes = await getHikes();
-                localStorage.setItem('allHikes', JSON.stringify(hikes));
-                hikesList.update({ hikes: hikes });
+                const searchFormButton = dom.querySelector('.location-search-button');
+                searchFormButton.addEventListener('submit', async(event) => {
+                    event.preventDefault();
 
-                // paging.update({
-                //     // This API does not give total results :(
-                //     // totalResult: ?
-                // });
+                    const hikes = await getHikes(event.target.value);
+                    console.log(event.target.value);
+                    localStorage.setItem('allHikes', JSON.stringify(hikes));
+                    hikesList.update({ hikes: hikes });
+                });
+                
+
+
+                
             }
             catch (err) {
                 console.log(err);
@@ -70,6 +75,11 @@ class HikesApp extends Component {
             <div>
                 <!-- header goes here -->
                 <main>
+                    <form class = "location-search">
+                        <input type="text" name="search" placeholder="City, State">
+                        <button class = 'location-search-button'>Search</button>
+                    </form>
+                    <button id = "current-location">Use Current Location</button>
                     <section class="list-section">
                         <!-- paging goes here -->
                         <!-- hikes list goes here -->        

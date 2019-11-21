@@ -76,7 +76,6 @@ class Search extends Component {
         const ratingValuesString = ratingsArray.map(value=> `<option value=${value} ${rating === value ? 'selected=true' : '' }>${value}</option>`).reduce((acc, valuesString) => acc + valuesString, '');
 
         const length = parseInt(localStorage.getItem('length'));
-        console.log(length, 'length');
         return /*html*/`
         <div>
             <form class="search-form">

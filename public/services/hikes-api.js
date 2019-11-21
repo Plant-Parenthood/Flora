@@ -37,9 +37,9 @@ async function fetchWithError(url, options) {
 export async function getHikes(search) {
     console.log('we are inside getHikes');
     if (!search) {
-        console.log('not search')
+        console.log('not search');
         return new Promise((resolve) => {
-            navigator.geolocation.getCurrentPosition(async function (position) {
+            navigator.geolocation.getCurrentPosition(async function(position) {
                 let lat = position.coords.latitude;
                 let lon = position.coords.longitude;
                 const url = `${BASE_URL}/hikes?lat=${lat}&lon=${lon}`;

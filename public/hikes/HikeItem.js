@@ -6,7 +6,7 @@ import { makeFavorite, unFavorite, saveOrFetchHike, getCampgrounds, getWeather }
 class HikeItem extends Component {
 
     onRender(li) {
-        const { hike } = this.props;
+        const { hike, renderModal } = this.props;
 
         //Favorite functionality same as source- SHOULD WE CHANGE?
         const removeUnFavorites = this.props.removeUnFavorites;
@@ -35,10 +35,14 @@ class HikeItem extends Component {
         });
 
         infoButton.addEventListener('click', async() => {
-            // const campgrounds = await getCampgrounds(hike.latitude, hike.longitude);
-            const weather = await getWeather(hike.latitude, hike.longitude);
-            console.log(weather, 'weather in the info button event listener');
+            const campgrounds = await getCampgrounds(hike.latitude, hike.longitude);
 
+            console.log('SHOULD BE OUR CAMPGROUNDS', campgrounds);
+
+            renderModal(hike, campgrounds);
+            const weather = await getWeather(hike.latitude, hike.longitude);
+            
+            console.log(weather, 'weather');
         });
     }
 

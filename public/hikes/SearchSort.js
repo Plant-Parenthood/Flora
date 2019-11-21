@@ -95,8 +95,8 @@ class Search extends Component {
                     <input class="max-length" type="number" min="0" name="length" value=${length}> mi.
                 </section>
                 <section class="buttons">
-                    <button class="filter-button">Filter Search</button>
-                    <button class="reset-button"><a href="../hikes.html">Reset Filters</a></button>
+                    <button class="filter-button">Filter</button>
+                    <button class="reset-button"><a class="reset" href="../hikes.html">Reset</a></button>
                 </section>
             </form>
         </div>

@@ -1,7 +1,6 @@
 .search-form {
     display: grid;
     grid-template:
-    'search-box'
     'difficulty'
     'rating'
     'length'
@@ -14,8 +13,35 @@
     background: white;
 }
 
-.search-box {
-    margin-bottom: 10px;
+form.location-search {
+    border: 1px solid #aaa;
+    padding: 20px;
+    border-radius: 10px;
+    width: 350px;
+    margin: 0 auto;
+    background: white;
+    display: flex;
+    justify-content: space-between;
+}
+
+.location-search-button {
+    background-color: black;
+    color: white;
+    border-radius: 7px;
+    height: 35px;
+    border: 1px solid black;
+    font-size: 20px;
+}
+
+.location-search-button:hover {
+    color: black;
+    background-color: white;
+    cursor: pointer;
+}
+
+.location-search-button:active {
+    background-color: black;
+    color: white;
 }
 
 .difficulty {
@@ -31,7 +57,7 @@
 }
 
 .buttons {
-    margin: 10px auto 0 auto;
+    margin: 10px 0px 0px 0px;
 }
 
 label {
@@ -50,13 +76,26 @@ select {
     font-size: 14px;
 }
 
+a.reset {
+    color: white;
+}
+
+a.reset:hover {
+    color: black;
+}
+
+a.reset:active {
+    color: white;
+}
+
 button.filter-button {
     margin-right: 5px;
 }
 
 button.filter-button,
 button.reset-button {
-    background-color: white;
+    background-color: black;
+    color: white;
     border-radius: 7px;
     height: 35px;
     border: 1px solid black;
@@ -65,14 +104,15 @@ button.reset-button {
 
 button.filter-button:hover,
 button.reset-button:hover {
-    color: white;
-    background-color: black;
+    color: black;
+    background-color: white;
     cursor: pointer;
 }
 
 button.filter-button:active,
 button.reset-button:active {
-    background-color: white;
+    background-color: black;
+    color: white;
 }
 
 input {
@@ -94,18 +134,14 @@ input {
     }
 }
 
-@media (min-width: 780px) {
+@media (min-width: 810px) {
     .search-form {
         margin: 60px auto 10px auto;
         display: grid;
         grid-template:
-        'search-box difficulty rating length'
-        'buttons . . .';
-        width: 60%;
-    }
-
-    .search-box {
-        margin-right: 15px;
+        'difficulty rating length'
+        'buttons . . ';
+        width: 780px;
     }
     
     .difficulty {
@@ -121,3 +157,12 @@ input {
     }
 }
 
+@media (min-width: 415px) {
+    form.location-search {
+        display: flex;
+        justify-content: space-evenly;
+        width: 350px;
+        position: relative;
+        top: 50px;
+    }
+}

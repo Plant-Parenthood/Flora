@@ -3,6 +3,7 @@ import Header from '../common/Header.js';
 import Nav from '../common/Nav.js';
 import Footer from '../common/Footer.js';
 import HikesList from './HikesList.js';
+import Modal from './Modal.js';
 import { getHikes } from '../services/hikes-api.js';
 
 class HikesApp extends Component {
@@ -28,9 +29,22 @@ class HikesApp extends Component {
                 }
                 const updatedProps = { hikes: searchedHikes };
                 hikesList.update(updatedProps);
-            }
+            },
+            renderModal: (modalHike, campgrounds) => {
+                modal.update({ modalHike, campgrounds });
+                modal.rootElement.hidden = false;
+            }    
         });
         listSection.appendChild(hikesList.renderDOM());
+        
+        const modalSection = dom.querySelector('.modal-section');
+        const modal = new Modal({
+            modalHike: {},
+            campgrounds: [],
+        });
+        modalSection.appendChild(modal.renderDOM());
+        // const paging = new Paging();
+        // listSection.appendChild(paging.renderDOM());
 
         const footer = new Footer();
         dom.appendChild(footer.renderDOM());
@@ -77,13 +91,16 @@ class HikesApp extends Component {
             <div>
                 <!-- header goes here -->
                 <main>
-                    <form class = "location-search">
+                    <form class="location-search">
                         <input type="text" name="search" placeholder="City, State">
-                        <button class = 'location-search-button'>Search</button>
+                        <button class="location-search-button">Search</button>
                     </form>
                     
                     <section class="list-section">
                         <!-- hikes list goes here -->        
+                    </section>
+                    <section class="modal-section">
+                        <!-- modal goes here -->
                     </section>
                 </main>
                 <!-- footer goes here -->

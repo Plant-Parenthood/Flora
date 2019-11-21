@@ -109,7 +109,9 @@ app.get('/api/campgrounds', async(req, res) => {
     try {
         //const query = req.query;
         const campgrounds = await campgroundsApi.get(req);
+
         console.log('CAMPGROUNDS CAMPGROUNDS CAMPGROUNDS', campgrounds);
+
         res.json(campgrounds);
     }
 
@@ -120,7 +122,6 @@ app.get('/api/campgrounds', async(req, res) => {
         });
     }
 });
-
 
 app.get('/api/weather', async(req, res) => {
 

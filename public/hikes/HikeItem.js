@@ -6,7 +6,7 @@ import { makeFavorite, unFavorite, saveOrFetchHike, getCampgrounds, getWeather }
 class HikeItem extends Component {
 
     onRender(li) {
-        const { hike } = this.props;
+        const { hike, renderModal } = this.props;
 
         //Favorite functionality same as source- SHOULD WE CHANGE?
         const removeUnFavorites = this.props.removeUnFavorites;
@@ -36,7 +36,12 @@ class HikeItem extends Component {
 
         infoButton.addEventListener('click', async() => {
             const campgrounds = await getCampgrounds(hike.latitude, hike.longitude);
+
+            console.log('SHOULD BE OUR CAMPGROUNDS', campgrounds);
+
+            renderModal(hike, campgrounds);
             const weather = await getWeather(hike.latitude, hike.longitude);
+            
             console.log(weather, 'weather');
         });
     }
@@ -44,9 +49,17 @@ class HikeItem extends Component {
     renderHTML() {
         //what props do we need for showing user info??
         const { hike } = this.props;
-        
         const heartClass = hike.isFavorite ? 'is-favorite' : '';
 
+        const difficultyValues = {
+            'any': 'All Levels',
+            'green': 'Easiest',
+            'greenBlue': 'Easy',
+            'blue': 'Medium',
+            'blueBlack': 'Hard',
+            'black': 'Hardest'
+        };
+ 
         return /*html*/`
             <li class="hike-item">
                 <section class="fav-info">
@@ -57,7 +70,7 @@ class HikeItem extends Component {
                     <h2 class="hike-name">${hike.name}</h2>
                 <summary>
                     Length: ${hike.length} m.<br>
-                    Difficulty: ${hike.difficulty}<br>
+                    Difficulty: ${difficultyValues[hike.difficulty]}<br>
                     Summary: ${hike.summary}
                 </summary>
 

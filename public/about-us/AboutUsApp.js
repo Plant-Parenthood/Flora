@@ -1,7 +1,7 @@
 import Component from '../Component.js';
 import Header from '../common/Header.js';
 import Footer from '../common/Footer.js';
-
+import Nav from '../common/Nav.js';
 // !!!
 // TO-DO STILL! MODIFY THIS FOR PLANT APP! DELETE THIS LINE ONCE DONE!
 // !!!
@@ -11,6 +11,9 @@ class AboutUsApp extends Component {
     onRender(dom) {
         const header = new Header();
         dom.prepend(header.renderDOM());
+
+        const nav = new Nav();
+        dom.appendChild(nav.renderDOM());
 
         const footer = new Footer();
         dom.appendChild(footer.renderDOM());
@@ -32,7 +35,7 @@ class AboutUsApp extends Component {
                         </li>
                         <li>
                             <img src="../assets/jbj_square.jpg" alt="Brittany">
-                            <p>JBJ </p>
+                            <p>JBJ is an east coast transplant that has called the Pacific Northwest home for quite some time. They spend a majority of their time with their person and their dog trying to find the most beautiful places in Oregon. When they aren't in the woods, they are most likely found rollerskating in circles.</p>
                         </li>
                         <li>
                             <img src="../assets/lisa_square.jpg" alt="Lisa">

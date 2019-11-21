@@ -11,11 +11,8 @@ const client = require('./lib/client');
 // Services
 const hikesApi = require('./lib/rei-hike-api-call.js');
 const campgroundsApi = require('./lib/rei-campground-api-call.js');
-<<<<<<< HEAD
-=======
 const geocodeApi = require('./lib/google-geocode-api-call.js');
 const weatherApi = require('./lib/weather-api-call.js');
->>>>>>> c16731a24edf3342f6edcc2ea7943428f67a0213
 
 // Auth
 const ensureAuth = require('./lib/auth/ensure-auth');
@@ -62,7 +59,7 @@ app.use('/api', ensureAuth);
 // *** API Routes ***
 
 //location endpoint 
-app.get('/api/location', async(req, res) => {
+app.get('/api/location', async (req, res) => {
     try {
         const location = await geocodeApi.get(req.query.search);
         const hikes = await hikesApi.get({
@@ -78,7 +75,7 @@ app.get('/api/location', async(req, res) => {
     }
 });
 
-app.get('/api/hikes', async(req, res) => {
+app.get('/api/hikes', async (req, res) => {
 
     try {
         //const query = req.query;
@@ -108,15 +105,14 @@ app.get('/api/hikes', async(req, res) => {
     }
 });
 
-app.get('/api/campgrounds', async(req, res) => {
+app.get('/api/campgrounds', async (req, res) => {
 
     try {
         //const query = req.query;
         const campgrounds = await campgroundsApi.get(req);
-<<<<<<< HEAD
-=======
+
         console.log('CAMPGROUNDS CAMPGROUNDS CAMPGROUNDS', campgrounds);
->>>>>>> c16731a24edf3342f6edcc2ea7943428f67a0213
+
         res.json(campgrounds);
     }
 
@@ -128,18 +124,13 @@ app.get('/api/campgrounds', async(req, res) => {
     }
 });
 
-<<<<<<< HEAD
-=======
-
-app.get('/api/weather', async(req, res) => {
-
+//endpoint for getting weather of the current day (will only happen when user clicks the "i" button for the modal)
+app.get('/api/weather', async (req, res) => {
     try {
-        //const query = req.query;
         const weather = await weatherApi.get(req);
         console.log('WEATHER', weather);
         res.json(weather);
     }
-
     catch (err) {
         console.log(err);
         res.status(500).json({
@@ -148,9 +139,8 @@ app.get('/api/weather', async(req, res) => {
     }
 });
 
->>>>>>> c16731a24edf3342f6edcc2ea7943428f67a0213
 //endpoint for saving hikes (will only happen when user favorites a hike)
-app.post('/api/hikes', async(req, res) => {
+app.post('/api/hikes', async (req, res) => {
     try {
         const hike = req.body;
 
@@ -188,7 +178,7 @@ app.post('/api/hikes', async(req, res) => {
 
 //
 //we might have to add this back in - TRUE as "isFavorite"
-app.get('/api/favorites', async(req, res) => {
+app.get('/api/favorites', async (req, res) => {
     try {
         const favorites = await client.query(`
             SELECT *
@@ -218,7 +208,7 @@ app.get('/api/favorites', async(req, res) => {
 });
 
 //add a hike to your faves
-app.post('/api/favorites', async(req, res) => {
+app.post('/api/favorites', async (req, res) => {
     try {
         const hike = req.body;
         const result = await client.query(`

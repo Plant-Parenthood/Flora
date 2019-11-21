@@ -35,16 +35,42 @@ class HikesApp extends Component {
         const footer = new Footer();
         dom.appendChild(footer.renderDOM());
 
+        //event listener for search location
+        const searchForm = dom.querySelector('.location-search');
+
+       
+       
+
         const loadHikes = async() => {
             try {
                 const hikes = await getHikes();
                 localStorage.setItem('allHikes', JSON.stringify(hikes));
                 hikesList.update({ hikes: hikes });
-
             }
+            
             catch (err) {
                 console.log(err);
             }
+
+            searchForm.addEventListener('submit', async(event) => {
+                event.preventDefault();
+                const formData = new FormData(searchForm);
+                console.log(formData, 'formData');
+                const searchLocation = formData.get('search');
+                console.log(searchLocation, 'searchLocation');
+            
+
+                try {
+                    
+                    const hikes = await getHikes(searchLocation);
+                    localStorage.setItem('allHikes', JSON.stringify(hikes));
+                    hikesList.update({ hikes: hikes });
+                }
+                
+                catch (err) {
+                    console.log(err);
+                }
+            });
         };
 
         loadHikes();
@@ -52,12 +78,17 @@ class HikesApp extends Component {
             loadHikes();
         });
     }
-
+    
     renderHTML() {
         return /*html*/`
             <div>
                 <!-- header goes here -->
                 <main>
+                    <form class = "location-search">
+                        <input type="text" name="search" placeholder="City, State">
+                        <button class = 'location-search-button'>Search</button>
+                    </form>
+                    
                     <section class="list-section">
                         <!-- hikes list goes here -->        
                     </section>
@@ -66,6 +97,7 @@ class HikesApp extends Component {
             </div>
         `;
     }
+
 }
 
 export default HikesApp;

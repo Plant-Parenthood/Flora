@@ -7,7 +7,7 @@
     font-weight: lighter;
     width: 110%;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     position: fixed;
     bottom: 0px;
     left: -5%;
@@ -20,6 +20,8 @@
 
 @media (min-width: 450px) {
     .nav {
-        display: none;
+        position: absolute;
+        top: 150px;
+        width: 105%;
     }
 }

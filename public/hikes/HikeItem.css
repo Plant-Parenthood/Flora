@@ -56,8 +56,22 @@ a:hover {
     background: none;
     font-size: 3em;
     color: #ccc;
+}
+
+.info-button {
+    cursor: pointer;
+    user-select: none;
+    border: 0;
+    outline: 0;
+    background: none;
+    font-size: 2em;
+    color: rgb(0, 0, 0);
+}
+
+.fav-info {
     display: flex;
-    align-self: flex-end;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .favorite-star.is-favorite {

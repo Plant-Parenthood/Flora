@@ -88,9 +88,15 @@ input {
     width: 60px;
 }
 
+@media (min-width: 450px) {
+    .search-form {
+        margin-top: 60px;
+    }
+}
+
 @media (min-width: 780px) {
     .search-form {
-        margin: 2% auto;
+        margin: 60px auto 10px auto;
         display: grid;
         grid-template:
         'search-box difficulty rating length'
@@ -111,10 +117,6 @@ input {
     }
     
     .length {
-        margin-right: 15px;
-    }
-    
-    .buttons {
         margin-right: 15px;
     }
 }

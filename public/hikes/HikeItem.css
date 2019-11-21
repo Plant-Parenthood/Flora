@@ -26,10 +26,6 @@ summary {
     border-radius: 10px;
 }
 
-.hike-item img:hover {
-    opacity: 0.8;
-}
-
 .hike-name {
     display: flex;
     justify-content: center;
@@ -76,6 +72,11 @@ a:hover {
 
 .favorite-star.is-favorite {
     color: rgb(185, 70, 70);
+}
+
+abbr[title] {
+    border-bottom: none !important;
+    text-decoration: none !important;
 }
 
 .fade {

@@ -2,9 +2,11 @@ import Component from '../Component.js';
 import Header from '../common/Header.js';
 import Nav from '../common/Nav.js';
 import Footer from '../common/Footer.js';
+import Loading from '../common/Loading.js';
 import HikesList from './HikesList.js';
 // import Paging from './Paging.js';
 import { getHikes } from '../services/hikes-api.js';
+
 
 // !!!
 // TO-DO STILL: MAKE THIS FOR THE PLANT APP! DELETE THIS LINE ONCE DONE!
@@ -18,8 +20,19 @@ class HikesApp extends Component {
 
         const nav = new Nav();
         dom.appendChild(nav.renderDOM());
-        
+
+        const loading = new Loading({ loading: true });
+        dom.appendChild(loading.renderDOM());
+
+        const footer = new Footer();
+        dom.appendChild(footer.renderDOM());
+
         const listSection = dom.querySelector('.list-section');
+        
+        
+        // const paging = new Paging();
+        // listSection.appendChild(paging.renderDOM());
+        
         
         const hikesList = new HikesList({ 
             hikes: [], 
@@ -33,15 +46,11 @@ class HikesApp extends Component {
                 }
                 const updatedProps = { hikes: searchedHikes };
                 hikesList.update(updatedProps);
+
             }    
         });
         listSection.appendChild(hikesList.renderDOM());
         
-        // const paging = new Paging();
-        // listSection.appendChild(paging.renderDOM());
-
-        const footer = new Footer();
-        dom.appendChild(footer.renderDOM());
 
         const loadHikes = async() => {
             try {
@@ -57,12 +66,13 @@ class HikesApp extends Component {
             catch (err) {
                 console.log(err);
             }
+            finally {
+                console.log('in finalllyyyyy');
+                loading.update({ loading: false });
+            }
         };
 
         loadHikes();
-        window.addEventListener('hashchange', () => {
-            loadHikes();
-        });
     }
 
     renderHTML() {

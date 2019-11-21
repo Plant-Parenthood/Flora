@@ -1,4 +1,4 @@
-import Component from '../src/components/Component.js';
+import Component from '../Component.js';
 
 class Loading extends Component {
     renderHTML() {

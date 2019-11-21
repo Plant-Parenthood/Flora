@@ -45,8 +45,6 @@ class Search extends Component {
             makeLengthArray();
 
             const foundInTwo = filteredDifficultyResultsArray.filter(element => filteredRatingResultsArray.includes(element));
-
-
             
             const foundInAll = foundInTwo.filter(element => filteredLengthResultsArray.includes(element));
 
@@ -76,7 +74,7 @@ class Search extends Component {
         const ratingValuesString = ratingsArray.map(value=> `<option value=${value} ${rating === value ? 'selected=true' : '' }>${value}</option>`).reduce((acc, valuesString) => acc + valuesString, '');
 
         const length = parseInt(localStorage.getItem('length'));
-        console.log(length, 'length');
+
         return /*html*/`
         <div>
             <form class="search-form">

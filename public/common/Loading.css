@@ -3,7 +3,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    top: 100px;
+    top: 50%;
     width: 100vw;
     opacity: 0.7;
 }
@@ -11,6 +11,5 @@
 .loading-container img {
     width: 200px;
     border: 1px solid #aaa;
-    border-radius: 10px;
-    box-shadow: 1px 1px 3px black;
+    border-radius: 100px;
 }

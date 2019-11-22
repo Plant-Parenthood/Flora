@@ -54,7 +54,7 @@ class HikeItem extends Component {
             'blueBlack': 'Hard',
             'black': 'Hardest'
         };
- 
+
         return /*html*/`
             <li class="hike-item">
                 <section class="fav-info">
@@ -68,7 +68,7 @@ class HikeItem extends Component {
                     Difficulty: ${difficultyValues[hike.difficulty]}<br>
                     Summary: ${hike.summary}
                 </summary>
-                
+
             </li>
         `;
     }

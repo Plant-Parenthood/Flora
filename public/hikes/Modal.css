@@ -95,42 +95,85 @@
     width: 300px;
     height: 100px;
     text-align: center;
+    line-height: 1.3;
   }
 
-  .car{
+  .car {
     width: 100px;
     height: 50px;
     font-size: 20px;
     font-weight: bolder;
-    background: blue;
     padding: 5px;
-    color: lightskyblue;
-    border: solid 2px lightskyblue;
+    color: dodgerblue;
+    border: solid 2px dodgerblue;
     border-radius: 10px;
+    cursor: pointer;
   }
 
-  .transit{
+  .car:hover {
     width: 100px;
     height: 50px;
     font-size: 20px;
     font-weight: bolder;
+    padding: 5px;
+    color: dodgerblue;
+    border: solid 2px dodgerblue;
+    border-radius: 10px;
+    background: lightskyblue;
+    cursor: pointer;
+    box-shadow: 3px 3px 3px #888888;
+  }
+
+  .transit {
+    width: 100px;
+    height: 50px;
+    font-size: 20px;
+    font-weight: bolder;
+    padding: 5px;
+    color: forestgreen;
+    border: solid 2px forestgreen;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+
+  .transit:hover {
     background: lightgreen;
-    padding: 5px;
-    color: darkgreen;
-    border: solid 2px darkgreen;
-    border-radius: 10px;
-  }
-
-  .human{
     width: 100px;
     height: 50px;
     font-size: 20px;
     font-weight: bolder;
-    background: purple;
     padding: 5px;
-    color: lightpink;
-    border: solid 2px lightpink;
+    color: forestgreen;
+    border: solid 2px forestgreen;
     border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 3px 3px 3px #888888;
+  }
+
+  .human {
+    width: 100px;
+    height: 50px;
+    font-size: 20px;
+    font-weight: bolder;
+    padding: 5px;
+    color: purple;
+    border: solid 2px purple;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.human:hover {
+    width: 100px;
+    height: 50px;
+    font-size: 20px;
+    font-weight: bolder;
+    padding: 5px;
+    color: purple;
+    border: solid 2px purple;
+    border-radius: 10px;
+    background: pink;
+    cursor: pointer;
+    box-shadow: 3px 3px 3px #888888;
 }
 
   .modal-hike-summary {

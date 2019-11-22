@@ -15,3 +15,16 @@ form.search-form {
 .nav {
     margin-bottom: 60px;
 }
+
+.no-faves {
+    margin-top: 125px;
+    color: black;
+    font-size: 15px;
+    z-index: -1;
+    text-align: center;
+    position: 
+}
+
+.hidden {
+    display: none
+}

@@ -36,13 +36,12 @@ class HikeItem extends Component {
 
         infoButton.addEventListener('click', async() => {
             const campgrounds = await getCampgrounds(hike.latitude, hike.longitude);
-
             console.log('SHOULD BE OUR CAMPGROUNDS', campgrounds);
 
-            renderModal(hike, campgrounds);
             const weather = await getWeather(hike.latitude, hike.longitude);
-            
             console.log(weather, 'weather');
+
+            renderModal(hike, campgrounds, weather);
         });
     }
 
@@ -73,7 +72,7 @@ class HikeItem extends Component {
                     Difficulty: ${difficultyValues[hike.difficulty]}<br>
                     Summary: ${hike.summary}
                 </summary>
-
+                
             </li>
         `;
     }

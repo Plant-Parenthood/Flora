@@ -86,9 +86,19 @@
     margin: 10px auto;
   }
 
+  .directions-section{
+    width: 300px;
+    height: 100px;
+  }
   .directions-decl {
     font-size: 18px;
     font-weight: bold;
+    margin: 0 auto;
+  }
+  .directions-div{
+    width: 300px;
+    height: 100px;
+    text-align: center;
   }
 
   .car{
@@ -99,6 +109,8 @@
     background: blue;
     padding: 5px;
     color: lightskyblue;
+    border: solid 2px lightskyblue;
+    border-radius: 10px;
   }
 
   .transit{
@@ -109,6 +121,8 @@
     background: lightgreen;
     padding: 5px;
     color: darkgreen;
+    border: solid 2px darkgreen;
+    border-radius: 10px;
   }
 
   .human{
@@ -119,7 +133,9 @@
     background: purple;
     padding: 5px;
     color: lightpink;
-  }
+    border: solid 2px lightpink;
+    border-radius: 10px;
+}
 
   .modal-hike-summary {
     text-align: center;

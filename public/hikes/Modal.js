@@ -68,6 +68,10 @@ class Modal extends Component {
             'blueBlack': 'Hard',
             'black': 'Hardest'
         };
+        let stars = '';
+        for (let i = 0; i < Math.round(modalHike.stars); i++){
+            stars += '⭐';
+        }
 
         
         return /*html*/ `
@@ -78,7 +82,7 @@ class Modal extends Component {
                     <p class="modal-hike-location">${modalHike.location}</p>
                     <img class="modal-hike-picture" src="${modalHike.imgMedium}" onerror="this.onerror=null;this.src='/assets/placeholder-image.png';" alt="${modalHike.name}">
                     <div class="modal-stars-votes-difficulty">
-                        <span class="modal-num-stars">Rating: ${modalHike.stars}⭐s</span><span class="modal-num-votes">Votes: ${modalHike.starVotes}</span><span class="modal-difficulty">Difficulty: ${difficultyValues[modalHike.difficulty]}</span>
+                        <span class="modal-num-stars">Rating: ${stars}</span><span class="modal-num-votes">Votes: ${modalHike.starVotes}</span><span class="modal-difficulty">Difficulty: ${difficultyValues[modalHike.difficulty]}</span>
                     </div>
                     <p class="summary-decl">HIKE SUMMARY:</p>
                     <p class="modal-hike-summary">${modalHike.summary}</p>

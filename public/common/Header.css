@@ -42,6 +42,7 @@ button.log-out {
     padding: 5px;
     margin: 10px;
     text-align: center;
+    color: black;
 }
 
 button.log-out:hover {

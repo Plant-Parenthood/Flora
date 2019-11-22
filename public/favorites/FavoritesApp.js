@@ -3,6 +3,7 @@ import Header from '../common/Header.js';
 import Nav from '../common/Nav.js';
 import Footer from '../common/Footer.js';
 import HikesList from '../hikes/HikesList.js';
+import Modal from '../hikes/Modal.js';
 import { getFavorites } from '../services/hikes-api.js';
 
 class FindHikesApp extends Component {
@@ -16,7 +17,14 @@ class FindHikesApp extends Component {
 
         const listSection = dom.querySelector('.list-section');
 
-        const hikesList = new HikesList({ hikes: [], removeUnFavorites: true });
+        const hikesList = new HikesList({ 
+            hikes: [], 
+            removeUnFavorites: true,
+            renderModal: (modalHike, campgrounds, weather) => {
+                modal.update({ modalHike, campgrounds, weather });
+                modal.rootElement.hidden = false;
+            }
+        });
         listSection.appendChild(hikesList.renderDOM());
 
         getFavorites()
@@ -26,7 +34,16 @@ class FindHikesApp extends Component {
 
         const footer = new Footer();
         dom.appendChild(footer.renderDOM());
+
+        const modalSection = dom.querySelector('.modal-section');
+        const modal = new Modal({
+            modalHike: {},
+            campgrounds: [],
+        });
+        modalSection.appendChild(modal.renderDOM());
     }
+
+        
 
     renderHTML() {
         
@@ -35,9 +52,12 @@ class FindHikesApp extends Component {
                 <!-- header goes here -->
                 
                 <main>
-                        <section class="list-section">
-                            <!-- hikes list goes here -->     
-                        </section>
+                    <section class="list-section">
+                        <!-- hikes list goes here -->     
+                    </section>
+                    <section class="modal-section">
+                    <!-- modal goes here -->
+                    </section>
                 </main>
                 <!-- footer goes here -->
             </div>

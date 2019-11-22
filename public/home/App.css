@@ -53,10 +53,12 @@ label {
     display: inline-block;
     width: 80px;
     margin-right: 10px;
+    margin-top: 10px;
 }
 
 button {
-    background-color: white;
+    background-color: black;
+    color: white;
     border-radius: 7px;
     height: 35px;
     border: 1px solid black;
@@ -64,13 +66,14 @@ button {
 }
 
 button:hover {
-    color: white;
-    background-color: black;
+    color: black;
+    background-color: white;
     cursor: pointer;
 }
 
 button:active {
-    background-color: white;
+    background-color: black;
+    color: white;
 }
 
 input {

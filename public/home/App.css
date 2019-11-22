@@ -7,9 +7,20 @@ body {
     background: rgb(233, 233, 233);
 }
 
+.mthood {
+    width: 90%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+}
+
 section {
     max-width: 400px;
-    margin: 30px auto;
+    margin: 60px auto;
     background: white;
     padding: 30px;
     border-radius: 10px;
@@ -23,10 +34,6 @@ a {
 
 a:hover {
     color: rgb(151, 151, 151);
-}
-
-.nav {
-    margin-bottom: 60px;
 }
 
 form p {
@@ -77,4 +84,11 @@ input {
 
 .no-display {
     display: none;
+}
+
+
+@media (min-width: 450px) {
+    .nav {
+        margin-bottom: 60px;
+    }
 }

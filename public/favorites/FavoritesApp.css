@@ -12,6 +12,8 @@ form.search-form {
     margin-top: 60px;
 }
 
-.nav {
-    margin-bottom: 60px;
+@media (min-width: 450px) {
+    .nav {
+        margin-bottom: 60px;
+    }
 }

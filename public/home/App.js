@@ -110,8 +110,6 @@ class App extends Component {
         }
         const actualHTMLtoRender = token ? loggedInHTML : loginHTML;
 
-
-
         return /*html*/`
             <div>
                 <!-- header goes here -->

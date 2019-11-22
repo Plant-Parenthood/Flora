@@ -27,10 +27,6 @@ class HikesApp extends Component {
 
         const listSection = dom.querySelector('.list-section');
         
-        
-      
-        
-        
         const hikesList = new HikesList({ 
             hikes: [], 
             onSearchSubmit: (array) => {
@@ -44,8 +40,8 @@ class HikesApp extends Component {
                 const updatedProps = { hikes: searchedHikes };
                 hikesList.update(updatedProps);
             },
-            renderModal: (modalHike, campgrounds) => {
-                modal.update({ modalHike, campgrounds });
+            renderModal: (modalHike, campgrounds, weather) => {
+                modal.update({ modalHike, campgrounds, weather });
                 modal.rootElement.hidden = false;
             }    
         });
@@ -57,8 +53,6 @@ class HikesApp extends Component {
             campgrounds: [],
         });
         modalSection.appendChild(modal.renderDOM());
-        // const paging = new Paging();
-        // listSection.appendChild(paging.renderDOM());
 
         //event listener for search location
         const searchForm = dom.querySelector('.location-search');
@@ -72,9 +66,8 @@ class HikesApp extends Component {
                 searchForm.addEventListener('submit', async(event) => {
                     event.preventDefault();
                     const formData = new FormData(searchForm);
-                    console.log(formData, 'formData');
                     const searchLocation = formData.get('search');
-                    console.log(searchLocation, 'searchLocation');
+
                 
                     const loading2 = new Loading({ loading: true });
                     dom.appendChild(loading2.renderDOM());

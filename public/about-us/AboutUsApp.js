@@ -2,9 +2,6 @@ import Component from '../Component.js';
 import Header from '../common/Header.js';
 import Footer from '../common/Footer.js';
 import Nav from '../common/Nav.js';
-// !!!
-// TO-DO STILL! MODIFY THIS FOR PLANT APP! DELETE THIS LINE ONCE DONE!
-// !!!
 
 class AboutUsApp extends Component {
 

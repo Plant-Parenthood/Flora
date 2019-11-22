@@ -1,10 +1,15 @@
 import Component from '../Component.js';
+import WeatherItem from './WeatherItem.js';
+import CampgroundItem from './CampgroundItem.js';
 
 class Modal extends Component {
 
     onRender(modal) {
-        // const { campgrounds, renderModal } = this.props;
+        const { campgrounds, weather } = this.props;
         const closeButton = modal.querySelector('.close-button');
+        const weatherSection = modal.querySelector('.weather-section');
+        const campgroundSection = modal.querySelector('.campground-section');
+
         closeButton.addEventListener('click', () => {
             modal.hidden = true;
         });
@@ -14,6 +19,20 @@ class Modal extends Component {
                 modal.hidden = true;
             }
         };
+
+        if (weather){
+            weather.forEach(day => {
+                const weatherItem = new WeatherItem({ day });
+                weatherSection.appendChild(weatherItem.renderDOM());
+            });
+        }
+
+        if (campgrounds){
+            campgrounds.forEach(campground => {
+                const campgroundItem = new CampgroundItem({ campground });
+                campgroundSection.appendChild(campgroundItem.renderDOM());
+            });
+        }
     }
 
     renderHTML() {
@@ -70,7 +89,11 @@ class Modal extends Component {
                         <p class="modal-condition-details"><span class="bold-please">Condition details:</span> ${modalHike.conditionDetails}</p>
                     </fieldset>
                     <a class="modal-website-link" href="${modalHike.url}" target="_blank">Check out this trail's website!</a>
-                    <section>
+                    <p class="weather-decl">Upcoming weather:</p>    
+                    <section class="weather-section">
+                    </section>
+                    <p class="camping-decl">Camping nearby:</p>
+                    <section class="campground-section">
                         
                     </section>
                 </div>

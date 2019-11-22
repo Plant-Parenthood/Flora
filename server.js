@@ -20,13 +20,11 @@ const createAuthRoutes = require('./lib/auth/create-auth-routes');
 
 const authRoutes = createAuthRoutes({
     async selectUser(email) {
-        console.log(email);
         const result = await client.query(`
             SELECT id, email, hash, display_name as "displayName"
             FROM users
             WHERE email = $1;
         `, [email]);
-        console.log(result);
         return result.rows[0];
     },
     async insertUser(user, hash) {
@@ -59,7 +57,7 @@ app.use('/api', ensureAuth);
 // *** API Routes ***
 
 //location endpoint 
-app.get('/api/location', async (req, res) => {
+app.get('/api/location', async(req, res) => {
     try {
         const location = await geocodeApi.get(req.query.search);
         const hikes = await hikesApi.get({
@@ -75,7 +73,7 @@ app.get('/api/location', async (req, res) => {
     }
 });
 
-app.get('/api/hikes', async (req, res) => {
+app.get('/api/hikes', async(req, res) => {
 
     try {
         //const query = req.query;
@@ -105,14 +103,10 @@ app.get('/api/hikes', async (req, res) => {
     }
 });
 
-app.get('/api/campgrounds', async (req, res) => {
+app.get('/api/campgrounds', async(req, res) => {
 
     try {
-        //const query = req.query;
         const campgrounds = await campgroundsApi.get(req);
-
-        console.log('CAMPGROUNDS CAMPGROUNDS CAMPGROUNDS', campgrounds);
-
         res.json(campgrounds);
     }
 
@@ -124,11 +118,9 @@ app.get('/api/campgrounds', async (req, res) => {
     }
 });
 
-//endpoint for getting weather of the current day (will only happen when user clicks the "i" button for the modal)
-app.get('/api/weather', async (req, res) => {
+app.get('/api/weather', async(req, res) => {
     try {
         const weather = await weatherApi.get(req);
-        console.log('WEATHER', weather);
         res.json(weather);
     }
     catch (err) {
@@ -140,11 +132,10 @@ app.get('/api/weather', async (req, res) => {
 });
 
 //endpoint for saving hikes (will only happen when user favorites a hike)
-app.post('/api/hikes', async (req, res) => {
+app.post('/api/hikes', async(req, res) => {
     try {
         const hike = req.body;
 
-        //WE NEED TO CHANGE THIS ONCE WE INCORPORATE CAMPGROUNDS
         const campgrounds = req.body;
 
         const existingSavedHike = await client.query(`
@@ -176,9 +167,8 @@ app.post('/api/hikes', async (req, res) => {
     }
 });
 
-//
 //we might have to add this back in - TRUE as "isFavorite"
-app.get('/api/favorites', async (req, res) => {
+app.get('/api/favorites', async(req, res) => {
     try {
         const favorites = await client.query(`
             SELECT *
@@ -208,7 +198,7 @@ app.get('/api/favorites', async (req, res) => {
 });
 
 //add a hike to your faves
-app.post('/api/favorites', async (req, res) => {
+app.post('/api/favorites', async(req, res) => {
     try {
         const hike = req.body;
         const result = await client.query(`

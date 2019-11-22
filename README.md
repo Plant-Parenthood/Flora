@@ -40,7 +40,3 @@ MVP: A responsive app that enables a user to search a database of hikes by param
 3. I am visiting my folks in Maryland and have never gone hiking where they live now. I am interested in finding some hikes for us to go on that my family can all enjoy.
 
 4. I rarely plan a road trip in advance - instead, I want to drive to the closet location that has good hiking and great weather.  I want easy car camping in a quiet, peaceful location far from RVs.  I don't need amenities like flushing toilets or running water as I prefer a more rustic experience.  
-
-5. 
-
-6. 

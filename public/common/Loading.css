@@ -9,7 +9,5 @@
 }
 
 .loading-container img {
-    width: 200px;
-    border: 1px solid #aaa;
-    border-radius: 100px;
+    width: 300px;
 }

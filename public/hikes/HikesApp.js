@@ -28,8 +28,7 @@ class HikesApp extends Component {
         const listSection = dom.querySelector('.list-section');
         
         
-        // const paging = new Paging();
-        // listSection.appendChild(paging.renderDOM());
+      
         
         
         const hikesList = new HikesList({ 

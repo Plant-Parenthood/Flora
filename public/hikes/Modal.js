@@ -8,7 +8,7 @@ class Modal extends Component {
     onRender(modal) {
         const { campgrounds, weather } = this.props;
         const closeButton = modal.querySelector('.close-button');
-        //const directionsSection = modal.querySelector('.directions-section');
+        const directionsSection = modal.querySelector('.directions-section');
         const weatherSection = modal.querySelector('.weather-section');
         const campgroundSection = modal.querySelector('.campground-section');
 
@@ -35,9 +35,9 @@ class Modal extends Component {
                 campgroundSection.appendChild(campgroundItem.renderDOM());
             });
         }
-        /*const { modalHike } = this.props;
+        const { modalHike } = this.props;
         const directions = new Directions({ modalHike });
-        directionsSection.appendChild(directions.renderDOM());*/
+        directionsSection.appendChild(directions.renderDOM());
     }
 
     renderHTML() {

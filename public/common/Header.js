@@ -17,10 +17,6 @@ class Header extends Component {
     renderHTML() {
         const title = this.props.title || 'TRAMPS N\' CAMPS';
 
-        // !!!
-        // TO-DO STILL: MAKE THIS CUSTOMIZED FOR THE PLANTS APP! DELETE THIS LINE ONCE DONE!
-        // !!!
-
         return /*html*/`
             <header>
                 <div class="header-contents">

@@ -147,23 +147,24 @@
     border: 3px solid darkgreen;
     border-radius: 5px;
     background: darkseagreen;
+    text-align: center;
   }
 
   .modal-website-link:hover {
     padding: 30px;
-    margin: 10px auto;
+    margin: 25px auto;
     font-size: 1.5em;
     color: darkseagreen;
     border: 3px solid darkseagreen;
     border-radius: 5px;
     background: darkgreen;
     cursor: pointer;
+    text-align: center;
   }
 
   .weather-section, .campground-section {
       display: flex;
       flex-direction: row;
-      justify-content: space-between;
       overflow-x: scroll;
       overflow-y: hidden;
       width: 90%;

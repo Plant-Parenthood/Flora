@@ -8,8 +8,8 @@ class CampgroundItem extends Component {
         return /*html*/ `
             <div class="campground-item">
                 <p class="campground-name">${campground.name}</p>
-                <img src="${campground.imgUrl}" alt="${campground.name} image">
-                <a href="${campground.url}" target="_blank">Visit campground website!</a>
+                <img class="campground-img" src="${campground.imgUrl}" onerror="this.onerror=null;this.src='/assets/placeholder-image.png';" alt="${campground.name} image">
+                <a class="campground-website" href="${campground.url}" target="_blank">Visit campground website!</a>
             </div>
         `;
     }

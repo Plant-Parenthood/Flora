@@ -4,10 +4,6 @@ run();
 
 async function run() {
 
-    // !!!
-    // STILL TO DO: CREATE TABLES SPECIFIC FOR THE PLANT APP! DELETE THIS LINE ONCE PLANT APP SPECIFIC TABLES HAVE BEEN MADE!!!
-    // !!!
-
     try {
         // run a query to create tables
         await client.query(`
@@ -46,5 +42,4 @@ async function run() {
         // success or failure, need to close the db connection
         client.end();
     }
-
 }

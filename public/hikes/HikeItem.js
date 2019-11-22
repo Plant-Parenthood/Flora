@@ -8,7 +8,6 @@ class HikeItem extends Component {
     onRender(li) {
         const { hike, renderModal } = this.props;
 
-        //Favorite functionality same as source- SHOULD WE CHANGE?
         const removeUnFavorites = this.props.removeUnFavorites;
         const favoriteButton = li.querySelector('.favorite-heart');
         const infoButton = li.querySelector('.info-button');
@@ -36,17 +35,14 @@ class HikeItem extends Component {
 
         infoButton.addEventListener('click', async() => {
             const campgrounds = await getCampgrounds(hike.latitude, hike.longitude);
-            console.log('SHOULD BE OUR CAMPGROUNDS', campgrounds);
 
             const weather = await getWeather(hike.latitude, hike.longitude);
-            console.log(weather, 'weather');
 
             renderModal(hike, campgrounds, weather);
         });
     }
 
     renderHTML() {
-        //what props do we need for showing user info??
         const { hike } = this.props;
         const heartClass = hike.isFavorite ? 'is-favorite' : '';
 

@@ -84,7 +84,6 @@ class App extends Component {
     }
 
     renderHTML() {
-        // TO DO: update what is shown to user based on sign in status
         const loginHTML = 
             `<section class="no-display" id="signup-container">
             <p class="errors"></p>

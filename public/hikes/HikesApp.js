@@ -44,8 +44,8 @@ class HikesApp extends Component {
                 const updatedProps = { hikes: searchedHikes };
                 hikesList.update(updatedProps);
             },
-            renderModal: (modalHike, campgrounds) => {
-                modal.update({ modalHike, campgrounds });
+            renderModal: (modalHike, campgrounds, weather) => {
+                modal.update({ modalHike, campgrounds, weather });
                 modal.rootElement.hidden = false;
             }    
         });

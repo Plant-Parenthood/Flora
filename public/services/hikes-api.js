@@ -32,14 +32,14 @@ async function fetchWithError(url, options) {
     }
 }
 
-
-
 export async function getHikes(search) {
     if (!search) {
         return new Promise((resolve) => {
             navigator.geolocation.getCurrentPosition(async function(position) {
                 let lat = position.coords.latitude;
-                let lon = position.coords.longitude;
+                let lon = position.coords.longitude;                
+                localStorage.setItem('LAT', JSON.stringify(lat));
+                localStorage.setItem('LON', JSON.stringify(lon));
                 const url = `${BASE_URL}/hikes?lat=${lat}&lon=${lon}`;
                 resolve(await fetchWithError(url));
             });

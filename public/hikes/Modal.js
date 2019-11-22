@@ -1,12 +1,14 @@
 import Component from '../Component.js';
 import WeatherItem from './WeatherItem.js';
 import CampgroundItem from './CampgroundItem.js';
+import Directions from './Directions.js';
 
 class Modal extends Component {
 
     onRender(modal) {
         const { campgrounds, weather } = this.props;
         const closeButton = modal.querySelector('.close-button');
+        const directionsSection = modal.querySelector('.directions-section');
         const weatherSection = modal.querySelector('.weather-section');
         const campgroundSection = modal.querySelector('.campground-section');
 
@@ -33,6 +35,9 @@ class Modal extends Component {
                 campgroundSection.appendChild(campgroundItem.renderDOM());
             });
         }
+        const { modalHike } = this.props;
+        const directions = new Directions({ modalHike });
+        directionsSection.appendChild(directions.renderDOM());
     }
 
     renderHTML() {
@@ -63,6 +68,10 @@ class Modal extends Component {
             'blueBlack': 'Hard',
             'black': 'Hardest'
         };
+        let stars = '';
+        for (let i = 0; i < Math.round(modalHike.stars); i++){
+            stars += '⭐';
+        }
 
         
         return /*html*/ `
@@ -73,7 +82,7 @@ class Modal extends Component {
                     <p class="modal-hike-location">${modalHike.location}</p>
                     <img class="modal-hike-picture" src="${modalHike.imgMedium}" onerror="this.onerror=null;this.src='/assets/placeholder-image.png';" alt="${modalHike.name}">
                     <div class="modal-stars-votes-difficulty">
-                        <span class="modal-num-stars">Rating: ${modalHike.stars}⭐s</span><span class="modal-num-votes">Votes: ${modalHike.starVotes}</span><span class="modal-difficulty">Difficulty: ${difficultyValues[modalHike.difficulty]}</span>
+                        <span class="modal-num-stars">Rating: ${stars}</span><span class="modal-num-votes">Votes: ${modalHike.starVotes}</span><span class="modal-difficulty">Difficulty: ${difficultyValues[modalHike.difficulty]}</span>
                     </div>
                     <p class="summary-decl">HIKE SUMMARY:</p>
                     <p class="modal-hike-summary">${modalHike.summary}</p>
@@ -88,7 +97,9 @@ class Modal extends Component {
                         <p class="modal-condition-status"><span class="bold-please">Trail status:</span> ${modalHike.conditionStatus}<p>
                         <p class="modal-condition-details"><span class="bold-please">Condition details:</span> ${modalHike.conditionDetails}</p>
                     </fieldset>
-                    <a class="modal-website-link" href="${modalHike.url}" target="_blank">Check out this trail's website!</a>
+                    <a class="modal-website-link" href="${modalHike.url}" target="_blank">Trail Website</a>
+                    <section class="directions-section">
+                    </section>
                     <p class="weather-decl">Upcoming weather:</p>    
                     <section class="weather-section">
                     </section>

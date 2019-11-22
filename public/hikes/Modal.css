@@ -86,6 +86,53 @@
     margin: 10px auto;
   }
 
+  .directions-section{
+    width: 300px;
+    height: 100px;
+  }
+
+  .directions-div{
+    width: 300px;
+    height: 100px;
+    text-align: center;
+  }
+
+  .car{
+    width: 100px;
+    height: 50px;
+    font-size: 20px;
+    font-weight: bolder;
+    background: blue;
+    padding: 5px;
+    color: lightskyblue;
+    border: solid 2px lightskyblue;
+    border-radius: 10px;
+  }
+
+  .transit{
+    width: 100px;
+    height: 50px;
+    font-size: 20px;
+    font-weight: bolder;
+    background: lightgreen;
+    padding: 5px;
+    color: darkgreen;
+    border: solid 2px darkgreen;
+    border-radius: 10px;
+  }
+
+  .human{
+    width: 100px;
+    height: 50px;
+    font-size: 20px;
+    font-weight: bolder;
+    background: purple;
+    padding: 5px;
+    color: lightpink;
+    border: solid 2px lightpink;
+    border-radius: 10px;
+}
+
   .modal-hike-summary {
     text-align: center;
     padding: 15px;
@@ -170,7 +217,7 @@
       width: 90%;
   }
 
-  .weather-decl, .camping-decl {
+  .weather-decl, .camping-decl, .directions-decl {
       text-align: center;
       font-size: 1.5em;
       margin: 10px auto;

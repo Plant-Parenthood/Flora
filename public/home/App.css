@@ -16,6 +16,19 @@ section {
     border: 1px solid #aaa;
 }
 
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    color: rgb(151, 151, 151);
+}
+
+.nav {
+    margin-bottom: 60px;
+}
+
 form p {
     margin: 10px 0;
 }
@@ -59,6 +72,7 @@ input {
     border: 1px solid black;
     padding-left: 15px;
     height: 35px;
+    width: 200px;
 } 
 
 .no-display {

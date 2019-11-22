@@ -1,9 +1,3 @@
-@media (max-width: 450px) {
-    .footer {
-        display: none;
-    }
-}
-
 form.search-form {
     display: none;
 }
@@ -15,5 +9,11 @@ form.search-form {
 @media (min-width: 450px) {
     .nav {
         margin-bottom: 60px;
+    }
+}
+
+@media (max-width: 450px) {
+    .footer {
+        display: none;
     }
 }

@@ -17,13 +17,13 @@ ul {
     justify-content: center;
     align-items: center;
     width: 100%;
-
+    margin: 0 auto 40px auto;
 }
 
 li {
     display: flex;
     align-items: center;
-    width: 500px;
+    width: 90%;
     margin: 10px;
     font-size: 15px;
     padding: 10px;
@@ -32,5 +32,21 @@ li {
 li img {
     width: 150px;
     border-radius: 100px;
-    margin-right: 12px;
+    margin-right: 20px;
+}
+
+@media (min-width: 450px) {
+    .nav {
+        margin-bottom: 60px;
+    }
+
+    li {
+        width: 500px;
+    }
+}
+
+@media (max-width: 450px) {
+    .footer {
+        display: none;
+    }
 }

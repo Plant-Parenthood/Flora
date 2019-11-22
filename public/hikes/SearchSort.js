@@ -45,10 +45,10 @@ class Search extends Component {
             makeLengthArray();
 
             const foundInTwo = filteredDifficultyResultsArray.filter(element => filteredRatingResultsArray.includes(element));
-            
-            const foundInAll = foundInTwo.filter(element => filteredLengthResultsArray.includes(element));
 
-            onSearchSubmit(foundInAll);
+            const bigMamaArray = foundInTwo.filter(element => filteredLengthResultsArray.includes(element));
+
+            onSearchSubmit(bigMamaArray);
 
         });
 
@@ -77,7 +77,7 @@ class Search extends Component {
         return /*html*/`
         <div>
             <form class="search-form">
-                
+
                 <section class="difficulty">
                     <label>Difficulty:</label>
                     <select name="difficulty">

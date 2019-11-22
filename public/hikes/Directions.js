@@ -10,7 +10,7 @@ class Directions extends Component {
             const lonOrigin = JSON.parse(localStorage.getItem('LON'));
     
             directionsHtml = `
-                <p class="directions-decl">Get Directions:</p>
+                <p class="directions-decl">Get there by: </p>
                 <a class="car" href="https://www.google.com/maps/dir/?api=1&origin=${latOrigin},${lonOrigin}&destination=${modalHike.latitude},${modalHike.longitude}" target="_blank">Car</a>
                 <a class="transit" href="https://www.google.com/maps/dir/?api=1&origin=${latOrigin},${lonOrigin}&destination=${modalHike.latitude},${modalHike.longitude}&travelmode=transit" target="_blank">Transit</a>
                 <a class="human" href="https://www.google.com/maps/dir/?api=1&origin=${latOrigin},${lonOrigin}&destination=${modalHike.latitude},${modalHike.longitude}&travelmode=walking" target="_blank">Human</a>

@@ -12,7 +12,7 @@ class FindHikesApp extends Component {
         dom.prepend(header.renderDOM());
 
         const nav = new Nav();
-        dom.appendChild(nav.renderDOM());
+        dom.appendChild(nav.renderDOM());       
 
         const listSection = dom.querySelector('.list-section');
 
@@ -23,12 +23,13 @@ class FindHikesApp extends Component {
             .then(hikes => {
                 hikesList.update({ hikes: hikes });
             });
-        
+
         const footer = new Footer();
         dom.appendChild(footer.renderDOM());
     }
 
     renderHTML() {
+        
         return /*html*/`
             <div>
                 <!-- header goes here -->

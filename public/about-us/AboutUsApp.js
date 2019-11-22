@@ -42,8 +42,8 @@ class AboutUsApp extends Component {
                             <p>Lisa loves all things trails and prefers using physical maps to navigate the great outdoors. She invented the competitive leisure sport of Adventure Tubing, which consists of trail running with inflated innertubes to alpine lakes.</p>
                         </li>
                         <li>
-                            <img src="../assets/brittany_square.jpg" alt="Tali">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                            <img src="../assets/tali_square.jpg" alt="Tali">
+                            <p>Tali would rather be in a forest right now. She enjoys petting ferns and shouting positive affirmations at trees.</p>
                         </li>
                         <li>
                             <img src="../assets/tess_square.jpg" alt="Tess">

@@ -15,6 +15,10 @@
 .bold {
     font-weight: bold;
 }
+sup{
+    vertical-align: text-bottom;
+    font-size: xx-small;
+}
 
 .weather-day {
     text-align: center;

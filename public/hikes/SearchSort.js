@@ -29,7 +29,7 @@ class Search extends Component {
 
             makeDifficultyArray();
 
-            const filteredRatingResultsArray = hikes.filter(hike => (hike.stars >= formData.get('rating')));
+            const filteredRatingResultsArray = hikes.filter(hike => (hike.stars >= Math.round(formData.get('rating'))));
 
             let filteredLengthResultsArray;
 

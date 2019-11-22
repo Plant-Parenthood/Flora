@@ -25,17 +25,18 @@ class FindHikesApp extends Component {
                 hikesList.update({ hikes: hikes });
             });
 
-        // if (toString(hikesList.props.hikes) === toString([])) {
-        //     console.log(hikesList.props.hikes);
-        //     const noFaves = new NoFaves();
-        //     dom.appendChild(noFaves.renderDOM());
-        // }
+        if (toString(hikesList.props.hikes) === toString([])) {
+            console.log(hikesList.props.hikes);
+            const noFaves = new NoFaves();
+            dom.appendChild(noFaves.renderDOM());
+        }
         
         const footer = new Footer();
         dom.appendChild(footer.renderDOM());
     }
 
     renderHTML() {
+    
         
         return /*html*/`
             <div>

@@ -32,8 +32,6 @@ async function fetchWithError(url, options) {
     }
 }
 
-
-
 export async function getHikes(search) {
     if (!search) {
         return new Promise((resolve) => {

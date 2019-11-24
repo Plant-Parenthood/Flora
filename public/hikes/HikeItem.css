@@ -52,6 +52,7 @@ a:hover {
     background: none;
     font-size: 3em;
     color: #ccc;
+    font-weight: bolder;
 }
 
 .favorite-heart.is-favorite {

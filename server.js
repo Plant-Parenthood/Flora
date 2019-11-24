@@ -37,7 +37,7 @@ const authRoutes = createAuthRoutes({
     }
 });
 
-// Application Setup
+// application Setup
 const app = express();
 const PORT = process.env.PORT || 3000;
 app.use(morgan('dev')); // http logging
@@ -48,15 +48,11 @@ app.use(express.json()); // enable reading incoming json data
 // setup authentication routes
 app.use('/api/auth', authRoutes);
 
-// everything that starts with "/api" below here requires an auth token!
+// everything that starts with "/api" below here requires an auth token
 app.use('/api', ensureAuth);
-
-
-
 
 // *** API Routes ***
 
-//location endpoint 
 app.get('/api/location', async(req, res) => {
     try {
         const location = await geocodeApi.get(req.query.search);
@@ -188,7 +184,7 @@ app.get('/api/favorites', async(req, res) => {
         });
         res.json(parsedRows);
     }
-
+        
     catch (err) {
         console.log(err);
         res.status(500).json({
@@ -206,7 +202,7 @@ app.post('/api/favorites', async(req, res) => {
             VALUES ($1, $2)
             RETURNING user_id as "userId", hike_id as "hikeId";
         `, [req.userId, hike.id]);
-
+        console.log(result.rows[0]);
         res.json(result.rows[0]);
     }
 

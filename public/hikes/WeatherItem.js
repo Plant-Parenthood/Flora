@@ -14,8 +14,8 @@ class WeatherItem extends Component {
         <div class="weather-item">
             <p class="weather-day">${dayDisplay}</p>
             <p class="weather-summary">${day.summary}</p>
-            <p class="high"><span class="bold">High:</span> ${(day.temperatureHigh).toFixed(0)}°</p>
-            <p class="low"><span class="bold">Low:</span> ${(day.temperatureLow).toFixed(0)}°</p>
+            <p class="high"><span class="bold">High:</span> ${(day.temperatureHigh).toFixed(0)}°<sup>F</sup></p>
+            <p class="low"><span class="bold">Low:</span> ${(day.temperatureLow).toFixed(0)}°<sup>F</sup></p>
             <p class="precip"><span class="bold">Precip:</span> ${percentPrecip}</p>
             <p class="sunrise"><span class="bold">Sunrise:</span> ${sunriseTime}</p>
             <p class="sunset"><span class="bold">Sunset:</span> ${sunsetTime}</p>

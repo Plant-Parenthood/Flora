@@ -4,10 +4,6 @@ run();
 
 async function run() {
 
-    // !!!
-    // STILL TO DO: CREATE TABLES SPECIFIC FOR THE PLANT APP! DELETE THIS LINE ONCE PLANT APP SPECIFIC TABLES HAVE BEEN MADE!!!
-    // !!!
-
     try {
         // run a query to create tables
         await client.query(`
@@ -17,25 +13,23 @@ async function run() {
                 hash VARCHAR(512) NOT NULL,
                 display_name VARCHAR(256) NOT NULL
             );
-        
-            CREATE TABLE hikes (
+            CREATE TABLE favorites (
                 id SERIAL PRIMARY KEY,
+                hike_id INTEGER NOT NULL,
+                user_id INTEGER NOT NULL REFERENCES users(id)
+            );
+
+            CREATE TABLE saved_hikes (
+                id INTEGER PRIMARY KEY,
                 hike_obj VARCHAR(4000) NOT NULL,
-                campgrounds_arr VARCHAR(255)
+                campgrounds_arr VARCHAR(4000)
             );
 
             CREATE TABLE campgrounds (
                 id SERIAL PRIMARY KEY,
                 campground_obj VARCHAR(4000) NOT NULL
             );
-            
-            CREATE TABLE favorites (
-                id SERIAL PRIMARY KEY,
-                user_id INTEGER NOT NULL REFERENCES users(id),
-                hike_id INTEGER NOT NULL
-            );
 
-            
         `);
 
         console.log('create tables complete');
@@ -48,5 +42,4 @@ async function run() {
         // success or failure, need to close the db connection
         client.end();
     }
-    
 }

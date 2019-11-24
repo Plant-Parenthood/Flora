@@ -1,7 +1,7 @@
 {
   "name": "flora",
   "version": "1.0.0",
-  "description": "MVP: A responsive app that enables a user to search a database of plants and create a collection of plants to refer back to later for various purposes determined by the user:\r     1. Login Page\r     2. Plants List Page\r     3. User Favorites Page\r     4. Details Page\r     5. About Us Page",
+  "description": "MVP: A responsive app that enables a user to search a database of hikes and create a collection of hikes to refer back to later for various purposes determined by the user:\r     1. Login Page\r     2. Hikes List Page\r     3. User Favorites Page\r     4. Details Page\r     5. About Us Page",
   "main": "server.js",
   "directories": {
     "lib": "lib",
@@ -36,7 +36,7 @@
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
     "morgan": "^1.9.1",
-    "pg": "^7.13.0",
+    "pg": "^7.14.0",
     "superagent": "^5.1.0"
   },
   "devDependencies": {},

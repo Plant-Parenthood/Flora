@@ -1,19 +1,19 @@
 import Component from '../Component.js';
-
 class Search extends Component {
 
-    onRender(form) {
+    onRender(dom) {
+        const form = dom.querySelector('.search-form');
+        const resetButton = dom.querySelector('.reset-button');
+        const onSearchSubmit = this.props.onSearchSubmit;
 
-        const { hikes } = this.props;
-       
         form.addEventListener('submit', event => {
             event.preventDefault();
+            //const { hikes } = this.props;
+            const hikes = JSON.parse(localStorage.getItem('allHikes'));
             const formData = new FormData(form);
 
             localStorage.setItem('difficulty', formData.get('difficulty'));
-        
             localStorage.setItem('rating', formData.get('rating'));
-
             localStorage.setItem('length', formData.get('length'));
 
             let filteredDifficultyResultsArray;
@@ -29,71 +29,77 @@ class Search extends Component {
 
             makeDifficultyArray();
 
-            const filteredRatingResultsArray = hikes.filter(hike => (hike.stars >= formData.get('rating')));
+            const filteredRatingResultsArray = hikes.filter(hike => (hike.stars >= Math.round(formData.get('rating'))));
 
             let filteredLengthResultsArray;
 
             const makeLengthArray = () => {
                 if (!formData.get('length')) {
                     filteredLengthResultsArray = hikes;
-                    console.log(formData.get('length'), 'formData length');
-                    console.log(filteredLengthResultsArray, 'filter length with nothing');
                 } else {
                     filteredLengthResultsArray = hikes.filter(hike => (hike.length <= formData.get('length')));
-                    console.log(filteredLengthResultsArray, 'filtered length with something');
                 }
                 return filteredLengthResultsArray;
             };
 
             makeLengthArray();
 
-
             const foundInTwo = filteredDifficultyResultsArray.filter(element => filteredRatingResultsArray.includes(element));
 
+            const bigMamaArray = foundInTwo.filter(element => filteredLengthResultsArray.includes(element));
 
-            
-            const foundInAll = foundInTwo.filter(element => filteredLengthResultsArray.includes(element));
-
-            console.log(foundInAll, 'foundinall');
+            onSearchSubmit(bigMamaArray);
 
         });
+
+        resetButton.addEventListener('click', () => {
+            const hikes = JSON.parse(localStorage.getItem('allHikes'));
+            onSearchSubmit(hikes);
+            form.reset();
+        }
+        );
     }
 
     renderHTML() {
-        const hashQuery = window.location.hash.slice(1);
-        const searchParams = new URLSearchParams(hashQuery);
-        const search = searchParams.get('search') || '';
+        const difficulty = localStorage.getItem('difficulty') || 'any';
 
+        const optionValues = [['any', 'All Levels'], ['green', 'Easiest'], ['greenBlue', 'Easy'], ['blue', 'Medium'], ['blueBlack', 'Hard'], ['black', 'Hardest']];
 
-        //we need to add sort functionality
-        //the filter function should be updated to reflect the API better.
+        const optionValuesString = optionValues.map(array => `<option value=${array[0]} ${difficulty === array[0] ? 'selected=true' : ''}>${array[1]}</option>`).reduce((acc, optionString) => acc + optionString, '');
+
+        const rating = parseInt(localStorage.getItem('rating')) || 1;
+
+        const ratingsArray = [1, 2, 3, 4, 5];
+
+        const ratingValuesString = ratingsArray.map(value => `<option value=${value} ${rating === value ? 'selected=true' : ''}>${value}</option>`).reduce((acc, valuesString) => acc + valuesString, '');
+
+        const length = parseInt(localStorage.getItem('length'));
         return /*html*/`
+        <div>
             <form class="search-form">
-                <input name="search" value="${search}">
-                <label>Difficulty:
-                <select name="difficulty">
-                    <option value="any">All Levels</option>
-                    <option value="green">Easiest</option>
-                    <option value="greenBlue">Easy</option>
-                    <option value="blue">Medium</option>
-                    <option value="blueBlack">Hard</option>
-                    <option value="black">Hardest</option>
-                </select>
-                </label>
-                <label>Minimum Rating:
-                    <select name="rating">
-                        <option value=1>1</option>
-                        <option value=2>2</option>
-                        <option value=3>3</option>
-                        <option value=4>4</option>
-                        <option value=5>5</option>
+
+                <section class="difficulty">
+                    <label>Difficulty:</label>
+                    <select name="difficulty">
+                        ${optionValuesString}
                     </select>
-                </label>
-                <label>Max Length
-                <input type="number" name="length" value="length" placeholder=0>
-                <button>🔍</button>
-                <button><a href = "../hikes.html">Reset Your Search</a></button>
+                </section>
+                <section class="rating">
+                    <label>Minimum Rating:</label>
+                        <select name="rating">
+                        ${ratingValuesString}
+                        </select>
+                </section>
+                <section class="length">
+                    <label>Max Length:</label>
+                    <input class="max-length" type="number" min="0" name="length" value=${length}> mi.
+                </section>
+                <section class="buttons">
+                    <button class="filter-button">Filter</button>
+                    <button class="reset-button"><a class="reset" href="../hikes.html">Reset</a></button>
+                </section>
             </form>
+        </div>
         `;
     }
 }

@@ -12,10 +12,7 @@
     border: 1px solid #aaa;
     background-color: white;
     transition: opacity 300ms ease-out;
-}
-
-summary {
-    line-height: 25px;
+    margin: 0 auto 1px auto;
 }
 
 .hike-item img {
@@ -25,17 +22,17 @@ summary {
     border-radius: 10px;
 }
 
-.hike-item img:hover {
-    opacity: 0.8;
-}
-
 .hike-name {
     display: flex;
     justify-content: center;
     display: block;
     margin: 10px auto;
     font-size: 1.3em;
-    font-weight: bold;
+    font-family: 'Calistoga', cursive;
+}
+
+summary {
+    line-height: 25px;
 }
 
 a {
@@ -47,7 +44,7 @@ a:hover {
     color: rgb(151, 151, 151);
 }
 
-.favorite-star {
+.favorite-heart {
     cursor: pointer;
     user-select: none;
     border: 0;
@@ -55,44 +52,32 @@ a:hover {
     background: none;
     font-size: 3em;
     color: #ccc;
-    display: flex;
-    align-self: flex-end;
 }
 
-.favorite-star.is-favorite {
+.favorite-heart.is-favorite {
     color: rgb(185, 70, 70);
+}
+
+.info-button {
+    cursor: pointer;
+    user-select: none;
+    border: 0;
+    outline: 0;
+    background: none;
+    font-size: 2em;
+    color: rgb(0, 0, 0);
+}
+
+.info-button:hover {
+    color: #ccc;
+}
+
+.fav-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .fade {
     opacity: 0;
 }
-
-/* .hike-item {
-    width: 300px;
-    border-radius: 10px;
-    padding: 0px 20px 20px 20px;
-    border: 2px solid rgba(122, 122, 122, 0.8);
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-    background-color: white;
-}
-
-.hike-item img {
-    position: relative;
-    float: left;
-    height: 150px;
-    background-position: 50% 50%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    padding: 10px;
-} */
-
-/* .hike-item hike {
-    margin-top: 10px;   
-    padding: 3px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 0.9em;
-} */

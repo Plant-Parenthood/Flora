@@ -15,17 +15,24 @@ class Header extends Component {
     }
 
     renderHTML() {
-        const title = this.props.title || 'HIKES HIKES HIKES';
+        const title = this.props.title || 'TRAMPS N\' CAMPS';
 
-        // !!!
-        // TO-DO STILL: MAKE THIS CUSTOMIZED FOR THE PLANTS APP! DELETE THIS LINE ONCE DONE!
-        // !!!
+        let token = '';
+        const json = localStorage.getItem('USER');
+        if (json) {
+            const user = JSON.parse(json);
+            token = user.token;
+        }
+        const actualHTMLtoRender = token ? `<button class="log-out">Log Out</button>` : ``;
+
 
         return /*html*/`
             <header>
-                <img class="logo" src="./assets/hike-icon.jpg" alt="Hike Logo">
-                <h1>${title}</h1>
-                <button class="log-out">Log out!</button>
+                <div class="header-contents">
+                    <img class="logo" src="./assets/hike-icon-white.png" alt="Hike Logo">
+                    <h1>${title}</h1>
+                    ${actualHTMLtoRender}
+                </div>
             </header>
         `;
     }

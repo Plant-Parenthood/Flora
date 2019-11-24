@@ -1,4 +1,4 @@
-import Component from '../src/components/Component.js';
+import Component from '../Component.js';
 
 class Loading extends Component {
     renderHTML() {
@@ -9,7 +9,7 @@ class Loading extends Component {
         
         return /*html*/`
             <div class="loading-container">
-                <img src="assets/loading.gif">
+                <img src="assets/giphy.gif">
             </div>
         `;
     }

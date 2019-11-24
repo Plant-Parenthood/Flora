@@ -1,46 +1,48 @@
-# Project Scope:
+# Tramps and Camps
+## Version 1.0.0 
+MVP reached, basic functionality with current location.
+## Version 1.1.0
+Launch version including search location, weather data, campsite data, and directions.
 
-MVP: A responsive app that enables a user to search a database of hikes by parameters such as difficulty, length, and distance from current location, see nearby campsites, and create a collection(s) of hikes that are saved for future reference.
-    1. Login Page
-    2. Hikes List Page
-    3. User Favorites Page
-    4. Details Page
-    5. About Us Page
-# Conflict plan:
+# Team Members:
+Brittany Houtz, Dan Meloy, JBJ Kansagot, Lisa Carpenter, Tali Avni, Tess Lameyer
 
-1. What will your group do when it encounters conflict?
-    - Use clarifying questions to be sure that the situation is understood
-    - Direct addressal, whether on an individual or group scale
-    - Assume good faith of people
-    - Take time and space when necessary
-    - Feel empowered to speak. It’s better for everyone to know if something is up!
-    - Come from a place of empathy
-2. How will we raise concerns to members who are not adequately contributing?
-    - Approach that person in good faith
-    - Make sure they feel they have something to work on/contribute
-3. What is the process to resolve conflicts/when will it escalate?
-    - If we feel that we have spent too much time on the conflict we will seek outside input
+## Project Description
+MVP: A responsive app that enables a user to find hikes either based on current location or a searched location. App will return information about hikes including length, difficulty, and rating as well as distance and drive time from current location, current weather, and camping options. The user has the ability to filter hikes by rating, difficulty and max length. Additionally, the user has the ability to save favorite hikes for later.
 
-# Communication plan:
+## Problem Domain
+Frequently outdoor enthusiasts want to find new hikes close to home or in a place that they are visiting. A few apps exist to help them find this information, but none also include weather information for a given period of time and information about the closest campsites.
 
-1. How will you communicate after hours and on the weekend?
-    - Slack
-2. What is your strategy for ensuring everyone’s voices are heard?
-    - Morning/afternoon/evening stand-up check-ins
-3. How will you ensure that you are creating a safe environment where everyone feels comfortable speaking up?
-    - Regular check-ins, good communication, use of human empathy
-    - We had a discussion about our communication styles to make sure everyone has verbally confirmed that they are able to speak up and that others know any “quirks” about their communication styles or preferences
+## Libraries and Frameworks
+This app makes use of the following dependencies -
+1. Express
+2. CORS
+3. PG
+4. JSON Web Token
+4. BCRYPT.js
+5. Morgan
+6. Superagent
+7. dotenv
 
-# User-stories:
+## Endpoints
 
-1. As a backpacker, I want to be able to plan my drive to a hiking trail and see where I can camp near the trail using the same app rather than using several apps and websites together to plan my trip. (MVP)
+## Database Schemas
 
-2. 
 
-3. 
+# Initial Project Scope:
 
-4. 
+MVP: A responsive app that enables a user to search a database of hikes by parameters such as difficulty, length, and distance from current location, see nearby campsites, and create a collection(s) of hikes that are saved for future reference. 
+1. Login Page 
+2. Hikes List Page
+3. User Favorites Page 
+4. Details Page 
+5. About Us Page
+    
 
-5. 
+# Copyright 2019 Plant Parenthood
 
-6. 
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

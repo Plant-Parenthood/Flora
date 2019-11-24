@@ -59,7 +59,7 @@ class HikeItem extends Component {
             <li class="hike-item">
                 <section class="fav-info">
                     <button class="info-button">ⓘ</button>
-                    <button class="favorite-heart ${heartClass}">♥❤🖤♡</button>
+                    <button class="favorite-heart ${heartClass}">♡</button>
                 </section>
                     <img src="${hike.imgMedium}" onerror="this.onerror=null;this.src='/assets/placeholder-image.png';">
                     <h2 class="hike-name">${hike.name}</h2>

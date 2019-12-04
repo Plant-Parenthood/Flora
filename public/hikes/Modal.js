@@ -12,24 +12,24 @@ class Modal extends Component {
         const weatherSection = modal.querySelector('.weather-section');
         const campgroundSection = modal.querySelector('.campground-section');
 
-        closeButton.addEventListener('click', () => {
-            modal.hidden = true;
-        });
+        const hideModal = () => { modal.hidden = true; };
 
-        window.onclick = function(event) {
-            if (event.target === modal) {
-                modal.hidden = true;
+        closeButton.addEventListener('click', hideModal);
+
+        window.onclick = function (event) {
+            if (event.target === modal) { // nice!
+                hideModal();
             }
         };
 
-        if (weather){
+        if (weather) {
             weather.forEach(day => {
                 const weatherItem = new WeatherItem({ day });
                 weatherSection.appendChild(weatherItem.renderDOM());
             });
         }
 
-        if (campgrounds){
+        if (campgrounds) {
             campgrounds.forEach(campground => {
                 const campgroundItem = new CampgroundItem({ campground });
                 campgroundSection.appendChild(campgroundItem.renderDOM());
@@ -45,21 +45,22 @@ class Modal extends Component {
         const { modalHike } = this.props;
         let timeString;
         let conditionTime;
-        
-        if (modalHike.conditionDate){
+
+        if (modalHike.conditionDate) {
             timeString = modalHike.conditionDate.slice(0, 10);
 
-            conditionTime = modalHike.conditionDate === '1970-01-01 00:00:00' ? 'Condition information unavailable' : 'Trail conditions as of ' + timeString; 
+            conditionTime = modalHike.conditionDate === '1970-01-01 00:00:00' ? 'Condition information unavailable' : `Trail conditions as of ${timeString}`;
 
-            if (modalHike.conditionStatus === 'Unknown'){
+            if (modalHike.conditionStatus === 'Unknown') { // wow, nice job working around this API data weirdness
                 modalHike.conditionStatus = 'Sorry, trail status unknown';
             }
 
-            if (modalHike.conditionDetails === null){
+            if (modalHike.conditionDetails === null) {
                 modalHike.conditionDetails = 'Sorry, condition details unknown';
             }
         }
 
+        // seems like you could import this map from HikeItem.js
         const difficultyValues = {
             'any': 'All Levels',
             'green': 'Easiest',
@@ -69,11 +70,11 @@ class Modal extends Component {
             'black': 'Hardest'
         };
         let stars = '';
-        for (let i = 0; i < Math.round(modalHike.stars); i++){
+        for (let i = 0; i < Math.round(modalHike.stars); i++) {
             stars += '⭐';
         }
 
-        
+
         return /*html*/ `
             <div class="modal" hidden>
                 <div class="modal-content">

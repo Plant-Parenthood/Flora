@@ -26,12 +26,12 @@ class HikesApp extends Component {
         dom.appendChild(footer.renderDOM());
 
         const listSection = dom.querySelector('.list-section');
-        
-        const hikesList = new HikesList({ 
-            hikes: [], 
+
+        const hikesList = new HikesList({
+            hikes: [],
             onSearchSubmit: (array) => {
                 let searchedHikes;
-                if (!array){
+                if (!array) {
                     searchedHikes = this.state.hikes;
                 }
                 else {
@@ -43,10 +43,10 @@ class HikesApp extends Component {
             renderModal: (modalHike, campgrounds, weather) => {
                 modal.update({ modalHike, campgrounds, weather });
                 modal.rootElement.hidden = false;
-            }    
+            }
         });
         listSection.appendChild(hikesList.renderDOM());
-        
+
         const modalSection = dom.querySelector('.modal-section');
         const modal = new Modal({
             modalHike: {},
@@ -57,36 +57,36 @@ class HikesApp extends Component {
         //event listener for search location
         const searchForm = dom.querySelector('.location-search');
 
-        const loadHikes = async() => {
+        const getSetAndUpdateHikes = async (searchLocation) => {
+            try {
+                const hikes = await getHikes(searchLocation);
+                localStorage.setItem('allHikes', JSON.stringify(hikes));
+                hikesList.update({ hikes });
+            }
+
+            catch (err) {
+                console.log(err);
+            }
+        }
+        const loadHikes = async () => {
             try {
                 const hikes = await getHikes();
                 localStorage.setItem('allHikes', JSON.stringify(hikes));
                 hikesList.update({ hikes: hikes });
 
-                searchForm.addEventListener('submit', async(event) => {
+                searchForm.addEventListener('submit', async (event) => {
                     event.preventDefault();
                     const formData = new FormData(searchForm);
                     const searchLocation = formData.get('search');
 
-                
-                    const loading2 = new Loading({ loading: true });
+
+                    const loading2 = new Loading({ loading: true }); // why not use the loading component you've already instantiated, and just update it with { loading: true }?
                     dom.appendChild(loading2.renderDOM());
-    
-                    try {
-                        const hikes = await getHikes(searchLocation);
-                        localStorage.setItem('allHikes', JSON.stringify(hikes));
-                        hikesList.update({ hikes: hikes });
-                    }
-                    
-                    catch (err) {
-                        console.log(err);
-                    }
-                    finally {
-                        loading2.update({ loading: false });
-                    }
+
+                    await getSetAndUpdateHikes(searchLocation);
                 });
             }
-            
+
             catch (err) {
                 console.log(err);
             }
@@ -94,26 +94,19 @@ class HikesApp extends Component {
                 loading.update({ loading: false });
             }
 
-            searchForm.addEventListener('submit', async(event) => {
+            searchForm.addEventListener('submit', async (event) => {
                 event.preventDefault();
                 const formData = new FormData(searchForm);
-                const searchLocation = formData.get('search');            
+                const searchLocation = formData.get('search');
 
-                try {
-                    const hikes = await getHikes(searchLocation);
-                    localStorage.setItem('allHikes', JSON.stringify(hikes));
-                    hikesList.update({ hikes: hikes });
-                }
-                
-                catch (err) {
-                    console.log(err);
-                }
+                await getSetAndUpdateHikes(searchLocation);
+
             });
         };
 
         loadHikes();
     }
-    
+
     renderHTML() {
         return /*html*/`
             <div>

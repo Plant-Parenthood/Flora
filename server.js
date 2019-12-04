@@ -18,6 +18,13 @@ const weatherApi = require('./lib/weather-api-call.js');
 const ensureAuth = require('./lib/auth/ensure-auth');
 const createAuthRoutes = require('./lib/auth/create-auth-routes');
 
+const sendError = (res, err) => {
+    console.log(err);
+    res.status(500).json({
+        error: err.message || err
+    });
+};
+
 const authRoutes = createAuthRoutes({
     async selectUser(email) {
         const result = await client.query(`
@@ -53,7 +60,7 @@ app.use('/api', ensureAuth);
 
 // *** API Routes ***
 
-app.get('/api/location', async(req, res) => {
+app.get('/api/location', async (req, res) => {
     try {
         const location = await geocodeApi.get(req.query.search);
         const hikes = await hikesApi.get({
@@ -62,14 +69,11 @@ app.get('/api/location', async(req, res) => {
         res.json(hikes);
     }
     catch (err) {
-        console.log(err);
-        res.status(500).json({
-            error: err.message || err
-        });
+        sendError(res, err);
     }
 });
 
-app.get('/api/hikes', async(req, res) => {
+app.get('/api/hikes', async (req, res) => {
 
     try {
         //const query = req.query;
@@ -81,7 +85,8 @@ app.get('/api/hikes', async(req, res) => {
             FROM favorites
             WHERE user_id = $1
             AND hike_id = ANY($2)
-        `, [req.userId, ids]);
+            `, [req.userId, ids]);
+
         const lookup = result.rows.reduce((acc, object) => {
             acc[object.hike_id] = true;
             return acc;
@@ -92,14 +97,11 @@ app.get('/api/hikes', async(req, res) => {
     }
 
     catch (err) {
-        console.log(err);
-        res.status(500).json({
-            error: err.message || err
-        });
+        sendError(res, err);
     }
 });
 
-app.get('/api/campgrounds', async(req, res) => {
+app.get('/api/campgrounds', async (req, res) => {
 
     try {
         const campgrounds = await campgroundsApi.get(req);
@@ -107,32 +109,28 @@ app.get('/api/campgrounds', async(req, res) => {
     }
 
     catch (err) {
-        console.log(err);
-        res.status(500).json({
-            error: err.message || err
-        });
+        sendError(res, err);
     }
 });
 
-app.get('/api/weather', async(req, res) => {
+app.get('/api/weather', async (req, res) => {
     try {
         const weather = await weatherApi.get(req);
         res.json(weather);
     }
     catch (err) {
-        console.log(err);
-        res.status(500).json({
-            error: err.message || err
-        });
+        sendError(res, err);
     }
 });
 
 //endpoint for saving hikes (will only happen when user favorites a hike)
-app.post('/api/hikes', async(req, res) => {
+app.post('/api/hikes', async (req, res) => {
     try {
+        // seems strange to me that both `hike` and `campground` are equal to req.body
         const hike = req.body;
 
         const campgrounds = req.body;
+
 
         const existingSavedHike = await client.query(`
             SELECT * FROM saved_hikes
@@ -156,15 +154,12 @@ app.post('/api/hikes', async(req, res) => {
     }
 
     catch (err) {
-        console.log(err);
-        res.status(500).json({
-            error: err.message || err
-        });
+        sendError(res, err);
     }
 });
 
 //we might have to add this back in - TRUE as "isFavorite"
-app.get('/api/favorites', async(req, res) => {
+app.get('/api/favorites', async (req, res) => {
     try {
         const favorites = await client.query(`
             SELECT *
@@ -179,22 +174,17 @@ app.get('/api/favorites', async(req, res) => {
             WHERE id = ANY($1)
         `, [favoriteHikeIds]);
 
-        const parsedRows = result.rows.map(row => {
-            return JSON.parse(row.hike_obj);
-        });
+        const parsedRows = result.rows.map(row => JSON.parse(row.hike_obj));
         res.json(parsedRows);
     }
-        
+
     catch (err) {
-        console.log(err);
-        res.status(500).json({
-            error: err.message || err
-        });
+        sendError(res, err);
     }
 });
 
 //add a hike to your faves
-app.post('/api/favorites', async(req, res) => {
+app.post('/api/favorites', async (req, res) => {
     try {
         const hike = req.body;
         const result = await client.query(`
@@ -207,10 +197,7 @@ app.post('/api/favorites', async(req, res) => {
     }
 
     catch (err) {
-        console.log(err);
-        res.status(500).json({
-            error: err.message || err
-        });
+        sendError(res, err);
     }
 });
 
@@ -227,10 +214,7 @@ app.delete('/api/favorites/:hike_id', (req, res) => {
     }
 
     catch (err) {
-        console.log(err);
-        res.status(500).json({
-            error: err.message || err
-        });
+        sendError(res, err);
     }
 });
 

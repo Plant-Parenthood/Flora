@@ -28,11 +28,11 @@ class App extends Component {
             token = user.token;
         }
 
-        if (!token){
+        if (!token) {
             const errors = dom.querySelector('.errors');
             const signUpContainer = dom.querySelector('#signup-container');
             const signInContainer = dom.querySelector('#signin-container');
-            
+
             const signUp = new SignUp({
                 onSignUp: async newUser => {
                     errors.textContent = '';
@@ -48,7 +48,7 @@ class App extends Component {
                 }
             });
             signUpContainer.appendChild(signUp.renderDOM());
-            
+
             const signIn = new SignIn({
                 onSignIn: async credentials => {
                     errors.textContent = '';
@@ -64,19 +64,18 @@ class App extends Component {
                 }
             });
             signInContainer.appendChild(signIn.renderDOM());
-        
 
-            const switchToSignIn = dom.querySelector('#signin-button');
-            switchToSignIn.addEventListener('click', () => {
+
+            const hideContainers = () => {
                 signInContainer.classList.remove('no-display');
                 signUpContainer.classList.add('no-display');
-            });
-            
+            };
+
+            const switchToSignIn = dom.querySelector('#signin-button');
             const switchToSignUp = dom.querySelector('#signup-button');
-            switchToSignUp.addEventListener('click', () => {
-                signUpContainer.classList.remove('no-display');
-                signInContainer.classList.add('no-display');
-            });
+
+            [switchToSignIn, switchToSignUp]
+                .forEach(el => el.addEventListener('click', hideContainers));
         }
 
         const footer = new Footer();
@@ -84,7 +83,7 @@ class App extends Component {
     }
 
     renderHTML() {
-        const loginHTML = 
+        const loginHTML =
             `<section class="no-display" id="signup-container">
             <p class="errors"></p>
                 <p class="switch">
@@ -107,7 +106,7 @@ class App extends Component {
             const user = JSON.parse(json);
             token = user.token;
         }
-        const actualHTMLtoRender = token ? loggedInHTML : loginHTML;
+        const actualHTMLtoRender = token ? loggedInHTML : loginHTML; // nice!
 
         return /*html*/`
             <div>

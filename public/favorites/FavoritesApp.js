@@ -8,17 +8,17 @@ import { getFavorites } from '../services/hikes-api.js';
 
 class FindHikesApp extends Component {
 
-    onRender(dom) {
+    async onRender(dom) {
         const header = new Header();
         dom.prepend(header.renderDOM());
 
         const nav = new Nav();
-        dom.appendChild(nav.renderDOM());       
+        dom.appendChild(nav.renderDOM());
 
         const listSection = dom.querySelector('.list-section');
 
-        const hikesList = new HikesList({ 
-            hikes: [], 
+        const hikesList = new HikesList({
+            hikes: [],
             removeUnFavorites: true,
             renderModal: (modalHike, campgrounds, weather) => {
                 modal.update({ modalHike, campgrounds, weather });
@@ -27,10 +27,8 @@ class FindHikesApp extends Component {
         });
         listSection.appendChild(hikesList.renderDOM());
 
-        getFavorites()
-            .then(hikes => {
-                hikesList.update({ hikes: hikes });
-            });
+        const hikes = await getFavorites()
+        hikesList.update({ hikes });
 
         const footer = new Footer();
         dom.appendChild(footer.renderDOM());
@@ -43,10 +41,10 @@ class FindHikesApp extends Component {
         modalSection.appendChild(modal.renderDOM());
     }
 
-        
+
 
     renderHTML() {
-        
+
         return /*html*/`
             <div>
                 <!-- header goes here -->

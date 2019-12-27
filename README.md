@@ -25,9 +25,6 @@ This app makes use of the following dependencies -
     7. dotenv
 
 ## Endpoints
-
-NEED TO ADD SAMPLE RESULTS (console.log each response in terminal and copy/paste)
-
     * '/api/auth', authRoutes
     * '/api', ensureAuth
         * /verfiy returns { verified: true }

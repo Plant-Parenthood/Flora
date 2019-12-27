@@ -15,7 +15,7 @@ class Header extends Component {
     }
 
     renderHTML() {
-        const title = this.props.title || 'TRAMPS N\' CAMPS';
+        const title = this.props.title || 'TREKS N\' TRAILS';
 
         let token = '';
         const json = localStorage.getItem('USER');

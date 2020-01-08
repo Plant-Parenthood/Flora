@@ -1,4 +1,4 @@
-# Tramps and Camps
+# TREKS N TRAILS
 ## Version 1.0.0 
 MVP reached, basic functionality with current location.
 ## Version 1.1.0

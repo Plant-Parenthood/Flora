@@ -6,19 +6,24 @@ class HikesList extends Component {
 
     onRender(dom) {
 
-        const { hikes, onSearchSubmit, renderModal } = this.props;
+        const {
+            hikes,
+            onSearchSubmit,
+            renderModal,
+            removeUnFavorites,
+        } = this.props;
         const optionsSection = dom.querySelector('.options-section');
-        const search = new Search({ 
-            hikes: hikes,
-            onSearchSubmit: onSearchSubmit 
+        const search = new Search({
+            hikes,
+            onSearchSubmit,
         });
         optionsSection.appendChild(search.renderDOM());
 
         hikes.forEach(hike => {
             const props = {
                 hike: hike,
-                removeUnFavorites: this.props.removeUnFavorites,
-                renderModal: renderModal
+                removeUnFavorites,
+                renderModal
             };
 
             const hikeItem = new HikeItem(props);

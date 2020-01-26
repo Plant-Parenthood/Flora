@@ -1,0 +1,1 @@
+Very clean, well-organized, modular, and readable code! It's super impressive that y'all munged together data from _five separate apis_ in such a seamless product. I would have guessed this data all came from the same api, which I guess is the mark of your success. Most of my refactors are small changes for code reuse (usually places where the same block of code is used twice).

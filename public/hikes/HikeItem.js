@@ -1,7 +1,15 @@
 import Component from '../Component.js';
 import { makeFavorite, unFavorite, saveOrFetchHike, getCampgrounds, getWeather } from '../services/hikes-api.js';
 
-
+// defining this map in the onRender function means it is recreated whenever onRender is called. When it's here in global scope, it will be created only once
+const difficultyValues = {
+    'any': 'All Levels',
+    'green': 'Easiest',
+    'greenBlue': 'Easy',
+    'blue': 'Medium',
+    'blueBlack': 'Hard',
+    'black': 'Hardest'
+};
 
 class HikeItem extends Component {
 
@@ -12,7 +20,7 @@ class HikeItem extends Component {
         const favoriteButton = li.querySelector('.favorite-heart');
         const infoButton = li.querySelector('.info-button');
 
-        favoriteButton.addEventListener('click', async() => {
+        favoriteButton.addEventListener('click', async () => {
             hike.isFavorite = !hike.isFavorite;
 
             if (hike.isFavorite) {
@@ -33,7 +41,7 @@ class HikeItem extends Component {
             favoriteButton.classList.toggle('is-favorite');
         });
 
-        infoButton.addEventListener('click', async() => {
+        infoButton.addEventListener('click', async () => {
             const campgrounds = await getCampgrounds(hike.latitude, hike.longitude);
 
             const weather = await getWeather(hike.latitude, hike.longitude);
@@ -46,20 +54,11 @@ class HikeItem extends Component {
         const { hike } = this.props;
         const heartClass = hike.isFavorite ? 'is-favorite' : '';
 
-        const difficultyValues = {
-            'any': 'All Levels',
-            'green': 'Easiest',
-            'greenBlue': 'Easy',
-            'blue': 'Medium',
-            'blueBlack': 'Hard',
-            'black': 'Hardest'
-        };
-
         return /*html*/`
             <li class="hike-item">
                 <section class="fav-info">
                     <button class="info-button">ⓘ</button>
-                    <button class="favorite-heart ${heartClass}">❤</button>
+                    <button class="favorite-heart ${heartClass}">♥︎</button>
                 </section>
                     <img src="${hike.imgMedium}" onerror="this.onerror=null;this.src='/assets/placeholder-image.png';">
                     <h2 class="hike-name">${hike.name}</h2>

@@ -57,7 +57,7 @@ class HikeItem extends Component {
         return /*html*/`
             <li class="hike-item">
                 <section class="fav-info">
-                    <button class="info-button">ⓘ</button>
+                    <button class="info-button"></button>
                     <button class="favorite-heart ${heartClass}">♥︎</button>
                 </section>
                     <img src="${hike.imgMedium}" onerror="this.onerror=null;this.src='/assets/placeholder-image.png';">
